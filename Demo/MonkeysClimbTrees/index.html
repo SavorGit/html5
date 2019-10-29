@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+	<meta name="copyright" content="蜀乐互动系统管理后台">
+	<link rel="icon" href="http://www.shulehudong.com/attachment/images/2/2018/01/zr0ao66uZ22pp5U5yPkYp3Rr8Hq0mP.jpg">
+    <title>猴子爬树 - 测试</title>
+    <link rel="stylesheet" type="text/css" href="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/css/basic.css">
+	<script type="text/javascript">
+	var need_login = "1";
+	var SCENE_INFO = {
+        "title": "测试",
+        "top_title": ["\u626b\u4e8c\u7ef4\u7801\u5c31\u53ef\u4ee5\u53c2\u4e0e\u6d3b\u52a8\u54e6\uff01"],
+        "top_font_size": "20",
+        "memo": "",
+        "top_img": "http://www.shulehudong.com/attachment/images/2/2018/11/d0MqX1rdjjtRKtZWkRQtRTr6Maxrrq.png",
+        "bg_img": "",
+        "bottom_img": "http://www.shulehudong.com/attachment/images/2/2018/11/d0MqX1rdjjtRKtZWkRQtRTr6Maxrrq.png",
+        "diy_css": "",
+        "keyword": "",
+        "mp_username": "热点投屏",
+        "func": {
+          "wall": "1",
+          "lottery": "1",
+          "shake": "1"
+        },
+        "navbar": {
+          "wall": "1",
+          "lottery": "1",
+          "lottery_free": "1",
+          "shake": "1",
+          "shake_free": "1"
+        }
+      };
+      var WALL_INFO = {
+        "id": "6509",
+        "scene_id": 6509,
+        "title": "",//网页顶部标题
+        "show_style": "",//滚动 或者 翻转
+        "show_type": "",//最新不循环或者随机循环
+        "re_time": "",
+        "chistory": "",
+		"show_big":"",
+		"show_big_time":""
+      };
+	  var PATH_URL = "http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/piao/";
+	  var $socket_url = "ws://www.shulehudong.com:7272";
+	  var show_msg_2=null;
+	  var check_msg=null;
+	  var bd_show = 0;
+	  </script>
+	  <style>
+		#show_hide_nav{width: 100%;position: fixed;bottom: -10px;text-align: center;z-index:9998}	
+		.Panel.Top{z-index:1}
+		.lottery-right{z-index:10}
+		</style>
+	  <script src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/js/tool.js" type="text/javascript" charset="utf-8"></script>
+      <script src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/js/jquery-2.1.4.js"></script>
+	  <script src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/js/jquery.hotkeys.min.js"></script>
+	  <script src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/js/layer/layer.js?t=1"></script>
+	  <link rel="stylesheet" type="text/css" href="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/css/footer.css?T=1">
+	  <link href="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/css/app_common.css" rel="stylesheet">
+	  <style>
+		#qd_persons {
+			display: inline-block;
+			position: absolute;
+			top: 25px;
+			right: 120px;
+			font-size:20px;
+			text-align: center;
+			color: #fff;
+		}
+		#qd_persons span{
+			display:block;
+			height:30px;
+		}
+		#videoplay{display:none}
+	  </style>
+	  <link rel="stylesheet" type="text/css" href="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/css/screen_mshake.css?t=1">
+<body>
+	<style>
+	.pashuMain{opacity:0;position: absolute; top:0;bottom:0;height:auto; left:0;width:100%;height:100%;background:url(http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/mshake_bg.jpg) no-repeat 0px 0px;background-size:100% 100%}
+	.animate-rotate2 {
+		-webkit-animation: rotate2 1s linear;
+		-webkit-animation-delay: 0.01s
+	}
+	.round-label2 span i.animate-rotate2 {
+		-webkit-animation: rotate2 0.8s linear
+	}
+	.round-label2 span i:nth-child(2).animate-rotate2 {
+	-webkit-animation-delay: 0.04s
+	}
+
+	.round-label2 span i:nth-child(3).animate-rotate2 {
+		-webkit-animation-delay: 0.08s
+	}
+
+	@-webkit-keyframes rotate1 {
+		from {
+			-webkit-transform: rotateY(0)
+		}
+
+		to {
+			-webkit-transform: rotateY(180deg)
+		}
+	}
+
+	@-webkit-keyframes rotate2 {
+		from {
+			-webkit-transform: rotateX(0)
+		}
+
+		to {
+			-webkit-transform: rotateX(720deg)
+		}
+	}
+	.round-label2 i {
+	color:#fff;
+	border-radius: 5px;
+	background: #e8645a;
+	color: #fff;
+	display: inline-block;
+	margin: 0 5px;
+	width: 100px;
+	height: 40px;
+	font-style: normal;
+	line-height: 40px;
+	text-align: center;
+	font-size: 24px
+	}
+	.houzi_user{opacity:0 !important}
+	.btn-endgame {
+		width: 100px;
+		height: 60px;
+		background: url("http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/restart_bg.png") no-repeat center bottom;
+		position: absolute;
+		bottom: 70px;
+		right: 3px;
+		cursor: pointer
+	}
+	.restart-botton {
+	    width: 70px;
+	    height: 40px;
+	    position: absolute;
+	    background: url("http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/restart_button.png") no-repeat center bottom;
+	    position: absolute;
+	    bottom: 20px;
+	    left: 50%;
+	    margin: 0 0 0 -35px;
+	}
+	</style>
+	<audio id="Audio_CutdownPlayer" src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/shake/shake_cutdown.mp3" preload="preload"></audio>
+	<audio id="Audio_NewPlayer" src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/shake/shake_new.mp3" preload="preload"></audio>
+	<audio id="Audio_Gameover" src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/shake_gameover.wav" preload="preload"></audio>
+	<div class="Panel Top">
+		<div class="top_menu">
+		    <img class="activity_logo" src="http://www.shulehudong.com/attachment/images/2/2018/11/d0MqX1rdjjtRKtZWkRQtRTr6Maxrrq.png" onerror="this.src='http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/icon/top.png'" >
+		    <div class="top_title" style="font-size: 20px">
+				<div >扫二维码就可以参与活动哦！</div>
+    		</div>
+	    	<img class="mp_account_codeimage" src="http://www.shulehudong.com/attachment/images/2/2018/11/ZT8E22Z282hZK8KEg2gDBeBk0DbJmo.jpg" onerror="../attachment/qrcode_2.jpg" >
+		</div>
+	</div>
+	<div class="pashuMain">
+		<div class="houzik">
+			<div class="houzi1 houzi_user">
+				<div class="guozik"><img class="img-responsive" src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/mshake_yezi.png" alt="图片"/></div>
+				<div class="topk">
+					<span></span>
+					<img src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/mshake_user.jpg" class="mshakeuser_img" />
+				</div>
+				<div class="bottomhz"><img src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/hz.png" alt="图片"/></div>
+			</div>
+			<div class="houzi2 houzi_user">
+				<div class="guozik"><img class="img-responsive" src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/mshake_yezi.png" alt="图片"/></div>
+				<div class="topk">
+					<span></span>
+					<img src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/mshake_user.jpg" class="mshakeuser_img" />
+				</div>
+				<div class="bottomhz"><img src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/hz.png" alt="图片"/></div>
+			</div>
+			<div class="houzi3 houzi_user">
+				<div class="guozik"><img class="img-responsive" src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/mshake_yezi.png" alt="图片"/></div>
+				<div class="topk">
+					<span></span>
+					<img src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/mshake_user.jpg" class="mshakeuser_img" />
+				</div>
+				<div class="bottomhz"><img src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/hz.png" alt="图片"/></div>
+			</div>
+			<div class="houzi4 houzi_user">
+				<div class="guozik"><img class="img-responsive" src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/mshake_yezi.png" alt="图片"/></div>
+				<div class="topk">
+					<span></span>
+					<img src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/mshake_user.jpg" class="mshakeuser_img" />
+				</div>
+				<div class="bottomhz"><img src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/hz.png" alt="图片"/></div>
+			</div>
+			<div class="houzi5 houzi_user">
+				<div class="guozik"><img class="img-responsive" src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/mshake_yezi.png" alt="图片"/></div>
+				<div class="topk">
+					<span></span>
+					<img src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/mshake_user.jpg" class="mshakeuser_img" />
+				</div>
+				<div class="bottomhz"><img src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/hz.png" alt="图片"/></div>
+			</div>
+			<div class="houzi6 houzi_user">
+				<div class="guozik"><img class="img-responsive" src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/mshake_yezi.png" alt="图片"/></div>
+				<div class="topk">
+					<span></span>
+					<img src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/mshake_user.jpg" class="mshakeuser_img" />
+				</div>
+				<div class="bottomhz"><img src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/hz.png" alt="图片"/></div>
+			</div>
+			<div class="houzi7 houzi_user">
+				<div class="guozik"><img class="img-responsive" src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/mshake_yezi.png" alt="图片"/></div>
+				<div class="topk">
+					<span></span>
+					<img src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/mshake_user.jpg" class="mshakeuser_img" />
+				</div>
+				<div class="bottomhz"><img src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/hz.png" alt="图片"/></div>
+			</div>
+			<div class="houzi8 houzi_user">
+			<div class="guozik"><img class="img-responsive" src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/mshake_yezi.png" alt="图片"/></div>
+				<div class="topk">
+					<span></span>
+					<img src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/mshake_user.jpg" class="mshakeuser_img" />
+				</div>
+				<div class="bottomhz"><img src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/hz.png" alt="图片"/></div>
+			</div>
+			<div class="houzi9 houzi_user">
+			<div class="guozik"><img class="img-responsive" src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/mshake_yezi.png" alt="图片"/></div>
+				<div class="topk">
+					<span></span>
+					<img src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/mshake_user.jpg" class="mshakeuser_img" />
+				</div>
+				<div class="bottomhz"><img  src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/hz.png" alt="图片"/></div>
+			</div>
+			<div class="houzi10 houzi_user">
+				<div class="guozik"><img class="img-responsive" src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/mshake_yezi.png" alt="图片"/></div>
+				<div class="topk">
+					<span></span>
+					<img src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/mshake_user.jpg" class="mshakeuser_img" />
+				</div>
+				<div class="bottomhz"><img src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/hz.png" alt="图片"/></div>
+			</div>
+		</div>
+	</div>
+	<!--round welcome-->
+	<div class="round-welcome"  style="z-index:2">
+	    <div class="label top">微信扫一扫、参与摇一摇</div>
+	    <img class="qr" src="http://www.shulehudong.com/app/index.php?i=2&c=entry&url=.%2Findex.php%3Fi%3D2%26c%3Dentry%26rid%3D6509%26do%3Dapp_mshake%26m%3Dmeepo_xianchang&do=makeqrcode&m=meepo_xianchang" onerror="this.src='../attachment/qrcode_2.jpg';" >
+	    <div class="label bottom"><span class="shake-icon shake"></span>听从现场指挥，游戏开始后不停摇动手机</div>
+	    <div class="radar" style="display: block">
+            <div class="round w300">
+                <div class="round w200">
+                    <div class="round w100">
+                        <div class="round w1">
+                            <div class="line roundMove"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="users"></div>
+        </div>
+	    <div class="button-start">开始游戏</div>
+	    <div class="round-label">ROUND 1</div>
+		<div class="round-label2" style="top:20%;left:7%">当前已有<span><i class="animate-rotate2">0</i></span>人加入</div>
+	</div>
+	<style>
+	.animate-rotate2 {
+		-webkit-animation: rotate2 1s linear;
+		-webkit-animation-delay: 0.01s
+	}
+
+	.round-label2 span i.animate-rotate2 {
+			-webkit-animation: rotate2 0.8s linear
+		}
+	.round-label2 span i:nth-child(2).animate-rotate2 {
+		-webkit-animation-delay: 0.04s
+	}
+
+	.round-label2 span i:nth-child(3).animate-rotate2 {
+		-webkit-animation-delay: 0.08s
+	}
+
+	@-webkit-keyframes rotate1 {
+		from {
+			-webkit-transform: rotateY(0)
+		}
+
+		to {
+			-webkit-transform: rotateY(180deg)
+		}
+	}
+
+	@-webkit-keyframes rotate2 {
+		from {
+			-webkit-transform: rotateX(0)
+		}
+
+		to {
+			-webkit-transform: rotateX(720deg)
+		}
+	}
+	.round-label2 i {
+		color:#fff;
+		border-radius: 5px;
+		background: #e8645a;
+		color: #fff;
+		display: inline-block;
+		margin: 0 5px;
+		width: 100px;
+		height: 40px;
+		font-style: normal;
+		line-height: 40px;
+		text-align: center;
+		
+		font-size: 24px
+	}
+	</style>
+	<!----result layer-->
+	<div class="result-layer" style="display: none;z-index:3">
+	    <div class="result-label">GAME OVER</div>
+	    <div class="result-cup">
+	        <span class="button nexttound">开始下一轮</span>
+	        <span class="button allresult">全部排名</span>
+	        <span class="button reset">重玩本轮</span>
+	    </div>
+	</div>
+	<a class="btn-endgame">
+		<div class="restart-botton"></div>
+	</a>
+	<script src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/js/mshake_base.js?t=20180921"></script>
+	<script src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/js/screen_mshake.js?t=20180922"></script>
+	<script type="text/javascript" src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/js/web_socket.js"></script>
+	<script type="text/javascript" src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/js/swfobject.js"></script>
+	<script>
+		if (typeof console == "undefined") {    this.console = { log: function (msg) {  } };}
+		WEB_SOCKET_SWF_LOCATION = "http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/js/WebSocketMain.swf";
+		WEB_SOCKET_DEBUG = true;
+	</script>
+	<script>
+	var get_man;
+	var now_round = 1;
+	var CURR_ROUND_ID = 552;
+	var RoundStatus = 1;
+	var ready_time = 5;
+	var pnum = 3;
+	var gotop = 0;
+	var post_persons = 100;
+	var max_point = 100;
+	var time_pashu;
+	var max_user_shake_id = 0;
+	var game_end = 0;
+	var topten_user = [];
+	var rankTopTen = [];
+	var WEB_URL = "http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/";
+	var msg_control = {
+		ws:{},
+		init:function(){
+			 this.ws = new WebSocket($socket_url);
+			 this.ws.onopen = this.ws_onopen;
+			 this.ws.onclose = this.ws_onclose;
+			 this.ws.onmessage = this.ws_onmessage;
+		},
+		ws_onopen:function(){
+			console.log('connection...');
+			var login_data = '{"type":"mlogin","client_name":"com","client_avatar":"com","room_id":"m_'+CURR_ROUND_ID+'","openid":"meepo_xinchang","shakeTime":0}';
+			msg_control.ws.send(login_data);
+		},
+		ws_onclose:function(e){
+			console.log("连接关闭");
+			window.location.reload()
+		},
+		ws_onmessage:function(e){
+			console.log(e.data);
+			var data =  $.parseJSON(e.data);
+			switch(data.type){
+				case 'ping':
+					msg_control.ws.send('{"type":"pong"}');
+					break;
+				case 'login':
+					break;
+				case 'mgame_end':
+					window.clearInterval(pc_data_time);
+					if(topten_user.length>0 && game_end==0){
+						game_end = 1;
+						var layer_iii = layer.load(2, {shade: false});
+						var Post_user = topten_user.slice(0,post_persons);
+						var True_user = del_Notneed(Post_user);
+						$.post(PATH_ACTIVITY + Path_url('mshake_tstop'),{"rid":scene_id,"rotate_id":CURR_ROUND_ID,"user":JSON.stringify(True_user)},function(d) {
+							layer.close(layer_iii);
+							if(d.errno==0){
+								window.setTimeout(function() {
+									showGameResult();
+									hideSlogan()
+								},
+								660);
+							}else{
+								layer.msg("数据存贮失败!");
+							}
+						},'json');
+					}
+					break;
+				case 'mshake_going':
+					pa_top(data.clients_list);
+					break;
+			}
+		}
+	};
+	function del_Notneed(arr){
+		var newArr = [];
+		if($.isArray(arr)){
+			var userListlength = arr.length;
+			if(userListlength>0){
+				for(var z=0;z<userListlength;z++){
+					newArr.push({openid:arr[z]['client_openid'],score:arr[z]['shakeTime']});
+				}
+				return newArr;
+			}
+		}
+		return newArr;
+	}
+	function pa_top(clients_list){
+			var rankUser = transform(clients_list);
+			rankUser = rankUser.sort(function(a, b){
+				return b.shakeTime - a.shakeTime;
+			});
+			topten_user = rankUser;
+			rankTopTen = rankUser.slice(0,10);
+			var dDivhouzi = $('.houzik').children('div')
+			for (var i=0; i<dDivhouzi.length; i++) {
+				var max_top = $('.pashuMain').height()  - 215;
+				if(rankUser[i] && "undefined" != typeof rankUser[i].shakeTime){
+					if(rankUser[i].shakeTime>=max_point){
+						var guoZiK = $(dDivhouzi[i]).find('.guozik');
+						$(guoZiK).css('opacity', 1).css('top', $('.pashuMain').height());
+						msg_control.ws.send('{"type":"mshake","ttype":"mshake_end","openid":"meepo_xinchang"}');
+					}
+					$(dDivhouzi[i]).find('.topk').find('span').text(rankUser[i].client_name);
+					$(dDivhouzi[i]).find('.mshakeuser_img').attr('src',rankUser[i].client_avatar);
+					var now_top = (rankUser[i].shakeTime/max_point)*max_top;
+					$(dDivhouzi[i]).css('bottom',now_top+'px');
+					$(dDivhouzi[i]).find('.bottomhz').find('img').attr('src',"http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/hz.gif");
+				}
+				
+			}
+	}
+	function transform(obj){
+	    var arr = [];
+	    for(var item in obj){
+		  if(obj[item].client_openid!='meepo_xinchang'){
+				arr.push(obj[item]);
+		  }
+	    }
+	    return arr;
+	}
+	$(function(){
+		console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+		msg_control.init();
+		get_man = window.setInterval(function(){
+			getman()
+		},2000);
+		var dDivhouzi = $('.houzik').children('div')
+		for (var i=0; i<dDivhouzi.length; i++) {
+			var num = i + 1;
+			$(dDivhouzi[i]).find('.topk').find('span').text("虚位以待");
+		}
+	});
+	var add_user = 0;
+	function getman(){
+		console.log("getman");
+	  $.ajax({ 
+		type: "post", 
+		url : "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&do=mshake_user&m=meepo_xianchang",
+	    dataType:'json', 
+	    data:{rotate_id:CURR_ROUND_ID,max_id:max_user_shake_id},
+	    success: function(data){
+			var user_shake = data.data;
+			$('.round-label2 span').html('<i>'+data.message+'</i>').find('i').toggleClass('animate-rotate2');
+			if(user_shake.length>0){
+				var newone = user_shake.pop();
+				if(newone.id!=max_user_shake_id){
+					document.getElementById("Audio_NewPlayer").play();
+				}
+				max_user_shake_id = newone.id;
+				var n = '<div id="shake_user_' + newone.id + '" class="user-item"><div class="user-img"><img src="' + newone.avatar + '" /></div><p>' + newone.nick_name + "</p></div>";
+				add_user++;
+				if (add_user > 10) {
+					$(".users").html("");
+					add_user = 1
+				}
+				if($('#shake_user_'+newone.id).length==0){
+					$(n).appendTo(".users").animate({
+						opacity: 0.7
+					},
+					500);
+				}
+			}
+	    }
+	 });
+	}
+	</script>
+	<div class="cutdown-start cutdownan-imation"></div>
+		<link rel="stylesheet" type="text/css" href="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/skin/style21.css">
+		<div class="Panel Bottom"  >
+			<div class="bottommenu" >
+				<img class="support_logo" src="http://www.shulehudong.com/attachment/images/2/2018/11/d0MqX1rdjjtRKtZWkRQtRTr6Maxrrq.png" onerror="javascript:this.src='http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/icon/bottom.png'" >
+				<div class="helperpanel pulse" >
+					<span class="ssgz"></span>
+				</div>
+				<div class="navbar">
+			 		<ul class="navbarmenu">
+			            <li class="curr">
+			              <a  class="neicon small" id="show_qd_code">
+			                <img class="" src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/icon/icons-003.png">
+			                <p>二维码</p>
+			              </a>
+			            </li>	
+														            <li class="curr">
+			              <a onclick="document.getElementById('videoplay').style.display='block';" class="neicon small">
+			                <img class="" src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/icon/icons-007.png">
+			                <p>视频</p>
+			              </a>
+			            </li>
+						            <li class="curr">
+			              <a onclick="document.getElementById('skinLayer').style.display='block';" class="neicon small">
+			                <img class="" src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/icon/icons-004.png">
+			                <p>皮肤</p>
+			              </a>
+			            </li>
+						            <li class="curr">
+			              <a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&do=mshake&m=meepo_xianchang" class="neicon small">
+			                <img class="" src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/icon/icons-005.png">
+			                <p>宽屏</p>
+			              </a>
+			            </li>
+			            <li class="curr">
+			              <a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=1&do=mshake&m=meepo_xianchang" class="neicon small">
+			                <img class="" src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/icon/icons-006.png">
+			                <p>小屏</p>
+			              </a>
+			            </li>
+			            <li class="curr">
+						  <i class="icon-arrow2" id="popup-arrow-icon"></i>
+			              <a onclick="document.getElementById('popup').style.display='block',document.getElementById('popup-arrow-icon').style.visibility='visible';" class="neicon small">
+			                <img class="" src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/icon/icons-001.png">
+			                <p>应用</p>
+			              </a>
+			            </li>
+			            <li class="curr">
+			              <a class="neicon small navbaritem fullscreen" href="#">
+			                <img class="" src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/icon/icons-002.png">
+			                <p>全屏</p>
+			              </a>
+			            </li>
+			        </ul>
+					<!--<div class="btn-popupbox">-->
+			        <div class="btn-popup hidden" id="popup">
+			            <i class="closeb" onclick="document.getElementById('popup').style.display='none',document.getElementById('popup-arrow-icon').style.visibility='hidden';"></i>
+			            
+					            <ul class="btn-list clearfix">
+						             			               <li class="curr">
+			                <a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=qd&m=meepo_xianchang" class="neicon">
+			                  <i class="ico001 meepo-signin"></i>
+			                  <p>签到</p>
+			                </a>
+			              </li>
+			             						 				<li class="curr"><a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=lizi&m=meepo_xianchang" class="neicon">
+							<i class="ico016 meepo-threed"></i>
+			                <p>粒子签到</p>
+			                </a></li>
+													               <li class="curr">
+			                <a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=wall&m=meepo_xianchang" class="neicon wall">
+			                   <i class="ico002 meepo-msgNum"></i>
+			                  <p>微信上墙</p>
+			                </a>
+			              </li>
+						  						               <li class="curr"><a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=lottory&m=meepo_xianchang" class="neicon">
+							<i class="ico004 meepo-gift"></i>
+			                <p>抽奖</p>
+			                </a></li>
+						  						               <li class="curr">
+			                <a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=jb&m=meepo_xianchang" class="neicon">
+			                  
+							  <i class="ico005 meepo-guest"></i>
+			                  <p>嘉宾展示</p>
+			                </a>
+			              </li>
+						   						 				<li class="curr"><a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=vote&m=meepo_xianchang" class="neicon">
+							<i class="ico006 meepo-vote"></i>
+			                <p>投票</p>
+			                </a></li>
+						   						 				<li class="curr"><a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=shake&m=meepo_xianchang" class="neicon">
+							<i class="ico007 meepo-shake"></i>
+			                <p>摇一摇</p>
+			                </a></li>
+													 				<li class="curr"><a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=cjx&m=meepo_xianchang" class="neicon">
+							<i class="ico011 meepo-pie"></i>
+			                <p>抽奖箱</p>
+			                </a></li>
+													 				<li class="curr"><a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=redpack&m=meepo_xianchang" class="neicon">
+							<i class="ico017 meepo-redpacker"></i>
+			                <p>抢红包</p>
+			                </a></li>
+													 				<li class="curr"><a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=mshake&m=meepo_xianchang" class="neicon">
+							<i class="ico019 meepo-shake"></i>
+			                <p>猴子爬树</p>
+			                </a></li>
+													 				<li class="curr"><a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=dt&m=meepo_xianchang" class="neicon">
+							<i class="ico018 meepo-photo"></i>
+			                <p>现场答题</p>
+			                </a></li>
+													 				<li class="curr"><a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=tshake&m=meepo_xianchang" class="neicon">
+							<i class="ico008 meepo-shake"></i>
+			                <p>团队摇一摇</p>
+			                </a></li>
+													 				<li class="curr"><a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=xysjh&m=meepo_xianchang" class="neicon">
+							<i class="ico015 meepo-phone"></i>
+			                <p>幸运手机号</p>
+			                </a></li>
+													 				<li class="curr"><a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=dm&m=meepo_xianchang" class="neicon">
+							<i class="ico013 meepo-msgNum"></i>
+			                <p>上墙弹幕</p>
+			                </a></li>
+													 				<li class="curr"><a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=zjd&m=meepo_xianchang" class="neicon">
+							<i class="ico015 meepo-stars"></i>
+			                <p>砸金蛋</p>
+			                </a></li>
+													 				<li class="curr"><a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=xyh&m=meepo_xianchang" class="neicon">
+							<i class="ico012 meepo-mstching"></i>
+			                <p>幸运号码</p>
+			                </a></li>
+													 				<li class="curr"><a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=xc&m=meepo_xianchang" class="neicon"><i class="ico010 meepo-photo"></i>
+			                <p>相册</p>
+			                </a></li>
+													 				<li class="curr"><a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=ddp&m=meepo_xianchang" class="neicon">
+							<i class="ico009 meepo-mstching"></i>
+			                <p>对对碰</p>
+			                </a></li>
+													 				<li  class="curr">
+								<a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&do=shuqian&m=meepo_xianchang"  class="neicon">
+									<i class="ico002- meepo-money"></i>
+									<p>疯狂数钱</p>
+								</a>
+							</li>
+													 				<li class="curr">
+								<a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=sailing&m=meepo_xianchang" class="neicon">
+									<i class="ico007 meepo-shake"></i>
+									<p>冲浪赛</p>
+								</a>
+							</li>
+													 				<li class="curr">
+								<a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=yacht&m=meepo_xianchang" class="neicon">
+									<i class="ico008 meepo-shake"></i>
+									<p>游艇赛</p>
+								</a>
+							</li>
+													 				<li  class="curr">
+								<a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&do=dzqy&m=meepo_xianchang"  class="neicon">
+									<i class="ico002- meepo-edit"></i>
+									<p>电子签约</p>
+								</a>
+							</li>
+													 				<li  class="curr">
+								<a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&do=ydj&m=meepo_xianchang"  class="neicon">
+									<i class="ico001 meepo-shake"></i>
+									<p>摇大奖</p>
+								</a>
+							</li>
+													 				  <li class="curr">
+								<a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=mls&m=meepo_xianchang" class="neicon">
+								  <i class="ico001 meepo-shake"></i>
+								  <p>马拉松赛</p>
+								</a>
+							  </li>
+													 				<li  class="curr">
+								<a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&do=3dlottory&m=meepo_xianchang"  class="neicon">
+									<i class="ico002- meepo-threed"></i>
+									<p>3D抽奖</p>
+								</a>
+							</li>
+													 				  <li class="curr">
+								<a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=newqd&m=meepo_xianchang" class="neicon">
+								  <i class="ico007 meepo-threed"></i>
+								  <p>新版3d签到</p>
+								</a>
+							  </li>
+													 				<li  class="curr">
+								<a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&do=3dyyy&m=meepo_xianchang"  class="neicon">
+									<i class="ico001- meepo-shake"></i>
+									<p>3D摇一摇</p>
+								</a>
+							</li>
+													 				  <li class="curr">
+								<a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=rolllottory&m=meepo_xianchang" class="neicon">
+								  <i class="ico001 meepo-gift"></i>
+								  <p>大转盘抽奖</p>
+								</a>
+							  </li>
+													 				<li  class="curr">
+								<a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&do=swimming&m=meepo_xianchang"  class="neicon">
+									<i class="ico018 meepo-shake"></i>
+									<p>3D游泳</p>
+								</a>
+							</li>
+													 				  <li class="curr">
+								<a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=shakestart&m=meepo_xianchang" class="neicon">
+								  <i class="ico007 meepo-shake"></i>
+								  <p>摇一摇启动</p>
+								</a>
+							  </li>
+						  						 				<li  class="curr">
+								<a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&do=horse&m=meepo_xianchang"  class="neicon">
+									<i class="ico016 meepo-shake"></i>
+									<p>3D赛马</p>
+								</a>
+							</li>
+													 				<li  class="curr">
+								<a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&do=tug&m=meepo_xianchang"  class="neicon">
+									<i class="ico001 meepo-shake"></i>
+									<p>拔河</p>
+								</a>
+							</li>
+													 				<li class="curr">
+								<a href="http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=bike&m=meepo_xianchang" class="neicon">
+									<i class="ico006 meepo-shake"></i>
+									<p>自行车赛</p>
+								</a>
+							</li>
+			            </ul>
+	                </div>
+					<!--</div>-->
+				</div>
+	</div>
+</div>
+<div class="videoplay" id="videoplay"> 
+  <i class="closeb" onclick="document.getElementById('videoplay').style.display='none';"></i>
+  <video class="video_id" id="video_id" controls autoplay ></video>
+  <input id="v_file" type="file" style="display:none;" onChange="play()"/>
+  <button id="play" onClick="yincang()" class="playbtn">打开MP4视频文件</button>
+<script>
+	function yincang(){
+		var v_file=document.getElementById('v_file');
+		v_file.click();
+		}
+		function play(){
+		var file = document.getElementById('v_file').files[0];
+		var url = URL.createObjectURL(file);
+		console.log(url);
+		document.getElementById("video_id").src = url;
+	}
+</script> 
+</div><div class="skinLayer" id="skinLayer"> <i class="closeb" onclick="document.getElementById('skinLayer').style.display='none';"></i>
+	<div class="stylebg"></div>
+	<div class="style-center">
+		<div class="style-nav">
+			<ul class="style-nav-list"></ul>
+		</div>
+		<div class="style-box">
+			<ul class="style-img-list" ></ul>
+		</div>
+	</div>
+</div>
+<div class="loginform" style="z-index:100">
+	  <div class="activity_title">现场登录</div>
+	  <div>
+		<input id="password" class="password" placeholder="请输入登录密码" type="text">
+	  </div>
+	  <div class="submitline">
+		<button class="button-login">开启</button>
+	  </div>
+</div>
+<div class="loader" style="display: block;">
+	<div class="icon"></div>
+</div>
+    <div class="bigmpcodebar">
+      <div class="closebutton"></div>
+      <div class="label">扫描下面的二维码关注公众号</div>
+	        <img src="http://www.shulehudong.com/attachment/images/2/2018/11/ZT8E22Z282hZK8KEg2gDBeBk0DbJmo.jpg" onerror="javascript:this.src='../attachment/qrcode_2.jpg';">
+	</div>
+	<div class="show_qrcode">
+      <div class="closebutton"></div>
+      <div class="label">扫描二维码关注小程序</div>
+      <img src="http://www.shulehudong.com/attachment/images/2/2018/11/ZT8E22Z282hZK8KEg2gDBeBk0DbJmo.jpg" onerror="javascript:this.src='../attachment/qrcode_2.jpg';">
+	</div>
+	 <div id="leafContainer"></div>   
+	<div id="effect"></div>
+	<div id="show_hide_nav"><img src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/opened.png"></div>
+  <script>;</script><script type="text/javascript" src="http://www.shulehudong.com/app/index.php?i=2&c=utility&a=visit&do=showjs&m=meepo_xianchang"></script></body>
+  <!--星星效果-->
+ <style>
+#effect{z-index:-1; position:absolute; }
+ #effect {
+    top: 110px;
+    bottom: 81px;
+    height: auto;
+}
+#effect {
+    position: absolute;
+    top: 17%;
+    height: 72%;
+    opacity: 1;
+    width: 96%;
+    left: 50%;
+    margin-left: -48%;
+}
+	  /*星星*/
+.richStar1{position:absolute; left:30px; top:140px; width:60px; opacity:0.4}
+.richStar2{position:absolute; left:60px; top:30px; width:80px; opacity:0.4}
+.richStar3{position:absolute; left:170px; top:30px; width:60px; opacity:0.4}
+
+.richStar4{position:absolute; right:30px; top:140px; width:60px; opacity:0.4}
+.richStar5{position:absolute; right:60px; top:30px; width:80px; opacity:0.4}
+.richStar6{position:absolute; right:170px; top:30px; width:60px; opacity:0.4}
+
+.richStar7{position:absolute; left:60px; bottom:100px; width:80px; opacity:0.4}
+.richStar8{position:absolute; left:140px; bottom:30px; width:60px; opacity:0.4}
+
+.richStar9{position:absolute; right:60px; bottom:100px; width:80px; opacity:0.4}
+.richStar10{position:absolute; right:140px; bottom:30px; width:60px; opacity:0.4}
+
+.richStar1{
+	-webkit-animation:starAnimate1 2s infinite;
+	animation:starAnimate1 2s infinite;
+}
+.richStar2{
+	-webkit-animation:starAnimate1 2s 0.3s infinite;
+	animation:starAnimate1 2s 0.3s infinite;
+}
+.richStar3{
+	-webkit-animation:starAnimate1 2s 0.6s infinite;
+	animation:starAnimate1 2s 0.6s infinite;
+}
+.richStar4{
+	-webkit-animation:starAnimate1 2s infinite;
+	animation:starAnimate1 2s infinite;
+}
+.richStar5{
+	-webkit-animation:starAnimate1 2s 0.3s infinite;
+	animation:starAnimate1 2s 0.3s infinite;
+}
+.richStar6{
+	-webkit-animation:starAnimate1 2s 0.6s infinite;
+	animation:starAnimate1 2s 0.6s infinite;
+}
+.richStar7{
+	-webkit-animation:starAnimate1 2s infinite;
+	animation:starAnimate1 2s infinite;
+}
+.richStar8{
+	-webkit-animation:starAnimate1 2s 0.3s infinite;
+	animation:starAnimate1 2s 0.3s infinite;
+}
+.richStar9{
+	-webkit-animation:starAnimate1 2s infinite;
+	animation:starAnimate1 2s infinite;
+}
+.richStar10{
+	-webkit-animation:starAnimate1 2s 0.3s infinite;
+	animation:starAnimate1 2s 0.3s infinite;
+}
+@-webkit-keyframes starAnimate1 {
+  50% {
+	-webkit-transform:scale(1.8);
+    opacity: 1;
+  }
+  100% {
+	-webkit-transform:scale(1);
+    opacity: 0.4;
+  }  
+}
+@keyframes starAnimate1 {
+  50% {
+	transform:scale(1.8);
+    opacity: 1;
+  }
+  100% {
+	transform:scale(1);
+    opacity: 0.4;
+  }  
+}
+ </style>
+<script src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/js/stars.js"></script>
+<script>
+$(function(){
+	var obj = document.getElementById('effect');
+	initEffect(obj);
+});
+</script>
+<script>
+$(document).ready(function(){
+	if ($(".bg_video").length > 0) {
+		$(".bg_video").css({width: $("body").width() + 2,height:"auto",opacity: 1})
+	}
+	$("#show_hide_nav img").on('click',function() {
+		if($("#panel_status").val()==0){
+			$(this).attr("src",'http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/opened.png');
+			hidetb();
+		}else{
+			showtb();
+			$(this).attr("src",'http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/chosed.png');
+
+		}
+	});
+	$("#bg_music").click(function(e){
+			e.preventDefault();
+			if ($(this).attr('data-status')!=1) {
+                $("#audio")[0].play();
+				$(this).attr('data-status','1');
+				$(this).find('img').attr('src','http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/icon/icon_music.png');
+			} else {
+				$("#audio")[0].pause();
+				$(this).attr('data-status','0');
+				$(this).find('img').attr('src','http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/no_music.png');
+			}
+	});
+	$("#show_qd_code").click('click',function(){
+		$(".bigmpcodebar").slideUp()
+		$(".show_qrcode").slideDown();
+	});
+	$(".show_qrcode .closebutton").on("click", function() {
+			$(".show_qrcode").slideUp()
+	});
+});
+function showtb() {
+	$("#panel_status").val("0");
+    $(".Panel.Top").css({
+        top: "-" + $(".Panel.Top").height() + "px"
+    });
+    $(".Panel.Bottom").css({
+        bottom: "-" + $(".Panel.Bottom").height() + "px"
+    });
+}
+function hidetb() {
+	$("#panel_status").val("1");
+    $(".Panel.Top").css({
+        top: 0
+    });
+    $(".Panel.Bottom").css({
+        bottom: 0
+    });
+};
+</script>
+<input type="hidden" id="panel_status" value="1"/>
+	<script>
+function bigsmall(n) {}
+function getmbhtml(cateid) {
+	$(".style-img-list").load("http://www.shulehudong.com/app/index.php?i=2&c=entry&control=mshake&rid=6509&do=get_skins&m=meepo_xianchang&cateid=" + cateid);
+	$(".style-nav-list li").each(function() {
+	  $(this).removeClass("curr");
+	});
+	$("#li" + cateid).addClass("curr");
+}
+function getcatehtml() {//获取各种节日背景
+	$(".style-nav-list").load("http://www.shulehudong.com/app/index.php?i=2&c=entry&control=mshake&rid=6509&cateid=meepo&do=get_skins&m=meepo_xianchang");
+}
+getcatehtml();
+getmbhtml(0);//默认获取全部风格	 
+function bingkjj(){
+	 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=qd&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=lizi&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=wall&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 			 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=lottory&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=jb&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=vote&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=shake&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=cjx&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=redpack&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=ddp&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=xc&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=xyh&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=zjd&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=dm&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=xysjh&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=tshake&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=dt&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=mshake&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 			 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=shuqian&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=dzqy&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=ydj&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 																		$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=3dlottory&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 																		$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=3dyyy&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=swimming&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=horse&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=tug&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=bike&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=sailing&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=yacht&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=mls&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=newqd&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=rolllottory&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 											$(document).bind("keydown","",function(){
+			  window.location.href = "http://www.shulehudong.com/app/index.php?i=2&c=entry&rid=6509&small=0&t=1543216251&do=shakestart&m=meepo_xianchang";
+			  return false;
+			});	
+	    	 			 	 return false;	
+}
+//快捷键
+	document.onkeypress=function(event){
+		if($(".loginform").css("display")=='block'){
+			return;
+		}
+		var e = event || window.event;
+		var keyCode = e.keyCode || e.which;
+		console.log(keyCode);
+        switch (keyCode) {
+									case 61://+号
+				if ($("#bg_music").attr('data-status')!=1) {
+					$("#audio")[0].play();
+					$("#bg_music").attr('data-status','1');
+					$("#bg_music").find('img').attr('src','http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/images/icon/icon_music.png');
+				} else {
+					$("#audio")[0].pause();
+					$("#bg_music").attr('data-status','0');
+					$("#bg_music").find('img').attr('src','http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/no_music.png');
+				}
+			 break;
+			case 45://-号
+							break;
+												default:
+			break;
+		}
+	}
+</script>
+</html>

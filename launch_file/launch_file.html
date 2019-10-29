@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html lang="UTF-8">
+	<head>
+		<meta name="x5-orientation" content="portrait">
+		<meta name="browsermode" content="application" />
+		<meta name="full-screen" content="yes" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+		<title>文件投屏</title>
+		<meta http-equiv="pragma" content="no-cache"/>
+		<meta http-equiv="cache-control" content="no-cache"/>
+		<meta http-equiv="expires" content="0"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+		<link rel="icon" href="https://oss.littlehotspot.com/Html5/favicon.ico?v=20190702175301">
+		<link rel="stylesheet" type="text/css" href="https://oss.littlehotspot.com/Html5/script/jquery/plug-in/artDialog/skins/default.css" />
+		<link rel="stylesheet" type="text/css" href="https://oss.littlehotspot.com/Html5/script/jquery/plug-in/showloading/showLoading.min.css" />
+		<link rel="stylesheet" type="text/css" href="https://oss.littlehotspot.com/Html5/script/css/launch_file/commons.css?v=20191016093101" />
+		<link rel="stylesheet" type="text/css" href="https://oss.littlehotspot.com/Html5/script/css/launch_file/launch_file.css?v=20191016093101" />
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/plugins/JSON-js-master/json2.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/plugins/FileSaver/FileSaver.min.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/my-js/jlNamespace.js?v=20190702175301"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/jquery/core/1.11.1/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/jquery/migrate/1.1.1/jquery-migrate-1.1.1.min.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/jquery/plug-in/artDialog/artDialog.min.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/jquery/plug-in/showloading/jquery.showLoading.min.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/my-js/jquery.url.parameters.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/my-js/StringUtil.js?v=20190702175301"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/my-js/DateUtil.js?v=20190702175301"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/my-js/jquery.ui.Toast-1.0.1.class.js?v=20190702175301"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js?v=20190702175301"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/web/launch_file/commons.js?v=20190706092901"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/web/launch_file/launch_file.js?v=20190707094001"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="page-top">
+				<span>所有投屏文件，投屏结束后自动销毁</span>
+				<a href="#">免责声明</a>
+			</div>
+			<div class="page-main">
+				<div class="uploaded-files">
+					<div class="list-panel">
+						<div class="title">最近投屏文件</div>
+						<div class="list">
+							<div class="file" forscreen-id="a">
+								<div class="type">PDF</div>
+								<div class="name">xxxxxxxxxxxxxxx.pdf</div>
+							</div>
+							<div class="file" forscreen-id="b">
+								<div class="type">PDF</div>
+								<div class="name">xxxxxxxxxxxxxxx.pdf</div>
+							</div>
+							<div class="file" forscreen-id="c">
+								<div class="type">PDF</div>
+								<div class="name">xxxxxxxxxxxxxxx.pdf</div>
+							</div>
+							<div class="file" forscreen-id="d">
+								<div class="type">PDF</div>
+								<div class="name">xxxxxxxxxxxxxxx.pdf</div>
+							</div>
+						</div>
+					</div>
+					<div class="list-panel">
+						<div class="title">频繁投屏文件</div>
+						<div class="list">
+							<div class="file" forscreen-id="e">
+								<div class="type">PDF</div>
+								<div class="name">xxxxxxxxxxxxxxx.pdf</div>
+							</div>
+							<div class="file" forscreen-id="f">
+								<div class="type">PDF</div>
+								<div class="name">xxxxxxxxxxxxxxx.pdf</div>
+							</div>
+							<div class="file" forscreen-id="g">
+								<div class="type">PDF</div>
+								<div class="name">xxxxxxxxxxxxxxx.pdf</div>
+							</div>
+							<div class="file" forscreen-id="1142709">
+								<div class="type">PDF</div>
+								<div class="name">xxxxxxxxxxxxxxx.pdf</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="will-upload-file">
+					<div class="file-panel">
+						<div class="file">
+							<input id="file_name" type="hidden" />
+							<input id="oss_file_size" type="hidden" />
+							<input id="file_upload_status" type="hidden" />
+							<input id="oss_key" type="hidden" />
+							<div id="container" class="type">
+								<div id="selectfiles">
+									<div>+</div>
+								</div>
+							</div>
+							<div class="name">请选择“浏览”中的文件</div>
+							<div id="ossfile">你的浏览器不支持flash,Silverlight或者HTML5！</div>
+						</div>
+						<div class="type">
+							<span>
+								<input type="radio" name="saveType" id="burn_after_reading" class="magic-radio" value="1" />
+								<label for="burn_after_reading">阅后即焚</label>
+							</span>
+							<span>
+								<input type="radio" name="saveType" id="save_to_local" class="magic-radio" value="2" />
+								<label for="save_to_local">本地保存</label>
+							</span>
+						</div>
+					</div>
+				</div>
+				<pre id="console"></pre>
+			</div>
+			<div class="page-bottom">
+				<button id="postfiles" class="button" disabled="disabled">开始投屏</button>
+			</div>
+		</div>
+	</body>
+	
+	<script>
+	    var imgs="Image files";
+	    var files="files";
+	    var imgExt="";
+	    var fileExt="pptx,ppt,xls,xlsx,csv,doc,wps,docx,pdf,rtf,txt";
+	</script>
+	<script type="text/javascript" charset="UTF-8" src="oss/lib/crypto1/crypto/crypto.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="oss/lib/crypto1/hmac/hmac.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="oss/lib/crypto1/sha1/sha1.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="oss/lib/base64.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="oss/lib/plupload-2.1.2/js/moxie.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="oss/lib/plupload-2.1.2/js/plupload.dev.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="oss/upload.js"></script>
+	<!--
+	<script type="text/javascript" charset="UTF-8" src="http://devp.mobile.littlehotspot.com/Public/oss/lib/plupload-2.1.2/js/plupload.full.min.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="http://devp.mobile.littlehotspot.com/Public/oss/upload.js"></script>
+	-->
+	
+</html>

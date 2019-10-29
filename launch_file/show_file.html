@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html lang="UTF-8">
+	<head>
+		<meta name="x5-orientation" content="portrait">
+		<meta name="browsermode" content="application" />
+		<meta name="full-screen" content="yes" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<title>文件投屏</title>
+		<meta http-equiv="pragma" content="no-cache"/>
+		<meta http-equiv="cache-control" content="no-cache"/>
+		<meta http-equiv="expires" content="0"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+		<link rel="icon" href="https://oss.littlehotspot.com/Html5/favicon.ico?v=20190702175301">
+		<link rel="stylesheet" type="text/css" href="https://oss.littlehotspot.com/Html5/script/font-awesome-4.7.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="https://oss.littlehotspot.com/Html5/script/jquery/plug-in/artDialog/skins/default.css" />
+		<link rel="stylesheet" type="text/css" href="https://oss.littlehotspot.com/Html5/script/jquery/plug-in/showloading/showLoading.min.css" />
+		<link rel="stylesheet" type="text/css" href="https://oss.littlehotspot.com/Html5/script/css/launch_file/commons.css?v=20191016093101" />
+		<!--
+		<link rel="stylesheet" type="text/css" href="https://oss.littlehotspot.com/Html5/script/css/launch_file/show_file.css?v=20191016093101" />
+		-->
+		<link rel="stylesheet" type="text/css" href="css/show_file.css" />
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/plugins/JSON-js-master/json2.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/my-js/jlNamespace.js?v=20190702175301"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/jquery/core/1.11.1/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/jquery/migrate/1.1.1/jquery-migrate-1.1.1.min.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/jquery/plug-in/artDialog/artDialog.min.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/jquery/plug-in/showloading/jquery.showLoading.min.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/my-js/jquery.url.parameters.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/my-js/StringUtil.js?v=20190702175301"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/my-js/jquery.ui.Toast-1.0.1.class.js?v=20190702175301"></script>
+		<script type="text/javascript" charset="UTF-8" src="js/commons.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="js/show_file.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="page-top">
+				<span>所有投屏文件，投屏结束后自动销毁</span>
+				<a href="#">免责声明</a>
+			</div>
+			<div class="page-main">
+				<div class="weui-grids">
+					<div class="weui-grid">
+						<img src="http://oss.littlehotspot.com/WeChat/MiniProgram/LaunchScreen/source/images/imgs/default.jpeg"/>
+						<div class="cover font-color-2">
+							<img src="http://oss.littlehotspot.com/Html5/images/launch_file/FFFFFF_right-triangle.png"/>
+            				<label class="page-number">1</label>
+						</div>
+					</div>
+					<div class="weui-grid">
+						<img src="http://oss.littlehotspot.com/WeChat/MiniProgram/LaunchScreen/source/images/imgs/default.jpeg"/>
+						<div class="cover font-color-2">
+							<img src="http://oss.littlehotspot.com/Html5/images/launch_file/FFFFFF_right-triangle.png"/>
+            				<label class="page-number">2</label>
+						</div>
+					</div>
+					<div class="weui-grid choose">
+						<img src="http://oss.littlehotspot.com/WeChat/MiniProgram/LaunchScreen/source/images/imgs/default.jpeg"/>
+						<div class="cover font-color-1">
+							<img src="http://oss.littlehotspot.com/Html5/images/launch_file/1CBEB6_right-triangle.png"/>
+            				<label class="page-number">3</label>
+						</div>
+					</div>
+					<div class="weui-grid">
+						<img src="http://oss.littlehotspot.com/WeChat/MiniProgram/LaunchScreen/source/images/imgs/default.jpeg"/>
+						<div class="cover font-color-2">
+							<img src="http://oss.littlehotspot.com/Html5/images/launch_file/FFFFFF_right-triangle.png"/>
+            				<label class="page-number">4</label>
+						</div>
+					</div>
+					<div class="weui-grid">
+						<img src="http://oss.littlehotspot.com/WeChat/MiniProgram/LaunchScreen/source/images/imgs/default.jpeg"/>
+						<div class="cover font-color-2">
+							<img src="http://oss.littlehotspot.com/Html5/images/launch_file/FFFFFF_right-triangle.png"/>
+            				<label class="page-number">5</label>
+						</div>
+					</div>
+					<div class="weui-grid">
+						<img src="http://oss.littlehotspot.com/WeChat/MiniProgram/LaunchScreen/source/images/imgs/default.jpeg"/>
+						<div class="cover font-color-2">
+							<img src="http://oss.littlehotspot.com/Html5/images/launch_file/FFFFFF_right-triangle.png"/>
+            				<label class="page-number">6</label>
+						</div>
+					</div>
+					<div class="weui-grid">
+						<img src="http://oss.littlehotspot.com/WeChat/MiniProgram/LaunchScreen/source/images/imgs/default.jpeg"/>
+						<div class="cover font-color-2">
+							<img src="http://oss.littlehotspot.com/Html5/images/launch_file/FFFFFF_right-triangle.png"/>
+            				<label class="page-number">7</label>
+						</div>
+					</div>
+					<div class="weui-grid">
+						<img src="http://oss.littlehotspot.com/WeChat/MiniProgram/LaunchScreen/source/images/imgs/default.jpeg"/>
+						<div class="cover font-color-2">
+							<img src="http://oss.littlehotspot.com/Html5/images/launch_file/FFFFFF_right-triangle.png"/>
+            				<label class="page-number">8</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="page-bottom">
+				<button id="reChooseFile" class="button-1 font-color-1 background-color-1">重选文件</button>
+				<button id="quitLaunch" class="button-1 font-color-1 background-color-2">退出投屏</button>
+				<button id="prev_page" class="button-2 font-color-2">
+					<div class="fa fa-chevron-circle-left" aria-hidden="true"></div>
+					<div>播放上一页</div>
+				</button>
+				<button id="next_page" class="button-2 font-color-2">
+					<div class="fa fa-chevron-circle-right" aria-hidden="true"></div>
+					<div>播放下一页</div>
+				</button>
+			</div>
+		</div>
+	</body>
+</html>

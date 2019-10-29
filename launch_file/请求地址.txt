@@ -1,0 +1,1 @@
+<web-view src="http://dev-mobile.littlehotspot.com/h5/fileforscreen/launch_file_1.html?windowHeight={{windowHeight}}&statusBarHeight={{statusBarHeight}}&box_mac=00226D655202&mobile_brand=devtools&mobile_model=iPhone%207%20Plus&openid=ofYZG4yZJHaV2h3lJHG5wOB9MzxE" bindload="pageLoad"></web-view>

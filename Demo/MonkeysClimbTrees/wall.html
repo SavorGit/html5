@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+        <title>比赛 - 房间</title>
+        <link rel="icon" href="favicon.ico">
+        <link rel="stylesheet" type="text/css" href="./script/template/mobile/app/css/shake_basic.css">
+        <link rel="stylesheet" type="text/css" href="./script/template/mobile/app/css/screen_shake.css">
+        <link rel="stylesheet" type="text/css" href="./script/css/monkeys_climb_trees.css">
+        <script type="text/javascript" charset="UTF-8" src="./script/js/json2.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="./script/js/qrcodejs/qrcode.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="./script/jQuery/core/2.2.4/jquery-2.2.4.min.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="./script/jQuery/migrate/1.4.1/jquery-migrate-1.4.1.min.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="./script/jQuery/web-socket/0.0.4/jquery.websocket.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="./script/template/mobile/app/js/shake_base.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="./script/template/mobile/app/js/screen_shake.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="./script/js/game.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="./script/js/monkeys_climb_trees_wall.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+            	//console.clear();
+            	$(".qr").attr("src", "http://mobile.littlehotspot.com/Smallapp21/index/getTestBoxQr?box_mac=" + game_config.scene_info.room_id + "&type=2");
+            });
+        </script>
+    </head>
+	<body>
+		
+		<audio id="Audio_CutdownPlayer" src="./audio/template/mobile/app/shake/shake_cutdown.mp3" preload="preload"></audio>
+		<audio id="Audio_NewPlayer" src="./audio/template/mobile/app/shake/shake_new.mp3" preload="preload"></audio>
+		<audio id="Audio_Gameover" src="./audio/template/mobile/app/shake/shake_gameover.wav" preload="preload"></audio>
+		
+		
+		<div class="pashuMain" style="opacity: 1;">
+			<div class="houzik">
+				<div class="houzi1 houzi_user">
+					<div class="guozik"><img class="img-responsive" src="./images/common/images_old/mshake_yezi.png" alt="椰子" /></div>
+					<div class="topk">
+						<span>虚位以待</span>
+						<img src="./images/common/images_old/mshake_user.jpg" class="mshakeuser_img" alt="用户头像" />
+					</div>
+					<div class="bottomhz"><img src="./images/common/images_old/hz.png" alt="猴子" /></div>
+				</div>
+				<div class="houzi2 houzi_user">
+					<div class="guozik"><img class="img-responsive" src="./images/common/images_old/mshake_yezi.png" alt="椰子" /></div>
+					<div class="topk">
+						<span>虚位以待</span>
+						<img src="./images/common/images_old/mshake_user.jpg" class="mshakeuser_img" alt="用户头像" />
+					</div>
+					<div class="bottomhz"><img src="./images/common/images_old/hz.png" alt="猴子" /></div>
+				</div>
+				<div class="houzi3 houzi_user">
+					<div class="guozik"><img class="img-responsive" src="./images/common/images_old/mshake_yezi.png" alt="椰子" /></div>
+					<div class="topk">
+						<span>虚位以待</span>
+						<img src="./images/common/images_old/mshake_user.jpg" class="mshakeuser_img" alt="用户头像" />
+					</div>
+					<div class="bottomhz"><img src="./images/common/images_old/hz.png" alt="猴子" /></div>
+				</div>
+				<div class="houzi4 houzi_user">
+					<div class="guozik"><img class="img-responsive" src="./images/common/images_old/mshake_yezi.png" alt="椰子" /></div>
+					<div class="topk">
+						<span>虚位以待</span>
+						<img src="./images/common/images_old/mshake_user.jpg" class="mshakeuser_img" alt="用户头像" />
+					</div>
+					<div class="bottomhz"><img src="./images/common/images_old/hz.png" alt="猴子" /></div>
+				</div>
+				<div class="houzi5 houzi_user">
+					<div class="guozik"><img class="img-responsive" src="./images/common/images_old/mshake_yezi.png" alt="椰子" /></div>
+					<div class="topk">
+						<span>虚位以待</span>
+						<img src="./images/common/images_old/mshake_user.jpg" class="mshakeuser_img" alt="用户头像" />
+					</div>
+					<div class="bottomhz"><img src="./images/common/images_old/hz.png" alt="猴子" /></div>
+				</div>
+				<div class="houzi6 houzi_user">
+					<div class="guozik"><img class="img-responsive" src="./images/common/images_old/mshake_yezi.png" alt="椰子" /></div>
+					<div class="topk">
+						<span>虚位以待</span>
+						<img src="./images/common/images_old/mshake_user.jpg" class="mshakeuser_img" alt="用户头像" />
+					</div>
+					<div class="bottomhz"><img src="./images/common/images_old/hz.png" alt="猴子" /></div>
+				</div>
+				<div class="houzi7 houzi_user">
+					<div class="guozik"><img class="img-responsive" src="./images/common/images_old/mshake_yezi.png" alt="椰子" /></div>
+					<div class="topk">
+						<span>虚位以待</span>
+						<img src="./images/common/images_old/mshake_user.jpg" class="mshakeuser_img" alt="用户头像" />
+					</div>
+					<div class="bottomhz"><img src="./images/common/images_old/hz.png" alt="猴子" /></div>
+				</div>
+				<div class="houzi8 houzi_user">
+				<div class="guozik"><img class="img-responsive" src="./images/common/images_old/mshake_yezi.png" alt="椰子" /></div>
+					<div class="topk">
+						<span>虚位以待</span>
+						<img src="./images/common/images_old/mshake_user.jpg" class="mshakeuser_img" alt="用户头像" />
+					</div>
+					<div class="bottomhz"><img src="./images/common/images_old/hz.png" alt="猴子" /></div>
+				</div>
+				<div class="houzi9 houzi_user">
+				<div class="guozik"><img class="img-responsive" src="./images/common/images_old/mshake_yezi.png" alt="椰子" /></div>
+					<div class="topk">
+						<span>虚位以待</span>
+						<img src="./images/common/images_old/mshake_user.jpg" class="mshakeuser_img" alt="用户头像" />
+					</div>
+					<div class="bottomhz"><img src="./images/common/images_old/hz.png" alt="猴子" /></div>
+				</div>
+				<div class="houzi10 houzi_user">
+					<div class="guozik"><img class="img-responsive" src="./images/common/images_old/mshake_yezi.png" alt="椰子" /></div>
+					<div class="topk">
+						<span>虚位以待</span>
+						<img src="./images/common/images_old/mshake_user.jpg" class="mshakeuser_img" alt="用户头像" />
+					</div>
+					<div class="bottomhz"><img src="./images/common/images_old/hz.png" alt="猴子" /></div>
+				</div>
+			</div>
+		</div>
+		
+		<!--round welcome-->
+		<div class="round-welcome"  style="z-index:2">
+			<div class="label top">微信扫一扫、参与摇一摇</div>
+			<!--
+			<div id="qrcode" class="qr" ></div-->
+			<img class="qr" style="background-color: #FFF;" />
+			<div class="label bottom"><span class="shake-icon shake"></span>听从现场指挥，游戏开始后不停摇动手机</div>
+			<div class="radar" style="display: block">
+				<div class="round w300">
+					<div class="round w200">
+						<div class="round w100">
+							<div class="round w1">
+								<div class="line roundMove"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="users"></div>
+			</div>
+			<!--
+			<div class="button-start">开始游戏</div>
+			-->
+			<div class="round-label">ROUND 1</div>
+			<div class="round-label2" style="top:20%;left:7%">当前已有<span><i class="animate-rotate2">0</i></span>人加入</div>
+		</div>
+
+		<!----result layer-->
+		<div class="result-layer" style="z-index:3">
+		    <div class="result-label">GAME OVER</div>
+		    <div class="result-cup">
+		    	<!--
+		        <span class="button nexttound">开始下一轮</span>
+		        <span class="button allresult">全部排名</span>
+		        <span class="button reset">重玩本轮</span>
+		        -->
+		    </div>
+		</div>
+		
+		<!-- restart button 
+		<a class="btn-endgame">
+			<div class="restart-botton"></div>
+		</a>
+		-->
+		
+		<div class="cutdown-start cutdownan-imation"></div>
+	
+		<!-- 请求信息 -->
+		<div id="logs_panel" style="position:relative; width: 100%; height: 100px; top: calc(100% - 100px); z-index:50; background-color: #fff;">
+			<span style="width: calc(100% - 30px); display: inline-block;">
+	        	<h3 style="margin: auto;">信息</h3>
+	        </span>
+	        <span id="close_logs_panel" style="width: 15px; margin-right: 10px; display: inline-block; text-align: center; cursor:pointer;">x</span>
+	        <textarea id="logs_console" style="width: calc(100% - 65px); height: calc(100% - 30px); overflow:scroll; overflow-x:hidden; resize:none; vertical-align:text-bottom;"></textarea>
+	        <button id="clear_logs" style="width: 50px; height: 30px; vertical-align:text-bottom;">清空</button>
+        </div>
+        
+	</body>
+</html>

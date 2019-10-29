@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+        <title>比赛 - 房间</title>
+        <link rel="icon" href="http://www.shulehudong.com/attachment/images/2/2018/01/zr0ao66uZ22pp5U5yPkYp3Rr8Hq0mP.jpg">
+        <link rel="stylesheet" type="text/css" href="./script/css/template/mobile/app/basic.css">
+        <link rel="stylesheet" type="text/css" href="./script/template/mobile/app/css/screen_mshake.css?t=1">
+        <link rel="stylesheet" type="text/css" href="./script/css/monkeys_climb_trees.css">
+        <script type="text/javascript" charset="UTF-8" src="./script/js/json2.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="./script/js/qrcodejs/qrcode.js"></script>
+		<script type="text/javascript" src="http://www.shulehudong.com/addons/meepo_xianchang/template/mobile/app/js/web_socket.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="./script/jQuery/core/2.2.4/jquery-2.2.4.min.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="./script/jQuery/migrate/1.4.1/jquery-migrate-1.4.1.min.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="./script/jQuery/web-socket/0.0.4/jquery.websocket.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="./script/template/mobile/app/js/mshake_base.js?t=20180921"></script>
+		<script type="text/javascript" charset="UTF-8" src="./script/template/mobile/app/js/screen_mshake.js?t=20180922"></script>
+        <script type="text/javascript">
+        	var need_login = "1";
+			var ready_time = 5;
+        	var SCENE_INFO = {
+				"title": "测试",
+				"top_title": ["\u626b\u4e8c\u7ef4\u7801\u5c31\u53ef\u4ee5\u53c2\u4e0e\u6d3b\u52a8\u54e6\uff01"],
+				"top_font_size": "20",
+				"memo": "",
+				"top_img": "http://www.shulehudong.com/attachment/images/2/2018/11/d0MqX1rdjjtRKtZWkRQtRTr6Maxrrq.png",
+				"bg_img": "",
+				"bottom_img": "http://www.shulehudong.com/attachment/images/2/2018/11/d0MqX1rdjjtRKtZWkRQtRTr6Maxrrq.png",
+				"diy_css": "",
+				"keyword": "",
+				"mp_username": "热点投屏",
+				"func": {
+					"wall": "1",
+					"lottery": "1",
+					"shake": "1"
+				},
+				"navbar": {
+					"wall": "1",
+					"lottery": "1",
+					"lottery_free": "1",
+					"shake": "1",
+					"shake_free": "1"
+				}
+        	}
+        	var config = {
+        		web_socket_url: "ws://localhost:8989/ws",
+        		page: {
+        			shake_url: "http://192.168.88.86/u_1.html"
+        		},
+        		game_id: "MonkeysClimbTrees",
+        		room_id: "",
+        		req_method: {
+        			create_room: "createRoom",
+        			statement: "statement"
+        		},
+        		timers: {
+        			ready: {
+        				timer: null,
+        				interval: 1000,
+        				duration: 0,
+        				residue: 0
+        			}
+        		},
+        	}
+            var websocket = $.websocket(config.web_socket_url, {
+				open: function(event) {//连接打开的时候触发
+					$("#respMessage").val("建立连接");
+					//console.log(event);
+					websocket.send(config.req_method.create_room, {
+						gameId: config.game_id,
+						roomId: config.room_id
+					});
+				},
+				close: function(event) {//连接关闭的时候触发
+					$("#respMessage").val($("#respMessage").val() + "\n断开连接");
+					window.location.reload();
+				},
+				events: {
+					init: function(event){
+						console.log("fun", "init", event);
+						var room = event.data;
+						config.room_id = room.roomId;
+						config.round = room.round;
+						config.distance = room.distance;
+						console.log("var", "config", config);
+						config.qrcode.makeCode(config.page.shake_url + "?game=" + config.game_id + "&r_id" + config.room_id);
+						$("#respMessage").val($("#respMessage").val() + "\n初始化房间完成。");
+					},
+					signIn: function(event){
+						console.log("fun", "signIn", event);
+						var user = event.data;
+						$("#respMessage").val($("#respMessage").val() + "\n用户进入：" + JSON.stringify(user));
+						websocket.send(config.req_method.statement, {
+							gameId: config.game_id,
+							roomId: config.room_id,
+							userId: user.userId,
+							userNickname: user.userNickname,
+							userHeader: user.userHeader,
+							round: config.round,
+							distance: config.distance,
+							journey: 0,
+							speed: 0
+						});
+						// 用户入场
+						$('.round-label2 span').html('<i>' + user.userCount + '</i>').find('i').toggleClass('animate-rotate2');
+						//$("#Audio_NewPlayer").get(0).play();
+						//document.getElementById("Audio_NewPlayer").play();
+						var n = '<div id="shake_user_' + user.userId + '" class="user-item"><div class="user-img"><img src="' + user.userHeader + '" /></div><p>' + user.userNickname + "</p></div>";
+						if($('#shake_user_' + user.userId).length == 0){
+							$(n).appendTo(".users").animate({opacity: 0.7}, 500);
+						}
+					},
+					statemented: function(event){
+						console.log("fun", "statemented", event);
+					},
+					ready: function(event){
+						console.log("fun", "ready", event);
+						$("#respMessage").val($("#respMessage").val() + "\n" + event.time + "毫秒后开始。");
+						config.timers.ready.duration = event.time;
+						config.timers.ready.residue = event.time;
+						config.timers.ready.timer = window.setInterval(function(){
+							$("#respMessage").val($("#respMessage").val() + "\n还剩" + config.timers.ready.residue + "毫秒。");
+							config.timers.ready.residue -= config.timers.ready.interval;
+							if(config.timers.ready.residue < 1){
+								window.clearInterval(config.timers.ready.timer);
+							}
+						}, config.timers.ready.interval);
+						$(".round-welcome").slideUp(function() {
+							cutdown_start();
+				        });
+					},
+					forward: function(event){
+						// console.log("fun", "forward", event);
+						$("#respMessage").val($("#respMessage").val() + "\n用户前进：" + event.data.speed);
+					},
+					gameOver: function(event){
+						console.log("fun", "delay", event);
+						window.clearInterval(config.timers.ready.timer);
+						$("#respMessage").val($("#respMessage").val() + "\n游戏结束。");
+					}
+				}
+            });
+
+            $(document).ready(function(){
+            	$(".round-welcome").show();
+            	config.qrcode = new QRCode("qrcode", {
+					width: 430,
+					height: 430,
+					colorDark : "#000000",
+					colorLight : "#ffffff",
+					correctLevel : QRCode.CorrectLevel.H
+				});
+            	
+				var dDivhouzi = $('.houzik').children('div');
+				for (var i=0; i<dDivhouzi.length; i++) {
+					var num = i + 1;
+					$(dDivhouzi[i]).find('.topk').find('span').text("虚位以待");
+				}
+				//document.getElementById("Audio_NewPlayer").play();
+            });
+        </script>
+    </head>
+	<body>
+		
+		<audio id="Audio_CutdownPlayer" src="./audio/template/mobile/app/shake/shake_cutdown.mp3" preload="preload" muted></audio>
+		<audio id="Audio_NewPlayer" src="./audio/template/mobile/app/shake/shake_new.mp3" preload="preload" muted></audio>
+		<audio id="Audio_Gameover" src="./audio/template/mobile/app/shake/shake_gameover.wav" preload="preload" muted></audio>
+		
+		
+		<div class="pashuMain" style="opacity: 1;">
+			<div class="houzik">
+				<div class="houzi1 houzi_user">
+					<div class="guozik"><img class="img-responsive" src="./images/common/images_old/mshake_yezi.png" alt="椰子" /></div>
+					<div class="topk">
+						<span>虚位以待</span>
+						<img src="./images/common/images_old/mshake_user.jpg" class="mshakeuser_img" alt="用户头像" />
+					</div>
+					<div class="bottomhz"><img src="./images/common/images_old/hz.png" alt="猴子" /></div>
+				</div>
+				<div class="houzi2 houzi_user">
+					<div class="guozik"><img class="img-responsive" src="./images/common/images_old/mshake_yezi.png" alt="椰子" /></div>
+					<div class="topk">
+						<span>虚位以待</span>
+						<img src="./images/common/images_old/mshake_user.jpg" class="mshakeuser_img" alt="用户头像" />
+					</div>
+					<div class="bottomhz"><img src="./images/common/images_old/hz.png" alt="猴子" /></div>
+				</div>
+				<div class="houzi3 houzi_user">
+					<div class="guozik"><img class="img-responsive" src="./images/common/images_old/mshake_yezi.png" alt="椰子" /></div>
+					<div class="topk">
+						<span>虚位以待</span>
+						<img src="./images/common/images_old/mshake_user.jpg" class="mshakeuser_img" alt="用户头像" />
+					</div>
+					<div class="bottomhz"><img src="./images/common/images_old/hz.png" alt="猴子" /></div>
+				</div>
+				<div class="houzi4 houzi_user">
+					<div class="guozik"><img class="img-responsive" src="./images/common/images_old/mshake_yezi.png" alt="椰子" /></div>
+					<div class="topk">
+						<span>虚位以待</span>
+						<img src="./images/common/images_old/mshake_user.jpg" class="mshakeuser_img" alt="用户头像" />
+					</div>
+					<div class="bottomhz"><img src="./images/common/images_old/hz.png" alt="猴子" /></div>
+				</div>
+				<div class="houzi5 houzi_user">
+					<div class="guozik"><img class="img-responsive" src="./images/common/images_old/mshake_yezi.png" alt="椰子" /></div>
+					<div class="topk">
+						<span>虚位以待</span>
+						<img src="./images/common/images_old/mshake_user.jpg" class="mshakeuser_img" alt="用户头像" />
+					</div>
+					<div class="bottomhz"><img src="./images/common/images_old/hz.png" alt="猴子" /></div>
+				</div>
+				<div class="houzi6 houzi_user">
+					<div class="guozik"><img class="img-responsive" src="./images/common/images_old/mshake_yezi.png" alt="椰子" /></div>
+					<div class="topk">
+						<span>虚位以待</span>
+						<img src="./images/common/images_old/mshake_user.jpg" class="mshakeuser_img" alt="用户头像" />
+					</div>
+					<div class="bottomhz"><img src="./images/common/images_old/hz.png" alt="猴子" /></div>
+				</div>
+				<div class="houzi7 houzi_user">
+					<div class="guozik"><img class="img-responsive" src="./images/common/images_old/mshake_yezi.png" alt="椰子" /></div>
+					<div class="topk">
+						<span>虚位以待</span>
+						<img src="./images/common/images_old/mshake_user.jpg" class="mshakeuser_img" alt="用户头像" />
+					</div>
+					<div class="bottomhz"><img src="./images/common/images_old/hz.png" alt="猴子" /></div>
+				</div>
+				<div class="houzi8 houzi_user">
+				<div class="guozik"><img class="img-responsive" src="./images/common/images_old/mshake_yezi.png" alt="椰子" /></div>
+					<div class="topk">
+						<span>虚位以待</span>
+						<img src="./images/common/images_old/mshake_user.jpg" class="mshakeuser_img" alt="用户头像" />
+					</div>
+					<div class="bottomhz"><img src="./images/common/images_old/hz.png" alt="猴子" /></div>
+				</div>
+				<div class="houzi9 houzi_user">
+				<div class="guozik"><img class="img-responsive" src="./images/common/images_old/mshake_yezi.png" alt="椰子" /></div>
+					<div class="topk">
+						<span>虚位以待</span>
+						<img src="./images/common/images_old/mshake_user.jpg" class="mshakeuser_img" alt="用户头像" />
+					</div>
+					<div class="bottomhz"><img src="./images/common/images_old/hz.png" alt="猴子" /></div>
+				</div>
+				<div class="houzi10 houzi_user">
+					<div class="guozik"><img class="img-responsive" src="./images/common/images_old/mshake_yezi.png" alt="椰子" /></div>
+					<div class="topk">
+						<span>虚位以待</span>
+						<img src="./images/common/images_old/mshake_user.jpg" class="mshakeuser_img" alt="用户头像" />
+					</div>
+					<div class="bottomhz"><img src="./images/common/images_old/hz.png" alt="猴子" /></div>
+				</div>
+			</div>
+		</div>
+		
+		<!--round welcome-->
+		<div class="round-welcome"  style="z-index:2">
+			<div class="label top">微信扫一扫、参与摇一摇</div>
+			<div id="qrcode" class="qr" ></div>
+			<div class="label bottom"><span class="shake-icon shake"></span>听从现场指挥，游戏开始后不停摇动手机</div>
+			<div class="radar" style="display: block">
+				<div class="round w300">
+					<div class="round w200">
+						<div class="round w100">
+							<div class="round w1">
+								<div class="line roundMove"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="users"></div>
+			</div>
+			<div class="button-start">开始游戏</div>
+			<div class="round-label">ROUND 1</div>
+			<div class="round-label2" style="top:20%;left:7%">当前已有<span><i class="animate-rotate2">0</i></span>人加入</div>
+		</div>
+
+		<!----result layer-->
+		<div class="result-layer" style="display: none;z-index:3">
+		    <div class="result-label">GAME OVER</div>
+		    <div class="result-cup">
+		        <span class="button nexttound">开始下一轮</span>
+		        <span class="button allresult">全部排名</span>
+		        <span class="button reset">重玩本轮</span>
+		    </div>
+		</div>
+		
+		<!-- restart button -->
+		<a class="btn-endgame">
+			<div class="restart-botton"></div>
+		</a>
+		
+		<div class="cutdown-start cutdownan-imation"></div>
+	
+		<!-- 请求信息
+        -->
+		<div style="display: none;">
+	        <h3>信息</h3>
+	        <textarea style="width: 300px; height: 500px;" id="respMessage"></textarea>
+	        <input type="button" value="清空" onclick="javascript:$('#respMessage').val('');">
+        </div>
+        
+	</body>
+</html>

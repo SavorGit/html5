@@ -1,0 +1,8 @@
+@charset "utf-8";
+
+.container{display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.goods-pic{width:300px;height:178px;}
+.goods-name,.goods-pay{height:20px;line-height:20px;text-align:center;font-size:12px;}
+.goods-name{padding-top:10px;}
+.op-btn-group{height:36px;line-height:36px;padding-top:30px;}
+.op-btn-group button{width:80px;height:30px;line-height:30px;font-size:12px;border-radius:3px;margin:0;padding:0;border:0;background-color:rgb(86, 119, 252);color:#FFFFFF;}

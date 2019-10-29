@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+        <title>比赛 - 参与者 1</title>
+        <link rel="icon" href="http://www.shulehudong.com/attachment/images/2/2018/01/zr0ao66uZ22pp5U5yPkYp3Rr8Hq0mP.jpg">
+        <link rel="stylesheet" type="text/css" href="./script/template/mobile/app/css/shake_basic.css">
+        <link rel="stylesheet" type="text/css" href="./script/template/mobile/app/css/screen_shake.css?t=1">
+        <link rel="stylesheet" type="text/css" href="./script/css/monkeys_climb_trees.css">
+        <script type="text/javascript" charset="UTF-8" src="./script/js/json2.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="./script/js/qrcodejs/qrcode.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="./script/jQuery/core/2.2.4/jquery-2.2.4.min.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="./script/jQuery/migrate/1.4.1/jquery-migrate-1.4.1.min.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="./script/jQuery/web-socket/0.0.4/jquery.websocket.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="./script/template/mobile/app/js/shake_base.js?t=20180921"></script>
+		<script type="text/javascript" charset="UTF-8" src="./script/template/mobile/app/js/screen_shake.js?t=20180922"></script>
+		<script type="text/javascript" charset="UTF-8" src="./script/js/game.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="./script/js/monkeys_climb_trees_mobile.js"></script>
+        <script type="text/javascript">
+        	game_config.load({
+        		user: {
+		    		speed: 0,
+		    		operator: true,
+        			id: "user001",
+        			header: "http://image.biaobaiju.com/uploads/20180918/15/1537256494-ZnSKMzEoBI.jpeg",
+        			nickname: "大宝宝"
+        		}
+			});
+            $(document).ready(function(){
+            	console.clear();
+	            
+		        // 当页面加载完以后会执行window.onload
+	            var last_time = 0;
+	            var borderSpeed = 800;  // 加速度变化临界值
+	            var x = y = z = last_x = last_y = last_z = 0;
+	            if (window.DeviceMotionEvent) {
+	                window.addEventListener('devicemotion', shake, false);
+	            } else {
+	                alert('您的设备不支持摇一摇哦');
+	            }
+	            // 每次手机移动的时候都会执行下面shake函数的代码
+	            function shake(eventData) {
+	                var acceleration = eventData.accelerationIncludingGravity;
+	                var curTime = new Date().getTime();
+	                var diffTime  = curTime - last_time;
+	                // 每隔100ms进行判断
+	                if (diffTime > 100) {
+	                    x = acceleration.x;
+	                    y = acceleration.y;
+	                    z = acceleration.z;
+	                    var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
+	                    // 判断手机确实发生了摇动而不是正常的移动
+	                    if (speed > borderSpeed) {
+	                        scene_config.user.speed++;
+	                        /*
+	                        document.getElementById("text").innerHTML=times+" times";
+	                        // 用户的微信昵称和头像连接发送一次即可，不需要每次都发送
+	                        if (times == 0) {
+	                            document.forms["insertForm"].headimg.value =img ;
+	                            document.forms["insertForm"].user.value = nickname;
+	                        }
+	                        document.forms["insertForm"].time.value = times;
+	                        */
+	                    }
+	                    last_time = curTime;
+	                    last_x = x;
+	                    last_y = y;
+	                    last_z = z;
+	                }
+	            }
+            });
+            
+            
+            // 摇动手机
+            function shakePhone(){
+            	game_config.user.speed++;
+            }
+            
+            // 开始游戏
+            function startGame(){
+            	game_config.web_socket.instance.send('start', {
+            		gameId: game_config.scene_info.game_id,
+            		roomId: game_config.scene_info.room_id,
+            		userId: game_config.user.id,
+            		userNickname: game_config.user.nickname,
+            		userHeader: game_config.user.header,
+            		round: game_config.scene_info.round,
+            		distance: game_config.scene_info.distance
+            	});
+            }
+        </script>
+    </head>
+	<body>
+		<div style="position:relative; width: 100%; height: 30px; background-color: #fff; display: block;">
+	        <input type="button" onclick="javascript:shakePhone();" value="摇动">
+	        <input type="button" onclick="javascript:startGame();" value="开始">
+        </div>
+        <!--
+        <h3>信息</h3>
+        <textarea style="width: 300px; height: 500px;" id="respMessage"></textarea>
+        <input type="button" value="清空" onclick="javascript:$('#respMessage').val('');">
+        -->
+        
+		<!-- 请求信息 -->
+		<div id="logs_panel" style="position:relative; width: 100%; height: 100px; top: calc(100% - 130px); z-index:50; background-color: #fff; display: block;">
+			<span style="width: calc(100% - 35px); display: inline-block;">
+	        	<h3 style="margin: auto;">信息</h3>
+	        </span>
+	        <span id="close_logs_panel" style="width: 15px; margin-right: 10px; display: inline-block; text-align: center; cursor:pointer;">x</span>
+	        <textarea id="logs_console" style="width: calc(100% - 65px); height: calc(100% - 30px); overflow:scroll; overflow-x:hidden; resize:none; vertical-align:text-bottom;"></textarea>
+	        <button id="clear_logs" style="width: 50px; height: 30px; vertical-align:text-bottom;">清空</button>
+        </div>
+	</body>
+</html>

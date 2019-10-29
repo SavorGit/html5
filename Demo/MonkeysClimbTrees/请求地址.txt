@@ -1,0 +1,5 @@
+
+https://games.littlehotspot.com/g/{gameId}/r/{roomId}
+https://games.littlehotspot.com/g/{gameId}/r/{roomId}/actor
+https://games.littlehotspot.com/g/MonkeysClimbTrees/r/001
+https://games.littlehotspot.com/g/MonkeysClimbTrees/r/00226D5846EA/actor

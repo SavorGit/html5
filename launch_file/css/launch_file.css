@@ -1,0 +1,36 @@
+@charset "utf-8";
+
+pre{margin: 0;}
+.container{font-size: 14px;}
+.page-top {height: 36px; line-height: 36px; background-color: #EDF0F2; display: flex; flex-direction: row; align-items: center; justify-content: space-between;padding: 0 15px;}
+.page-top > span{color: #666;}
+.page-top > a{color: #1CBFB6;}
+
+.page-main {width: 100%; height: calc(100% - 86px); overflow: auto;}
+.page-main > .uploaded-files,.page-main > .will-upload-file{height: 50%;}
+.page-main > .uploaded-files > .list-panel{height: 50%; padding: 0 15px;}
+.page-main > .uploaded-files > .list-panel > .title{height: 30px; line-height: 30px; color: #999; font-size: 12px;}
+.page-main > .uploaded-files > .list-panel > .list{display: flex; flex-direction: row; align-items: start; justify-content: start;}
+.page-main > .uploaded-files > .list-panel > .list > .file{width: 25%; display: flex; flex-direction: column; align-items: center; justify-content: space-between;padding: 0 2px;}
+.page-main > .uploaded-files > .list-panel > .list > .file > .type{width: 50px; height: 50px; line-height: 50px; background-color: #F8F8F8; color: #333; border: 1px solid #1CBFB6; border-radius: 0px; text-align: center; vertical-align:middle;}
+.page-main > .uploaded-files > .list-panel > .list > .file > .name{word-break:break-all;font-size: 10px;text-overflow: -o-ellipsis-lastline; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;}
+.page-main > .will-upload-file{display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: #F8F8F8; color: #333;}
+.page-main > .will-upload-file > .file-panel{width: 100%; height: 140px; display: flex; flex-direction: column; align-items: center; justify-content: space-between;}
+.page-main > .will-upload-file > .file-panel > .file{width: 100%; height: 90px; display: flex; flex-direction: column; align-items: center; justify-content: space-between;}
+.page-main > .will-upload-file > .file-panel > .file > .type{width: 64px; height: 64px; background-color: #FFF; border: 1px solid #999; border-radius: 0px; text-align: center; vertical-align: middle;}
+.page-main > .will-upload-file > .file-panel > .file > .type > div{width: 64px; height: 64px; border-radius: 0px; text-align: center; vertical-align: middle;}
+.page-main > .will-upload-file > .file-panel > .file > .type > div > div{width: 64px; height: 60px; line-height: 60px; font-size: 40px;}
+.page-main > .will-upload-file > .file-panel > .file > .type > div > div.file-choose{width: 64px; height: 44px; line-height: 44px; font-size: 20px;}
+.page-main > .will-upload-file > .file-panel > .file > .type > div > a{font-size: 12px;}
+.page-main > .will-upload-file > .file-panel > .file > .name{word-break:break-all;font-size: 10px;}
+.page-main > .will-upload-file > .file-panel > .type{width: 60%; display: flex; flex-direction: row; align-items: center; justify-content: space-between;}
+
+.page-bottom {width: 100%; height: 50px;}
+.page-bottom > .button {width: 100%; height: 100%; margin: unset; padding: unset; border: unset; background-color: #1CBFB6; color: #FFF;}
+.page-bottom > .button[disabled] {background-color: #999;}
+
+/*#ossfile{width: 100%;}*/
+#ossfile p{display: inline-block;margin:0 5px 0 0;}
+#ossfile b{display: block;text-align: center;}
+
+.d-title {background-color: #1CBFB6; background: linear-gradient(top, #edf5f8, #1CBFB6); background: -moz-linear-gradient(top, #edf5f8, #1CBFB6); background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#edf5f8), to(#1CBFB6)); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#edf5f8', endColorstr='#1CBFB6');}

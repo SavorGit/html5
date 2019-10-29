@@ -1,0 +1,69 @@
+//单张图片投屏
+      wx.request({
+        url: api_url + '/Netty/Index/index',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: "POST",
+        data: {
+          box_mac: box_mac,
+          msg: '{ "action": 7,"resource_type":1, "url": "' + forscreen_img + '", "filename":"' + filename + '","openid":"' + openid + '","avatarUrl":"' + avatarUrl + '","nickName":"' + nickName + '","forscreen_id":"' + forscreen_id + '"}',
+        },
+        success: function (result) {
+          wx.request({
+            url: api_url + '/Smallapp21/index/recordForScreenPics',
+            header: {
+              'content-type': 'application/json'
+            },
+            data: {
+              forscreen_id: forscreen_id,
+              openid: openid,
+              box_mac: box_mac,
+              action: 31,
+              resource_type: 1,
+              mobile_brand: mobile_brand,
+              mobile_model: mobile_model,
+              imgs: '["' + forscreen_img + '"]'
+            },
+          });
+        },
+      })
+
+
+
+/application_data/web/php/savor_api/Public/oss
+
+/application_data/web/php/savor_api/Application/H5/View/Fileforscreen
+
+
+https://help.aliyun.com/document_detail/112718.html?spm=a2c4g.11186623.6.1323.568349e8bDJdcX
+https://mobile.littlehotspot.com/Netty/Index/index
+
+
+box_mac:?"00226D583D92"
+msg:?"{ "action": 7,"resource_type":1, "url": "forscreen/resource/1562297113131_pdf/1.png", "filename":"resource_1562297113131_pdf_1.png","openid":"ofYZG4yZJHaV2h3lJHG5wOB9MzxE","avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqVAgUWGzZ1psIMFYQDug7hYicc7kfXlRqO0cezj7OURvRbOWQFsIPyIMmRPFoKzCD5uh9xRkf8aRA/132","nickName":"笨熊?","forscreen_id":"1142709"}"
+
+
+box_mac: "00226D583D92"
+msg: "{"action": 3,"openid":"ofYZG4yZJHaV2h3lJHG5wOB9MzxE"}"
+
+http://dev-mobile.littlehotspot.com/h5/fileforscreen/launch_file.html?v=20190708002&box_mac=00226D655202&mobile_brand=devtools&mobile_model=iPhone%207%20Plus&openid=ofYZG4yZJHaV2h3lJHG5wOB9MzxE
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE temp.semi_box_logs_online_distinct AS SELECT id,uuid,hotel_id,room_id,timestamps,option_type,media_type,media_id,mobile_id,apk_version,ads_period,demand_period,common_value,mac,date_time,pt FROM semi.box_logs_online WHERE pt>=20190101000000 AND pt<20190710000000;
+INSERT OVERWRITE TABLE semi.box_logs_online SELECT id,uuid,hotel_id,room_id,timestamps,option_type,media_type,media_id,mobile_id,apk_version,ads_period,demand_period,common_value,mac,date_time,pt FROM temp.semi_box_logs_online_distinct;
+DROP TABLE IF EXISTS temp.semi_box_logs_online_distinct;
+
+
+CREATE TABLE temp.basic_box_logs_online AS SELECT id,uuid,area_id,area_name,hotel_id,hotel_name,room_id,room_name,box_id,box_name,mac,timestamps,option_type,media_type,media_id,media_name,mobile_id,apk_version,ads_period,demand_period,common_value,date_time,pt,duration FROM basic.box_logs_online WHERE pt>=20190101000000 AND pt<20190710000000;
+INSERT OVERWRITE TABLE basic.box_logs_online SELECT id AS id,uuid,area_id,area_name,hotel_id,hotel_name,room_id,room_name,box_id,box_name,mac,timestamps,option_type,media_type,media_id,media_name,mobile_id,apk_version,ads_period,demand_period,common_value,date_time,pt AS pt,duration AS duration FROM temp.basic_box_logs_online;
+DROP TABLE IF EXISTS temp.basic_box_logs_online;

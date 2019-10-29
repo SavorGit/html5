@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>比赛 - 房间</title>
+        <script type="text/javascript" charset="UTF-8" src="./script/js/json2.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="./script/js/qrcodejs/qrcode.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="./script/jQuery/core/3.3.1/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="./script/jQuery/migrate/3.0.1/jquery-migrate-3.0.1.min.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="./script/jQuery/web-socket/0.0.4/jquery.websocket.js"></script>
+        <script type="text/javascript">
+            var qrcode ;
+        	var config = {
+        		web_socket_url: "ws://localhost:8989/ws",
+        		game_id: "MonkeysClimbTrees",
+        		room_id: "",
+        		req_method: {
+        			create_room: "createRoom",
+        			statement: "statement"
+        		},
+        		timers: {
+        			ready: {
+        				timer: null,
+        				interval: 1000,
+        				duration: 0,
+        				residue: 0
+        			}
+        		}
+        	}
+            var websocket = $.websocket(config.web_socket_url, {
+				open: function(event) {//连接打开的时候触发
+					$("#respMessage").val("建立连接");
+					//console.log(event);
+					websocket.send(config.req_method.create_room, {
+						gameId: config.game_id,
+						roomId: config.room_id
+					});
+				},
+				close: function(event) {//连接关闭的时候触发
+					$("#respMessage").val($("#respMessage").val() + "\n断开连接");
+				},
+				events: {
+					init: function(event){
+						console.log("fun", "init", event);
+						var room = event.data;
+						config.room_id = room.roomId;
+						config.round = room.round;
+						config.distance = room.distance;
+						console.log("var", "config", config);
+						qrcode.makeCode("http://192.168.88.86:8989/ws?g_name=" + config.game_id + "&r_id" + config.room_id);
+						$("#respMessage").val($("#respMessage").val() + "\n初始化房间完成。");
+					},
+					signIn: function(event){
+						console.log("fun", "signIn", event);
+						var user = event.data;
+						$("#respMessage").val($("#respMessage").val() + "\n用户进入：" + JSON.stringify(user));
+						websocket.send(config.req_method.statement, {
+							gameId: config.game_id,
+							roomId: config.room_id,
+							userId: user.userId,
+							userNickname: user.userNickname,
+							userHeader: user.userHeader,
+							round: config.round,
+							distance: config.distance,
+							journey: 0,
+							speed: 0
+						});
+					},
+					statemented: function(event){
+						console.log("fun", "statemented", event);
+					},
+					ready: function(event){
+						console.log("fun", "ready", event);
+						$("#respMessage").val($("#respMessage").val() + "\n" + event.data.time + "毫秒后开始。");
+						config.timers.ready.duration = event.data.time;
+						config.timers.ready.residue = event.data.time;
+						config.timers.ready.timer = window.setInterval(function(){
+							$("#respMessage").val($("#respMessage").val() + "\n还剩" + config.timers.ready.residue + "毫秒。");
+							config.timers.ready.residue -= config.timers.ready.interval;
+							if(config.timers.ready.residue < 1){
+								window.clearInterval(config.timers.ready.timer);
+							}
+						}, config.timers.ready.interval);
+					},
+					forward: function(event){
+						console.log("fun", "forward", event);
+						$("#respMessage").val($("#respMessage").val() + "\n用户前进：" + event.data.speed);
+					},
+					gameOver: function(event){
+						console.log("fun", "delay", event);
+						window.clearInterval(config.timers.ready.timer);
+						$("#respMessage").val($("#respMessage").val() + "\n游戏结束。");
+					}
+				}
+            });
+            
+            $(document).ready(function(){
+            	qrcode = new QRCode($("#qrcode").get(0));
+            });
+        </script>
+    </head>
+	<body>
+		<!--
+        <textarea style="width: 300px; height: 200px;" name="message"></textarea>
+        <input type="button" onclick="websocket.send('send', $('[name=message]').val())" value="发送"><br>
+        -->
+        <h3>信息</h3>
+        <textarea style="width: 300px; height: 500px;" id="respMessage"></textarea>
+        <input type="button" value="清空" onclick="javascript:$('#respMessage').val('');">
+        <div id="qrcode" style="width: 160rpx; height: 160rpx; border: 1px solid #FF0000;"></div>
+	</body>
+</html>

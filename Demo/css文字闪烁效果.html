@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            background: #000;
+        }
+        h1.fb-glitch {
+            position: relative;
+            color: #abff79;
+        }
+        h1.fb-glitch:before {
+            left: -2px;
+            text-shadow: 2px 0 #0b391a;
+            animation: glitch-anim-2 3s infinite linear alternate-reverse;
+        }
+        h1.fb-glitch:before, h1.fb-glitch:after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            clip: rect(0, 0, 0, 0);
+        }
+        h1.fb-glitch:after {
+            left: 2px;
+            text-shadow: -1px 0 #1b5c16;
+            animation: glitch-anim-1 2s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim-1 {
+            0% {
+                clip: rect(82px, 820px, 98px, 0); }
+            5.8823529412% {
+                clip: rect(17px, 820px, 4px, 0); }
+            11.7647058824% {
+                clip: rect(24px, 820px, 44px, 0); }
+            17.6470588235% {
+                clip: rect(24px, 820px, 111px, 0); }
+            23.5294117647% {
+                clip: rect(29px, 820px, 45px, 0); }
+            29.4117647059% {
+                clip: rect(114px, 820px, 115px, 0); }
+            35.2941176471% {
+                clip: rect(103px, 820px, 22px, 0); }
+            41.1764705882% {
+                clip: rect(49px, 820px, 32px, 0); }
+            47.0588235294% {
+                clip: rect(2px, 820px, 10px, 0); }
+            52.9411764706% {
+                clip: rect(80px, 820px, 44px, 0); }
+            58.8235294118% {
+                clip: rect(70px, 820px, 30px, 0); }
+            64.7058823529% {
+                clip: rect(27px, 820px, 79px, 0); }
+            70.5882352941% {
+                clip: rect(82px, 820px, 112px, 0); }
+            76.4705882353% {
+                clip: rect(27px, 820px, 2px, 0); }
+            82.3529411765% {
+                clip: rect(47px, 820px, 104px, 0); }
+            88.2352941176% {
+                clip: rect(53px, 820px, 102px, 0); }
+            94.1176470588% {
+                clip: rect(2px, 820px, 90px, 0); }
+            100% {
+                clip: rect(88px, 820px, 56px, 0); } }
+
+        @keyframes glitch-anim-2 {
+            0% {
+                clip: rect(88px, 820px, 68px, 0); }
+            5.8823529412% {
+                clip: rect(75px, 820px, 113px, 0); }
+            11.7647058824% {
+                clip: rect(80px, 820px, 40px, 0); }
+            17.6470588235% {
+                clip: rect(70px, 820px, 51px, 0); }
+            23.5294117647% {
+                clip: rect(47px, 820px, 78px, 0); }
+            29.4117647059% {
+                clip: rect(61px, 820px, 7px, 0); }
+            35.2941176471% {
+                clip: rect(94px, 820px, 1px, 0); }
+            41.1764705882% {
+                clip: rect(26px, 820px, 69px, 0); }
+            47.0588235294% {
+                clip: rect(91px, 820px, 62px, 0); }
+            52.9411764706% {
+                clip: rect(8px, 820px, 78px, 0); }
+            58.8235294118% {
+                clip: rect(17px, 820px, 97px, 0); }
+            64.7058823529% {
+                clip: rect(66px, 820px, 48px, 0); }
+            70.5882352941% {
+                clip: rect(66px, 820px, 85px, 0); }
+            76.4705882353% {
+                clip: rect(46px, 820px, 12px, 0); }
+            82.3529411765% {
+                clip: rect(69px, 820px, 68px, 0); }
+            88.2352941176% {
+                clip: rect(38px, 820px, 7px, 0); }
+            94.1176470588% {
+                clip: rect(83px, 820px, 32px, 0); }
+            100% {
+                clip: rect(110px, 820px, 95px, 0); } }
+    </style>
+</head>
+<body>
+<h1 class="fb-glitch" data-text="花花世界">花花世界</h1>
+</body>
+</html>

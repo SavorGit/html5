@@ -1,0 +1,53 @@
+@charset "utf-8";
+.pashuMain{opacity:0;position: absolute; top:0;bottom:0;height:auto; left:0;width:100%;height:100%;background:url("../../images/coconut_bg.jpg") no-repeat 0px 0px;background-size:100% 100%}
+.animate-rotate2 {-webkit-animation: rotate2 1s linear;-webkit-animation-delay: 0.01s;}
+.round-label2 span i.animate-rotate2 {-webkit-animation: rotate2 0.8s linear;}
+.round-label2 span i:nth-child(2).animate-rotate2 {-webkit-animation-delay: 0.04s;}
+.round-label2 span i:nth-child(3).animate-rotate2 {-webkit-animation-delay: 0.08s;}
+
+@-webkit-keyframes rotate1 {
+	from {
+		-webkit-transform: rotateY(0)
+	}
+	to {
+		-webkit-transform: rotateY(180deg)
+	}
+}
+
+@-webkit-keyframes rotate2 {
+	from {
+		-webkit-transform: rotateX(0)
+	}
+	to {
+		-webkit-transform: rotateX(720deg)
+	}
+}
+.round-label2 i {color:#fff; border-radius: 5px; background: #e8645a; color: #fff; display: inline-block; margin: 0 5px; width: 100px; height: 40px; font-style: normal; line-height: 40px; text-align: center; font-size: 24px;}
+.houzi_user{opacity:1 !important}
+.btn-endgame {width: 100px; height: 60px; background: url("../../images/template/mobile/app/restart_bg.png") no-repeat center bottom; position: absolute; bottom: 70px; right: 3px; cursor: pointer;}
+.restart-botton {width: 70px; height: 40px; position: absolute; background: url("../../images/template/mobile/app/restart_button.png") no-repeat center bottom; position: absolute; bottom: 20px; left: 50%; margin: 0 0 0 -35px;}
+.animate-rotate2 {-webkit-animation: rotate2 1s linear; -webkit-animation-delay: 0.01s;}
+
+.round-label2 span i.animate-rotate2 {-webkit-animation: rotate2 0.8s linear;}
+.round-label2 span i:nth-child(2).animate-rotate2 {-webkit-animation-delay: 0.04s;}
+.round-label2 span i:nth-child(3).animate-rotate2 {-webkit-animation-delay: 0.08s;}
+
+@-webkit-keyframes rotate1 {
+	from {
+		-webkit-transform: rotateY(0)
+	}
+	to {
+		-webkit-transform: rotateY(180deg)
+	}
+}
+
+@-webkit-keyframes rotate2 {
+	from {
+		-webkit-transform: rotateX(0)
+	}
+	to {
+		-webkit-transform: rotateX(720deg)
+	}
+}
+.round-label2 i {color:#fff; border-radius: 5px; background: #e8645a; color: #fff; display: inline-block; margin: 0 5px; width: 100px; height: 40px; font-style: normal; line-height: 40px; text-align: center; font-size: 24px;}
+#qrcode {background-color: #FFF; padding: 25px;}
