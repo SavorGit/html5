@@ -125,7 +125,7 @@ $(document).ready(function(docmentEvent){
 				}
 				var invoiceOrderNo = $('.invoice-order-no').children('value').text();
 				$('html').showLoading(loadingSetting);
-				var apiURL = 'https://dev-mobile.littlehotspot.com/h5/saleorder/sendaddr';
+				var apiURL = 'https://mobile.littlehotspot.com/h5/saleorder/sendaddr';
 				var requestData = {
 					'oid': invoiceOrderNo,
 					'phone': saveInvoiceRisePhoneValue
@@ -212,7 +212,7 @@ $(document).ready(function(docmentEvent){
 			return;
 		}
 		$('html').showLoading(loadingSetting);
-		var apiURL = 'https://dev-mobile.littlehotspot.com/h5/saleorder/addinvoice';
+		var apiURL = 'https://mobile.littlehotspot.com/h5/saleorder/addinvoice';
 		var requestData = {
 			'company': companyName,
 			'credit_code': companyDutyParagraph,
