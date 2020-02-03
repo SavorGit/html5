@@ -1,0 +1,100 @@
+@charset "utf-8";
+
+button[disabled]{color:rgba(255,255,255,0.6) !important;background-color:rgba(0,0,0,0.6) !important;}
+
+.loading-indicator{height:160px;width:160px;background:url('https://oss.littlehotspot.com/Html5/images/common/loading_3.gif');background-repeat:no-repeat;background-position:center center;}
+.loading-indicator-overlay{background-color:#000000;opacity:0.6;filter:alpha(opacity = 60);}
+
+.d-state-highlight{color:#FFFFFF;border:1px solid #0CAEA6;background:#1CBEB6;text-shadow:-1px -1px 1px #0CAEA6;}
+.d-state-highlight:active{border-color:#0CAEA6;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#40E0D0', endColorstr='#1CBEB6');background:linear-gradient(top, #40E0D0, #1CBEB6);background:-moz-linear-gradient(top, #40E0D0, #1CBEB6);background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#40E0D0), to(#1CBEB6));}
+.d-state-highlight:hover{color:#FFFFFF;border-color:#20B2AA;}
+.d-button:active{border-color:#666666;background:#48D1CC;box-shadow:inset 0 1px 5px rgba(64,224,208, .9), inset 0 1px 1em rgba(0, 0, 0, .3);}
+
+.button-hover,.navigator-hover{background-color:rgba(0,0,0,0.1);opacity:0.7;}
+.theme{background-color:#05101a;}
+.theme2{background-color:#000;}
+.theme3{background-color:#0e1c29;}
+.theme4{background-color:#25635f;}
+.theme5{background-color:#106763;}
+.theme6{background-color:#1cbeb6;}
+.theme7{background-color:#fff;}
+.theme-bg-FFFFFF{background-color:#fff;}
+.theme8{color:#333;background-color:#999;}
+
+/* ----------------------- */
+.theme-wxAuthLogin-container{color:#333;background-color:#fff;}
+.theme-container{color:#666;background-color:#f5f6f8;}
+.theme-remote-control{color:#fff;background-color:#1cbeb6;}
+.theme-panel{color:#333;background-color:#fff;}
+.theme-panel-dark{color:#fff;background-color:#333;}
+.theme-panel-pop-menu-dark{color:#fff;background-color:#666;}
+.theme-panel-2{color:#fff;background-color:#edf0f2;}
+.theme-navigation{color:#333;background-color:#fff;}
+.theme-button{color:#fff;background-color:#1cbeb6;}
+.theme-button-dark{color:#fff;background-color:#333;}
+.theme-button-white{color:#333;background-color:#fff;}
+.theme-button-buy,.theme-button-like,.theme-rad-panel{color:#fff;background-color:#eb6877;}
+.theme-button-unlike{color:#fff;background-color:#999;}
+.theme-button-disable{color:#ebebeb;background-color:#bfbfbf;}
+.theme-button-more{color:#666;background-color:#ededed;}
+.theme-textarea{color:#333;background-color:#edf0f2;}
+.theme-menu{background-color:#05101a;}
+.theme-button2{color:#fff;background-color:#25635f;}
+.theme-button3{color:#fff;background-color:#0e1c29;}
+.theme-button4{color:#fff;background-color:#05101a;}
+.theme-button5{color:#fff;background-color:#999;}
+.theme-font{color:#1cbeb6;}
+.theme-font1{color:#333;}
+.theme-font2{color:#666;}
+.theme-font3{color:#999;}
+.theme-font4{color:#fff;}
+.theme-font5{color:#eb6877;}
+.theme-font6{color:#111;}
+.theme-font-FFFFFF{color:#fff;}
+.theme-font-000000{color:#000;}
+.theme-font-666666{color:#666;}
+.theme-font-999999{color:#999;}
+
+/* ================================== 文字 ================================== */
+.font_333333_20{font-size:10px;color:#333;}
+.font_333333_22{font-size:11px;color:#333;}
+.font_333333_24{font-size:12px;color:#333;}
+.font_333333_26{font-size:13px;color:#333;}
+.font_333333_28{font-size:14px;color:#333;}
+.font_333333_30{font-size:15px;color:#333;}
+.font_333333_32{font-size:16px;color:#333;}
+.font_333333_34{font-size:17px;color:#333;}
+.font_333333_36{font-size:18px;color:#333;}
+.font_666666_20{font-size:10px;color:#666;}
+.font_666666_24{font-size:12px;color:#666;}
+.font_666666_26{font-size:13px;color:#666;}
+.font_666666_28{font-size:14px;color:#666;}
+.font_666666_30{font-size:15px;color:#666;}
+.font_999999_24{font-size:12px;color:#999;}
+.font_999999_26{font-size:13px;color:#999;}
+.font_999999_28{font-size:14px;color:#999;}
+.font_999999_30{font-size:15px;color:#999;}
+.font_999999_34{font-size:17px;color:#999;}
+.font_999999_36{font-size:18px;color:#999;}
+.font_F6F6F6_34{font-size:17px;color:#f6f6f6;}
+.font_F6F3EE_20{font-size:10px;color:#f6f3ee;}
+.font_F6F6F6_28{font-size:14px;color:#f6f6f6;}
+.font_F6F2EC_24{font-size:12px;color:#f6f2ec;}
+.font_F6F2EC_28{font-size:14px;color:#f6f2ec;}
+.font_F6F2EC_30{font-size:15px;color:#f6f2ec;}
+.font_F6F2EC_34{font-size:17px;color:#f6f2ec;}
+.font_FFFFFF_24{font-size:12px;color:#fff;}
+.font_FFFFFF_26{font-size:13px;color:#fff;}
+.font_FFFFFF_28{font-size:14px;color:#fff;}
+.font_FFFFFF_30{font-size:15px;color:#fff;}
+.font_FFFFFF_32{font-size:16px;color:#fff;}
+.font_FFFFFF_34{font-size:17px;color:#fff;}
+.font_FFFFFF_36{font-size:18px;color:#fff;}
+.font_1CBEB6_34{font-size:17px;color:#1cbeb6;}
+.font_25635f_24{font-size:12px;color:#25635f;}
+.font_932C3F_20{font-size:10px;color:#932c3f;}
+.font_932C3F_24{font-size:12px;color:#932c3f;}
+.font_932C3F_28{font-size:14px;color:#932c3f;}
+.font_932C3F_34{font-size:17px;color:#932c3f;}
+
+.link_relief{color:#1cbeb6;text-decoration:underline;}
