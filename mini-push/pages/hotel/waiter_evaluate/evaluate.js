@@ -41,5 +41,12 @@ $(document).ready(function(docEvent){
 		var comment = $('.tag.selected').html();
 		var comment_2 = $('textarea').val();
 		alert(openId+'\n'+score+'\n'+comment+'\n'+comment_2);
+		wx.miniProgram.getEnv(function(res) {
+			if(res.miniprogram) {
+				wx.miniProgram.navigateTo({
+					url: '/pages/hotel/waiter_evaluate'
+				});
+			}
+		});
 	});
 });
