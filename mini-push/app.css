@@ -1,6 +1,7 @@
 @charset "utf-8";
 
-body{margin:0;padding-top:constant(safe-area-inset-top);padding-left:constant(safe-area-inset-left);padding-right:constant(safe-area-inset-right);padding-bottom:constant(safe-area-inset-bottom);}
+*{margin:0;}
+body{padding-top:constant(safe-area-inset-top);padding-left:constant(safe-area-inset-left);padding-right:constant(safe-area-inset-right);padding-bottom:constant(safe-area-inset-bottom);}
 button,button::before,button::after{border:unset;padding:unset;margin:auto;}
 button{border-radius:5px;}
 button::before,button::after{background-color:unset;}
