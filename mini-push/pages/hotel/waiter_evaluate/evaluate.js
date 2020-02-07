@@ -206,6 +206,38 @@ $(document).ready(function(docEvent){
 			}
 		});
 	});
+	/*
+	$(document).ajaxError(function (event, XMLHttpRequest, ajaxOptions, thrownError) {
+		if(XMLHttpRequest.status == 'undefined'){
+			return;
+		}
+		switch(XMLHttpRequest.status){
+			case 403:
+				// 未授权异常
+				art.dialog({
+					title: '错误',
+					content: "系统拒绝：您没有访问权限。",
+					fixed: true,
+					okValue: '关闭',
+					ok: function () {
+						return true;
+					}
+				}).lock();
+				break;
+			case 404:
+				art.dialog({
+					title: '错误',
+					content: "您访问的资源不存在。",
+					fixed: true,
+					okValue: '关闭',
+					ok: function () {
+						return true;
+					}
+				}).lock();
+				break;
+		}
+	});
+	*/
 	$('.waiter-evaluate-comment-panel>textarea').css({
 		resize:'none'
 	}).text(defaultComment);
