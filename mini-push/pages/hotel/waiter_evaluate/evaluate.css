@@ -4,7 +4,7 @@
 
 .waiter-evaluate-info-panel{width:100%;height:100px;}
 .waiter-evaluate-info-panel>.wapper{width:250px;}
-.waiter-evaluate-info-panel>.wapper>.phone{width:70px;height:70px;border-radius:50%;}
+.waiter-evaluate-info-panel>.wapper>.photo{width:70px;height:70px;border-radius:50%;}
 .waiter-evaluate-info-panel>.wapper>.info{padding-left:10px;}
 .waiter-evaluate-info-panel>.wapper>.info>.name{font-size:18px;font-weight:bold;}
 .waiter-evaluate-info-panel>.wapper>.info>.title{font-size:12px;}
