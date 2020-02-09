@@ -127,12 +127,12 @@ $(document).ready(function(docEvent){
 			score:score,
 			tags:tagIds
 		};
-		JohnLeeConsole.print("请求地址：", apiURL, "POST", 6000+'MS');
-		JohnLeeConsole.print("请求头：", JSON.stringify(requestHeaders));
-		JohnLeeConsole.print("请求参数：", JSON.stringify(requestData));
+		var timeout = 6000;
+		JohnLeeConsole.print(">>>>>", apiURL, "POST", 'timeout=' + timeout + 'ms');
+		JohnLeeConsole.print(">>>>>", JSON.stringify(requestHeaders), JSON.stringify(requestData));
 		$.ajax({
 			url: apiURLDomain + '/h5/comment/addcomment',
-			timeout: 6000,
+			timeout: timeout,
 			type: "POST",
 			cache: false,
 			headers: requestHeaders,
@@ -151,7 +151,7 @@ $(document).ready(function(docEvent){
 			*/
 			success: function (data, textStatus) {
 				$("html").hideLoading();
-				JohnLeeConsole.print("响应数据：", apiURL, JSON.stringify(data));
+				JohnLeeConsole.print("<<<<<", apiURL, JSON.stringify(data));
 				if(typeof(data) != 'object'){
 					art.dialog({
 						title: '错误',
@@ -162,6 +162,7 @@ $(document).ready(function(docEvent){
 							return true;
 						}
 					}).lock();
+					return;
 				}
 				if(data.code != 10000){
 					art.dialog({
@@ -173,6 +174,7 @@ $(document).ready(function(docEvent){
 							return true;
 						}
 					}).lock();
+					return;
 				}
 				art.dialog({
 					title: '提示',
