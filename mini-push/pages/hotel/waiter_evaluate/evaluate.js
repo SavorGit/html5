@@ -2,6 +2,9 @@
  *
  */
 $(document).ready(function(docEvent){
+	$("input,textarea").blur(function () {
+		$("html,body").animate({scrollTop: document.documentElement.clientHeight},500);
+	});
 	//$("html").showLoading();
 	//$("#console").show();
 	var apiURLDomain = pageConfig.apiURLDomain.prod;
@@ -180,8 +183,9 @@ $(document).ready(function(docEvent){
 					title: '提示',
 					content: data.msg,
 					fixed: true,
+					lock: true,
 					okValue: '关闭',
-					ok: function () {
+					beforeunload: function () {
 						try{
 							JohnLeeConsole.print(">>>>> Wechart[/pages/index/index]");
 							wx.miniProgram.getEnv(function(res) {
@@ -201,7 +205,7 @@ $(document).ready(function(docEvent){
 						}
 						return true;
 					}
-				}).lock();
+				});
 			},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 				$("html").hideLoading();
