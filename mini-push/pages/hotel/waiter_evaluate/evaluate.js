@@ -182,13 +182,23 @@ $(document).ready(function(docEvent){
 					fixed: true,
 					okValue: '关闭',
 					ok: function () {
-						wx.miniProgram.getEnv(function(res) {
-							if(res.miniprogram) {
-								wx.miniProgram.navigateTo({
-									url: '/pages/hotel/waiter_evaluate'
-								});
-							}
-						});
+						try{
+							JohnLeeConsole.print(">>>>> Wechart[/pages/index/index]");
+							wx.miniProgram.getEnv(function(res) {
+								if(res.miniprogram) {
+									/*
+									wx.miniProgram.navigateTo({
+										url: '/pages/hotel/waiter_evaluate'
+									});
+									*/
+									wx.miniProgram.switchTab({
+										url: '/pages/index/index'
+									});
+								}
+							});
+						}catch(error){
+							JohnLeeConsole.print(">>XXXX>> Wechart-ERROR[/pages/index/index]",error);
+						}
 						return true;
 					}
 				}).lock();
