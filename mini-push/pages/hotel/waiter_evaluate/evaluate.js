@@ -70,6 +70,7 @@ $(document).ready(function(docEvent){
 			var selectedClass = '';
 			if(typeof(item.selected) == 'boolean' && item.selected == true){
 				selectedClass = ' selected';
+				$('textarea').val(item.value);
 			}
 			tagsObject.append('<div class="tag' + selectedClass + '" data-id="' + item.id + '">' + item.value + '</div>');
 		});
@@ -85,6 +86,7 @@ $(document).ready(function(docEvent){
 	$('.tag').click(function(e){
 		$('.tag').removeClass('selected');
 		$(this).addClass('selected');
+		$('textarea').val($(this).text());
 	});
 	$('.btn-submit').click(function(e){
 		$("html").showLoading();
