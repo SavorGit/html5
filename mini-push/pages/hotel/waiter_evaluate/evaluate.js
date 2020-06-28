@@ -86,7 +86,11 @@ $(document).ready(function(docEvent){
 	$('.tag').click(function(e){
 		$('.tag').removeClass('selected');
 		$(this).addClass('selected');
-		$('textarea').val($(this).text());
+		if(typeof($('textarea').val()) != 'string' || $('textarea').val().trim() ==''){
+			$('textarea').val($(this).text());
+		}else{
+			$('textarea').val($('textarea').val() + ',' + $(this).text());
+		}
 	});
 	$('.btn-submit').click(function(e){
 		$("html").showLoading();
