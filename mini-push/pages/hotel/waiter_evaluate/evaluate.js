@@ -2,6 +2,7 @@
  *
  */
 $(document).ready(function(docEvent){
+	$('title').html('亲，您对服务满意吗？');
 	$("input,textarea").blur(function () {
 		$("html,body").animate({scrollTop: document.documentElement.clientHeight},500);
 	});
@@ -30,7 +31,7 @@ $(document).ready(function(docEvent){
 			waiterPanelObject.find('.info>.name').text(waiterInfo.name);
 		}
 		if(typeof(waiterInfo.title) == 'string'){
-			waiterPanelObject.find('.info>.title').text(waiterInfo.title);
+			waiterPanelObject.find('.info>.title').addClass('theme-font7').text(waiterInfo.title);
 		}
 		if(typeof(waiterInfo.photo) == 'string'){
 			waiterPanelObject.find('img.photo').attr('src', waiterInfo.photo);
@@ -51,6 +52,7 @@ $(document).ready(function(docEvent){
 		for(index = 0; index < pageConfig.starCount; index++){
 			var starCount = index + 1;
 			var starHalfCount = starCount - 0.5;
+			/*
 			var starClass = 'fa-star-o';
 			var startColor = pageConfig.startColor._default;
 			if(_defaultScore >= starHalfCount && _defaultScore < starCount){
@@ -62,14 +64,23 @@ $(document).ready(function(docEvent){
 			}
 			
 			$('<div class="fa ' + starClass + '" aria-hidden="true"></div>').css({color:startColor}).appendTo(starGroupObject);
+			*/
+			var starClass = 'fa-star-o theme-font3';
+			if(_defaultScore >= starHalfCount && _defaultScore < starCount){
+				starClass = 'fa-star-half-o theme-font5';
+			}else if(_defaultScore >= starCount){
+				starClass = 'fa-star theme-font5';
+			}
+			
+			$('<div class="fa ' + starClass + ' " aria-hidden="true"></div>').appendTo(starGroupObject);
 		}
 	}
 	if(typeof(tagArray) == 'object' && tagArray instanceof Array && tagArray.length > 0){
 		var tagsObject = $('.waiter-evaluate-comment-panel>.tags').empty();
 		$(tagArray).each(function(index,item){
-			var selectedClass = '';
+			var selectedClass = ' theme-font5';
 			if(typeof(item.selected) == 'boolean' && item.selected == true){
-				selectedClass = ' selected';
+				selectedClass = ' selected theme-button-red';
 				$('textarea').val(item.value);
 			}
 			tagsObject.append('<div class="tag' + selectedClass + '" data-id="' + item.id + '">' + item.value + '</div>');
@@ -79,20 +90,25 @@ $(document).ready(function(docEvent){
 		defaultComment = '';
 	}
 	$('.fa').click(function(e){
+		/*
 		$(this).removeClass('fa-star-o').removeClass('fa-star-half-o').addClass('fa-star').css({color:pageConfig.startColor.selected});
 		$(this).prevAll('.fa').removeClass('fa-star-o').removeClass('fa-star-half-o').addClass('fa-star').css({color:pageConfig.startColor.selected});
 		$(this).nextAll('.fa').removeClass('fa-star').removeClass('fa-star-half-o').addClass('fa-star-o').css({color:pageConfig.startColor._default});
+		*/
+		$(this).removeClass('fa-star-o').removeClass('fa-star-half-o').removeClass('theme-font3').addClass('fa-star').addClass('theme-font5');
+		$(this).prevAll('.fa').removeClass('fa-star-o').removeClass('fa-star-half-o').removeClass('theme-font3').addClass('fa-star').addClass('theme-font5');
+		$(this).nextAll('.fa').removeClass('fa-star').removeClass('fa-star-half-o').removeClass('theme-font5').addClass('fa-star-o').addClass('theme-font3');
 	});
 	$('.tag').click(function(e){
-		$('.tag').removeClass('selected');
-		$(this).addClass('selected');
+		$('.tag').removeClass('selected').removeClass('theme-button-red').addClass('theme-font5');
+		$(this).removeClass('theme-font5').addClass('selected').addClass('theme-button-red');
 		if(typeof($('textarea').val()) != 'string' || $('textarea').val().trim() ==''){
 			$('textarea').val($(this).text());
 		}else{
 			$('textarea').val($('textarea').val() + ',' + $(this).text());
 		}
 	});
-	$('.btn-submit').click(function(e){
+	$('.btn-submit').removeClass('theme-button').addClass('theme-rad-panel').click(function(e){
 		$("html").showLoading();
 		var waiterId = $('.waiter-evaluate-info-panel .wapper').attr('waiter-id');
 		if(typeof(waiterId) != 'string' || waiterId.trim() == ''){

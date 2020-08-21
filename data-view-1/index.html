@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<html lang="UTF-8">
+	<head>
+		<meta name="x5-orientation" content="portrait">
+		<meta name="browsermode" content="application" />
+		<meta name="full-screen" content="yes" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+		<title>热点数据可视化平台</title>
+		<meta http-equiv="pragma" content="no-cache"/>
+		<meta http-equiv="cache-control" content="no-cache"/>
+		<meta http-equiv="expires" content="0"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+		<link rel="icon" href="https://oss.littlehotspot.com/Html5/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="https://oss.littlehotspot.com/Html5/script/font-awesome-4.7.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="https://oss.littlehotspot.com/Html5/script/jquery/plug-in/artDialog/skins/simple.css" />
+		<link rel="stylesheet" type="text/css" href="https://oss.littlehotspot.com/Html5/script/jquery/plug-in/showloading/showLoading.min.css" />
+		<!--
+		<link rel="stylesheet" type="text/css" href="index.css" />
+		-->
+		<link rel="stylesheet" type="text/css" href="https://oss.littlehotspot.com/Html5/script/web/data-view-1/index.css" />
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/plugins/JSON-js-master/json2.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/plugins/FileSaver/FileSaver.min.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/my-js/jlNamespace.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/jquery/core/1.11.1/jquery-1.11.1.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/jquery/migrate/1.1.1/jquery-migrate-1.1.1.min.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/jquery/plug-in/artDialog/artDialog.min.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/jquery/plug-in/showloading/jquery.showLoading.min.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/my-js/jquery.ui.logger.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/my-js/jquery.url.parameters.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/my-js/StringUtil.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/my-js/DateUtil.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/my-js/jquery.ui.Toast-1.0.1.class.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+		<!--
+		<script type="text/javascript" charset="UTF-8" src="index.js"></script>
+		-->
+		<script type="text/javascript" charset="UTF-8" src="https://oss.littlehotspot.com/Html5/script/web/data-view-1/index.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="page-left">
+				<div class="page-title-panel">
+					<div class="title-block">
+						<div class="top-line-border"></div>
+						<div class="bottom-line-border"></div>
+						<div class="fa fa-question-circle" aria-hidden="true"></div>
+						<div class="title">热点数据可视化平台</div>
+					</div>
+					<div class="date">2020-08-10</div>
+				</div>
+				<div class="chart-panel-group">
+					<div class="count chart-panel">
+						<div class="angle top-left"></div>
+						<div class="angle top-right"></div>
+						<div class="angle bottom-right"></div>
+						<div class="angle bottom-left"></div>
+						<div class="title-bar">
+							<div class="title"><span class="fa fa-angle-right font-1C5F9A" aria-hidden="true"></span><span class="fa fa-angle-right font-9ACEF7" aria-hidden="true"></span><span class="title">互动次数统计</span><span class="fa fa-angle-left font-9ACEF7" aria-hidden="true"></span><span class="fa fa-angle-left font-1C5F9A" aria-hidden="true"></span></div>
+						</div>
+						<div class="panel-body">
+							<div class="count-row month">
+								<div class="current">本月<span class="stress font-up"><div class="top-line-border"></div><div class="bottom-line-border"></div>123690<i class="fa fa-long-arrow-up" aria-hidden="true"></i></span>次</div>
+								<div class="last">上月:<span>2938471次</span></div>
+							</div>
+							<div class="count-row week">
+								<div class="current">本周<span class="stress font-down"><div class="top-line-border"></div><div class="bottom-line-border"></div>123690<i class="fa fa-long-arrow-down" aria-hidden="true"></i></span>次</div>
+								<div class="last">上周:<span>2938471次</span></div>
+							</div>
+							<div id="launchCountChart" class="chart"></div>
+						</div>
+					</div>
+					<div class="power-on-rate-7 chart-panel">
+						<div class="angle top-left"></div>
+						<div class="angle top-right"></div>
+						<div class="angle bottom-right"></div>
+						<div class="angle bottom-left"></div>
+						<div class="title-bar">
+							<div class="title"><span class="fa fa-angle-right font-1C5F9A" aria-hidden="true"></span><span class="fa fa-angle-right font-9ACEF7" aria-hidden="true"></span><span class="title">近7日在线率</span><span class="fa fa-angle-left font-9ACEF7" aria-hidden="true"></span><span class="fa fa-angle-left font-1C5F9A" aria-hidden="true"></span></div>
+						</div>
+						<div class="panel-body">
+							<div id="powerOnRatePieChart" class="chart"></div>
+							<div id="powerOnRateBarChart" class="chart"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="page-right">
+				<div class="data-panel-group">
+					<div class="angle top-left"></div>
+					<div class="angle top-right"></div>
+					<div class="angle bottom-right"></div>
+					<div class="angle bottom-left"></div>
+					<div class="table-head">
+						<div class="table-cell first">酒楼名称 (在线率排序)</div>
+						<div class="table-cell">时间维度</div>
+						<div class="table-cell">版位数</div>
+						<div class="table-cell">故障屏</div>
+						<div class="table-cell">正常屏</div>
+						<div class="table-cell">故障占比</div>
+						<div class="table-cell">午饭在线率</div>
+						<div class="table-cell">晚饭在线率</div>
+						<div class="table-cell">日在线率</div>
+						<div class="table-cell">饭局转化率</div>
+						<div class="table-cell">扫码数</div>
+						<div class="table-cell">互动总数</div>
+						<div class="table-cell">标准互动数</div>
+						<div class="table-cell">极简互动数</div>
+						<div class="table-cell">销售互动数</div>
+					</div>
+					<div class="table-body">
+						
+						<div class="item">
+							<div class="table-cell first">
+								<div class="name" title="酒楼A">1.酒楼A</div>
+								<div class=""><span>北京市</span><span style="margin-left:15px;">级别:<span title="酒楼级别：4级"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></span></span></div>
+								<div class="">维护人:<span title="渠道维护人：王莉">王莉</span>、<span title="运维人：黄勇">黄勇</span>、<span title="培训人：李丛">李丛</span></div>
+								<div class="">最近培训时间:2020-08-10</div>
+							</div>
+							<div class="row-group">
+								<div class="row">
+									<div class="table-cell">昨日</div>
+									<div class="table-cell">10</div>
+									<div class="table-cell">2</div>
+									<div class="table-cell">8</div>
+									<div class="table-cell font-up">20%<i class="fa fa-long-arrow-up" aria-hidden="true"></i></div>
+									<div class="table-cell">35%</div>
+									<div class="table-cell">60%</div>
+									<div class="table-cell">70%</div>
+									<div class="table-cell">35%</div>
+									<div class="table-cell">1000</div>
+									<div class="table-cell">2000</div>
+									<div class="table-cell">1000</div>
+									<div class="table-cell">500</div>
+									<div class="table-cell">500</div>
+								</div>
+								<div class="row">
+									<div class="table-cell">本周</div>
+									<div class="table-cell">10</div>
+									<div class="table-cell">2</div>
+									<div class="table-cell">8</div>
+									<div class="table-cell">20%</div>
+									<div class="table-cell">35%</div>
+									<div class="table-cell">60%</div>
+									<div class="table-cell">70%</div>
+									<div class="table-cell">35%</div>
+									<div class="table-cell">1000</div>
+									<div class="table-cell">2000</div>
+									<div class="table-cell">1000</div>
+									<div class="table-cell">500</div>
+									<div class="table-cell">500</div>
+								</div>
+								<div class="row">
+									<div class="table-cell">本月</div>
+									<div class="table-cell">10</div>
+									<div class="table-cell">2</div>
+									<div class="table-cell">8</div>
+									<div class="table-cell font-down">20%<i class="fa fa-long-arrow-down" aria-hidden="true"></i></div>
+									<div class="table-cell">35%</div>
+									<div class="table-cell">60%</div>
+									<div class="table-cell">70%</div>
+									<div class="table-cell">35%</div>
+									<div class="table-cell">1000</div>
+									<div class="table-cell">2000</div>
+									<div class="table-cell">1000</div>
+									<div class="table-cell">500</div>
+									<div class="table-cell">500</div>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

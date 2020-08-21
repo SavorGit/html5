@@ -33,7 +33,7 @@ button[disabled]{color:rgba(255,255,255,0.6) !important;background-color:rgba(0,
 .theme-button{color:#fff;background-color:#1cbeb6;}
 .theme-button-dark{color:#fff;background-color:#333;}
 .theme-button-white{color:#333;background-color:#fff;}
-.theme-button-buy,.theme-button-like,.theme-rad-panel{color:#fff;background-color:#eb6877;}
+.theme-button-buy,.theme-button-like,.theme-button-red,.theme-rad-panel{color:#FFFFFF;background-color:#F44444;}
 .theme-button-unlike{color:#fff;background-color:#999;}
 .theme-button-disable{color:#ebebeb;background-color:#bfbfbf;}
 .theme-button-more{color:#666;background-color:#ededed;}
@@ -48,8 +48,9 @@ button[disabled]{color:rgba(255,255,255,0.6) !important;background-color:rgba(0,
 .theme-font2{color:#666;}
 .theme-font3{color:#999;}
 .theme-font4{color:#fff;}
-.theme-font5{color:#eb6877;}
+.theme-font5{color:#F44444;}
 .theme-font6{color:#111;}
+.theme-font7 {color: #A18668;}
 .theme-font-FFFFFF{color:#fff;}
 .theme-font-000000{color:#000;}
 .theme-font-666666{color:#666;}
