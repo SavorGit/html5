@@ -27,14 +27,20 @@ $(document).ready(function(docEvent){
 		if(typeof(waiterInfo.name) == 'string'){
 			waiterPanelObject.find('.wapper').attr('waiter-id', waiterInfo.id);
 		}
-		if(typeof(waiterInfo.name) == 'string'){
+		if(typeof(waiterInfo.name) == 'string' && waiterInfo.name.trim() != ''){
 			waiterPanelObject.find('.info>.name').text(waiterInfo.name);
+		}else{
+			waiterPanelObject.find('.info>.name').html('<div style="color:#BEBEBE;">无</span>');
 		}
-		if(typeof(waiterInfo.title) == 'string'){
+		if(typeof(waiterInfo.title) == 'string' && waiterInfo.name.trim() != ''){
 			waiterPanelObject.find('.info>.title').addClass('theme-font7').text(waiterInfo.title);
+		}else{
+			waiterPanelObject.find('.info>.title').html('<div style="color:#BEBEBE;">无</span>');
 		}
-		if(typeof(waiterInfo.photo) == 'string'){
+		if(typeof(waiterInfo.photo) == 'string' && waiterInfo.name.trim() != ''){
 			waiterPanelObject.find('img.photo').attr('src', waiterInfo.photo);
+		}else{
+			waiterPanelObject.find('img.photo').attr('src', 'https://oss.littlehotspot.com/Html5/images/common/default_user_head_1.jpg');
 		}
 	}
 	var _defaultScore = 0;
