@@ -17,7 +17,7 @@ $(document).ready(function(e){
 			obj.attr("checked", true);
 		}
 	});
-	$("#console").hide().append("传入的参数：" + JSON.stringify(Page.URL.parameters));
+	$("#console").css('font-size','10px').hide().append("传入的参数：" + JSON.stringify(Page.URL.parameters));
 	$(".page-top > span").click(function(e){
 		Page.LaunchFile.SHOW_CONSOLE_CLICK_COUNT++;
 		if(Page.LaunchFile.SHOW_CONSOLE_CLICK_COUNT >= 30){
@@ -28,7 +28,13 @@ $(document).ready(function(e){
 		wx.miniProgram.getEnv(function(res) {
 			if(res.miniprogram) {
 				wx.miniProgram.navigateTo({
-					url: '/pages/forscreen/relief'
+					url: '/pages/forscreen/relief',
+					success: function(res){
+						$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] $(".page-top > a").click(); navigateTo("/pages/forscreen/relief")  Success：' + JSON.stringify(res));
+					},
+					fail: function(res){
+						$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] $(".page-top > a").click(); navigateTo("/pages/forscreen/relief")  Fail：' + JSON.stringify(res));
+					}
 				});
 			}
 		});
@@ -191,8 +197,8 @@ $(document).ready(function(e){
 	$(".page-main > .uploaded-files > .list-panel > .list > .file").click(function(e){
 		var forscreenId = $(this).attr("forscreen-id");
 		var isFresh = 2;
-		$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] $("#file_upload_status").change();  forscreenId：' + forscreenId);
-		$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] $("#file_upload_status").change();  isFresh：' + isFresh);
+		$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] $(".page-main > .uploaded-files > .list-panel > .list > .file").click();  forscreenId：' + forscreenId);
+		$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] $(".page-main > .uploaded-files > .list-panel > .list > .file").click();  isFresh：' + isFresh);
 		Page.LaunchFile.gotoPageForShowFile({
 			forscreenId: forscreenId,
 			isFresh: isFresh
@@ -328,7 +334,13 @@ $(document).ready(function(e){
 					}
 					$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile  小程序地址：' + miniProgrameURL);
 					wx.miniProgram.navigateTo({
-						url: miniProgrameURL
+						url: miniProgrameURL,
+						success: function(res){
+							$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile navigateTo("/pages/forscreen/relief")  Success：' + JSON.stringify(res));
+						},
+						fail: function(res){
+							$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile navigateTo("/pages/forscreen/relief")  Fail：' + JSON.stringify(res));
+						}
 					});
 					//Page.LaunchFile.Variable.uploadStusToOSS = [];
 				}
