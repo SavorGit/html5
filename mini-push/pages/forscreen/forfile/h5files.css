@@ -47,7 +47,7 @@ pre{margin: 0;}
 .d-title {background-color:#1CBFB6;background:linear-gradient(top,#edf5f8,#1CBFB6);background:-moz-linear-gradient(top,#edf5f8,#1CBFB6);background:-webkit-gradient(linear,0% 0%,0% 100%,from(#edf5f8),to(#1CBFB6));filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#edf5f8',endColorstr='#1CBFB6');}
 
 .upload-file>.page-main>.will-upload>.file{width:100%;height:calc(100% - 75px);}
-.upload-file>.page-main>.will-upload>.save-type{width:90px;height:30px;margin:-147px 0 117px calc(100% - 91px);border-left:1px solid #EDEDED;}
+.upload-file>.page-main>.will-upload>.save-type{width:90px;height:35px;margin:-147px 0 112px calc(100% - 91px);border-left:1px solid #EDEDED;}
 .upload-file>.page-main>.will-upload>.save-type>.input{}
 .upload-file>.page-main>.will-upload>.save-type>.label{font-size:12px;}
 .upload-file>.page-main>.will-upload>.btns{width:100%;height:75px;}
