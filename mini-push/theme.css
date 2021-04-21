@@ -25,7 +25,7 @@ button[disabled]{color:rgba(255,255,255,0.6) !important;background-color:rgba(0,
 .theme-wxAuthLogin-container{color:#333;background-color:#fff;}
 .theme-container{color:#666;background-color:#f5f6f8;}
 .theme-remote-control{color:#fff;background-color:#1cbeb6;}
-.theme-panel{color:#333;background-color:#fff;}
+.theme-panel,.theme-block{color:#333;background-color:#fff;}
 .theme-panel-dark{color:#fff;background-color:#333;}
 .theme-panel-pop-menu-dark{color:#fff;background-color:#666;}
 .theme-panel-2{color:#fff;background-color:#edf0f2;}

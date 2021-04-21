@@ -50,7 +50,6 @@ msg: "{"action": 3,"openid":"ofYZG4yZJHaV2h3lJHG5wOB9MzxE"}"
 http://dev-mobile.littlehotspot.com/h5/fileforscreen/launch_file.html?v=20190708002&box_mac=00226D655202&mobile_brand=devtools&mobile_model=iPhone%207%20Plus&openid=ofYZG4yZJHaV2h3lJHG5wOB9MzxE
 http://dev-mobile.littlehotspot.com/h5/fileforscreen/launch_file_1.html?box_mac=00226D655202&mobile_brand=devtools&mobile_model=iPhone%207%20Plus&openid=ofYZG4yZJHaV2h3lJHG5wOB9MzxE
 https://mobile.littlehotspot.com/h5/fileforscreen?windowHeight=568&statusBarHeight=20&box_mac=00226D583D92&mobile_brand=devtools&mobile_model=iPhone%205&openid=ofYZG44sQn6ACudnn0YtQUYsCPrw&is_open_simple=undefined
-file:///E:/WorkSpace/Company/Savor/Git/H5/html5/mini-push/pages/forscreen/forfile/h5files.html?windowHeight=568&statusBarHeight=20&box_mac=00226D583D92&mobile_brand=devtools&mobile_model=iPhone%205&openid=ofYZG44sQn6ACudnn0YtQUYsCPrw&is_open_simple=undefined
 
 
 

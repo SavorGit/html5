@@ -16,6 +16,9 @@ button::before,button::after{background-color:unset;}
 .display_show{display:block;}
 .button_none,.button_none::before,.button_none::after{margin:inherit;border:inherit;padding:inherit;border-radius:inherit;background:inherit;font-size:inherit;color:inherit;}
 .one-line-overflow{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.two-line-overflow{overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+.three-line-overflow{overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;}
+.four-line-overflow{overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;}
 .container{width:100vw;height:100vh;}
 .full_width{width:100%;}
 .full_height{height:100%;}
