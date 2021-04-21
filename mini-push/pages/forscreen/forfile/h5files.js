@@ -11,12 +11,6 @@
  * Date of last commit:$Date$<br>
  */
 $(document).ready(function(e){
-	$('[name="saveType"]').each(function(index, e){
-		var obj = $(e).removeAttr("checked");
-		if(index < 1){
-			obj.attr("checked", true);
-		}
-	});
 	$("#console").css('font-size','10px').hide().append("传入的参数：" + JSON.stringify(Page.URL.parameters));
 	$(".page-top>span").click(function(e){
 		Page.LaunchFile.SHOW_CONSOLE_CLICK_COUNT++;
@@ -55,6 +49,10 @@ $(document).ready(function(e){
 		var fileSize = $("#oss_file_size").val();
 		var saveType = $('[name="saveType"]:checked').val();
 		var isFresh = 1;
+		saveType = typeof(saveType) == 'string' ? parseInt(saveType) : saveType;
+		if(typeof(saveType) != 'number'){
+			saveType = 1;
+		}
 		Page.LaunchFile.Variable.uploadStusToOSS.push({
 			openId: Page.URL.parameters.openid,
 			boxMac: Page.URL.parameters.box_mac,
@@ -95,15 +93,6 @@ $(document).ready(function(e){
 		while(uploader.files.length > 0){
 			uploader.files.shift();
 		}
-		$('[name="saveType"]').each(function(index, e){
-			var obj = $(e).removeAttr("checked");
-			if(index < 1){
-				obj.attr("checked", true);
-			}
-		});
-		$("#selectfiles").html('<div>+</div>');
-		$("#ossfile").html("");
-		$(".page-main > .will-upload-file > .file-panel > .file > .name").show();
 		$("html").hideLoading();
 	});
 	$("#postfiles").click(function(e){
@@ -113,10 +102,10 @@ $(document).ready(function(e){
 		Page.LaunchFile.Variable.uploadStartTimeToOSS = new Date().getTime();
 	});
 	$(".page-main>.used-recently>.list>.item>.relaunch").click(function(e){
-		var forscreenId = $(this).attr("forscreen-id");
+		var forscreenId = $(this).prev('.file').attr("forscreen-id");
 		var isFresh = 2;
-		$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] $(".page-main > .uploaded-files > .list-panel > .list > .file").click();  forscreenId：' + forscreenId);
-		$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] $(".page-main > .uploaded-files > .list-panel > .list > .file").click();  isFresh：' + isFresh);
+		$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] $(".page-main>.used-recently>.list>.item>.relaunch").click();  forscreenId：' + forscreenId);
+		$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] $(".page-main>.used-recently>.list>.item>.relaunch").click();  isFresh：' + isFresh);
 		Page.LaunchFile.gotoPageForShowFile({
 			forscreenId: forscreenId,
 			isFresh: isFresh
@@ -233,6 +222,7 @@ $(document).ready(function(e){
 			}else if(/^pdf$/i.test(fileSuffix)){
 				return 'https://oss.littlehotspot.com/Html5/images/mini-push/pages/forscreen/forfile/pdf.png';
 			}
+			return 'https://oss.littlehotspot.com/Html5/images/mini-push/pages/forscreen/forfile/folder.png';
 		},
 		Logger: {
 			retryMillisecond: 10000,
