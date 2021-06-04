@@ -10,6 +10,7 @@
  * Author of last commit:$Author$<br>
  * Date of last commit:$Date$<br>
  */
+"use strict";
 $(document).ready(function(e){
 	$('[name="saveType"]').each(function(index, e){
 		var obj = $(e).removeAttr("checked");

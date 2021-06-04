@@ -10,8 +10,9 @@
  * Author of last commit:$Author$<br>
  * Date of last commit:$Date$<br>
  */
-(function(win, $){
-	$.FileUtils = {
+"use strict";
+(function(win, jQuery){
+	jQuery.FileUtils = {
 		getSmpleFileName: function (fullFileName){
 			if(typeof(fullFileName) != 'string'){
 				art.dialog({
@@ -45,7 +46,7 @@
 			return suffix;
 		}
 	};
-	$.HttpUtils = {
+	jQuery.HttpUtils = {
 		Response: {
 			getData: function(responseObject){
 				if(typeof(responseObject) != 'object'){
@@ -73,7 +74,7 @@
 		launchToBox: function(data){
 			//var boxMac = "00226D583D92";
 			//var sendMessage = '{"action": 7,"resource_type":1, "url": "forscreen/resource/1562297113131_pdf/1.png", "filename":"resource_1562297113131_pdf_1.png","openid":"ofYZG4yZJHaV2h3lJHG5wOB9MzxE","avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqVAgUWGzZ1psIMFYQDug7hYicc7kfXlRqO0cezj7OURvRbOWQFsIPyIMmRPFoKzCD5uh9xRkf8aRA/132","nickName":"笨熊?","forscreen_id":"1142709"}'
-			$.ajax({
+			jQuery.ajax({
 				url: SavorClient.setting.nettyPushURL,
 				type: "POST",
 				cache: false,
@@ -85,7 +86,7 @@
 				dataType: "JSONP",
 				jsonpCallback: "h5turbine",
 				complete: function (XMLHttpRequest, textStatus) {
-					$("html").hideLoading();
+					jQuery("html").hideLoading();
 				},
 				success: function (data, textStatus) {
 					console.log(data, textStatus);
@@ -96,7 +97,7 @@
 			});
 		}
 	};
-	var page = win.Page;
+	var page = win.H5Page;
 	if(typeof(page) != 'object'){
 		page = {};
 	}
@@ -104,38 +105,38 @@
 		page.URL = {};
 	}
 	if(typeof(page.URL.parameters) != 'object'){
-		page.URL.parameters= $.URL.parametersForGet();
+		page.URL.parameters= jQuery.URL.parametersForGet();
 	}
-	win.Page = page;
+	win.H5Page = page;
 })(window, jQuery);
 
-$(document).ready(function(e){
-	if(typeof(Page.URL.parameters.box_mac) != 'string'){
-		var exceptionMessage = "哟，连上了火星电视！！！ '" + Page.URL.parameters.box_mac + "'";
+jQuery(document).ready(function(e){
+	if(typeof(H5Page.URL.parameters.box_mac) != 'string'){
+		var exceptionMessage = "哟，连上了火星电视！！！ '" + H5Page.URL.parameters.box_mac + "'";
 		art.dialog({
 			title: '错误',
 			content: '<span>' + exceptionMessage + '<span>'
 		}).lock();
 		throw exceptionMessage;
 	}
-	if(typeof(Page.URL.parameters.mobile_brand) != 'string'){
-		var exceptionMessage = "唉？这台设备是外星品牌？ '" + Page.URL.parameters.mobile_brand + "'";
+	if(typeof(H5Page.URL.parameters.mobile_brand) != 'string'){
+		var exceptionMessage = "唉？这台设备是外星品牌？ '" + H5Page.URL.parameters.mobile_brand + "'";
 		art.dialog({
 			title: '错误',
 			content: '<span>' + exceptionMessage + '<span>'
 		}).lock();
 		throw exceptionMessage;
 	}
-	if(typeof(Page.URL.parameters.mobile_model) != 'string'){
-		var exceptionMessage = "啊！这台设备是外星型号！ '" + Page.URL.parameters.mobile_model + "'";
+	if(typeof(H5Page.URL.parameters.mobile_model) != 'string'){
+		var exceptionMessage = "啊！这台设备是外星型号！ '" + H5Page.URL.parameters.mobile_model + "'";
 		art.dialog({
 			title: '错误',
 			content: '<span>' + exceptionMessage + '<span>'
 		}).lock();
 		throw exceptionMessage;
 	}
-	if(typeof(Page.URL.parameters.openid) != 'string'){
-		var exceptionMessage = "哇！外星人来啦~~ '" + Page.URL.parameters.openid + "'";
+	if(typeof(H5Page.URL.parameters.openid) != 'string'){
+		var exceptionMessage = "哇！外星人来啦~~ '" + H5Page.URL.parameters.openid + "'";
 		art.dialog({
 			title: '错误',
 			content: '<span>' + exceptionMessage + '<span>'
@@ -143,18 +144,18 @@ $(document).ready(function(e){
 		throw exceptionMessage;
 	}
 	var windowHeight = 0, statusBarHeight = 0;
-	if(typeof(Page.URL.parameters.windowHeight) == "string"){
+	if(typeof(H5Page.URL.parameters.windowHeight) == "string"){
 		try{
-			windowHeight = Page.URL.parameters.windowHeight.toInt();
+			windowHeight = H5Page.URL.parameters.windowHeight.toInt();
 		}catch(err){
 			windowHeight = -1;
 		}
 	}else{
 		windowHeight = -2;
 	}
-	if(typeof(Page.URL.parameters.statusBarHeight) == "string"){
+	if(typeof(H5Page.URL.parameters.statusBarHeight) == "string"){
 		try{
-			statusBarHeight = Page.URL.parameters.statusBarHeight.toInt();
+			statusBarHeight = H5Page.URL.parameters.statusBarHeight.toInt();
 		}catch(err){
 			statusBarHeight = -1;
 		}
@@ -162,6 +163,6 @@ $(document).ready(function(e){
 		statusBarHeight = -2;
 	}
 	if(windowHeight > 0 && statusBarHeight > 0 && windowHeight > statusBarHeight){
-		$("body>.page.container").height(windowHeight - statusBarHeight - 47);
+		jQuery("body>.page.container").height(windowHeight - statusBarHeight - 47);
 	}
 });

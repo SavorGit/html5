@@ -10,52 +10,53 @@
  * Author of last commit:$Author$<br>
  * Date of last commit:$Date$<br>
  */
-$(document).ready(function(e){
-	$("#console").css('font-size','10px').hide().append("传入的参数：" + JSON.stringify(Page.URL.parameters));
-	$(".page-top>span").click(function(e){
-		Page.LaunchFile.SHOW_CONSOLE_CLICK_COUNT++;
-		if(Page.LaunchFile.SHOW_CONSOLE_CLICK_COUNT >= 30){
-			$("#console").show();
+"use strict";
+jQuery(document).ready(function(e){
+	jQuery("#console").css('font-size','10px').hide().append("传入的参数：" + JSON.stringify(H5Page.URL.parameters));
+	jQuery(".page-top>span").click(function(e){
+		H5Page.LaunchFile.SHOW_CONSOLE_CLICK_COUNT++;
+		if(H5Page.LaunchFile.SHOW_CONSOLE_CLICK_COUNT >= 30){
+			jQuery("#console").show();
 		}
 	});
-	$(".page-top>a").click(function(e){
+	jQuery(".page-top>a").click(function(e){
 		wx.miniProgram.getEnv(function(res) {
 			if(res.miniprogram) {
 				wx.miniProgram.navigateTo({
 					url: '/pages/forscreen/relief',
 					success: function(res){
-						$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] $(".page-top > a").click(); navigateTo("/pages/forscreen/relief")  Success：' + JSON.stringify(res));
+						jQuery("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] jQuery(".page-top > a").click(); navigateTo("/pages/forscreen/relief")  Success：' + JSON.stringify(res));
 					},
 					fail: function(res){
-						$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] $(".page-top > a").click(); navigateTo("/pages/forscreen/relief")  Fail：' + JSON.stringify(res));
+						jQuery("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] jQuery(".page-top > a").click(); navigateTo("/pages/forscreen/relief")  Fail：' + JSON.stringify(res));
 					}
 				});
 			}
 		});
 	});
-	$("#file_name").change(function(e){
-		var fullFileName = $(this).val();
-		$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] $("#file_name").change();  要上传的文件名：' + fullFileName);
-		$('.page.upload-file>.page-main>.panel.will-upload>.file>.pic').attr('src',Page.LaunchFile.getFileIcon(fullFileName));
-		$('.page.upload-file>.page-main>.panel.will-upload>.file>.name').text($('#ossfile').text());
-		$('.page.choose-file').hide();
-		$('.page.upload-file').show();
+	jQuery("#file_name").change(function(e){
+		var fullFileName = jQuery(this).val();
+		jQuery("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] jQuery("#file_name").change();  要上传的文件名：' + fullFileName);
+		jQuery('.page.upload-file>.page-main>.panel.will-upload>.file>.pic').attr('src',H5Page.LaunchFile.getFileIcon(fullFileName));
+		jQuery('.page.upload-file>.page-main>.panel.will-upload>.file>.name').text(jQuery('#ossfile').text());
+		jQuery('.page.choose-file').hide();
+		jQuery('.page.upload-file').show();
 	});
-	$("#file_upload_status").change(function(e){
-		Page.LaunchFile.Variable.uploadEndTimeToOSS = new Date().getTime();
-		var fileUploadStatus = $(this).val();
-		var ossKey = $("#oss_key").val();
-		var fileName = $("#file_name").val();
-		var fileSize = $("#oss_file_size").val();
-		var saveType = $('[name="saveType"]:checked').val();
+	jQuery("#file_upload_status").change(function(e){
+		H5Page.LaunchFile.Variable.uploadEndTimeToOSS = new Date().getTime();
+		var fileUploadStatus = jQuery(this).val();
+		var ossKey = jQuery("#oss_key").val();
+		var fileName = jQuery("#file_name").val();
+		var fileSize = jQuery("#oss_file_size").val();
+		var saveType = jQuery('[name="saveType"]:checked').val();
 		var isFresh = 1;
 		saveType = typeof(saveType) == 'string' ? parseInt(saveType) : saveType;
 		if(typeof(saveType) != 'number'){
 			saveType = 1;
 		}
-		Page.LaunchFile.Variable.uploadStusToOSS.push({
-			openId: Page.URL.parameters.openid,
-			boxMac: Page.URL.parameters.box_mac,
+		H5Page.LaunchFile.Variable.uploadStusToOSS.push({
+			openId: H5Page.URL.parameters.openid,
+			boxMac: H5Page.URL.parameters.box_mac,
 			ossKey: ossKey,
 			upStatus: fileUploadStatus,
 			fileName: fileName,
@@ -63,20 +64,20 @@ $(document).ready(function(e){
 			saveType: saveType,
 			isFresh: isFresh
 		});
-		$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] $("#file_upload_status").change();  文件上传OSS的状态：' + fileUploadStatus);
-		$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] $("#file_upload_status").change();  文件上传OSS的键：' + ossKey);
-		$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] $("#file_upload_status").change();  文件名：' + fileName);
-		$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] $("#file_upload_status").change();  文件大小：' + fileSize);
-		$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] $("#file_upload_status").change();  开始上传时间：' + Page.LaunchFile.Variable.uploadStartTimeToOSS);
-		$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] $("#file_upload_status").change();  结束上传时间：' + Page.LaunchFile.Variable.uploadEndTimeToOSS);
-		$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] $("#file_upload_status").change();  文件保存类型：' + saveType);
-		$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] $("#file_upload_status").change();  isFresh：' + isFresh);
+		jQuery("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] jQuery("#file_upload_status").change();  文件上传OSS的状态：' + fileUploadStatus);
+		jQuery("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] jQuery("#file_upload_status").change();  文件上传OSS的键：' + ossKey);
+		jQuery("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] jQuery("#file_upload_status").change();  文件名：' + fileName);
+		jQuery("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] jQuery("#file_upload_status").change();  文件大小：' + fileSize);
+		jQuery("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] jQuery("#file_upload_status").change();  开始上传时间：' + H5Page.LaunchFile.Variable.uploadStartTimeToOSS);
+		jQuery("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] jQuery("#file_upload_status").change();  结束上传时间：' + H5Page.LaunchFile.Variable.uploadEndTimeToOSS);
+		jQuery("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] jQuery("#file_upload_status").change();  文件保存类型：' + saveType);
+		jQuery("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] jQuery("#file_upload_status").change();  isFresh：' + isFresh);
 		if(fileUploadStatus == "200"){
-			Page.LaunchFile.gotoPageForShowFile({
+			H5Page.LaunchFile.gotoPageForShowFile({
 				name: fileName,
 				size: fileSize,
-				upStartTime: Page.LaunchFile.Variable.uploadStartTimeToOSS,
-				upEndTime: Page.LaunchFile.Variable.uploadEndTimeToOSS,
+				upStartTime: H5Page.LaunchFile.Variable.uploadStartTimeToOSS,
+				upEndTime: H5Page.LaunchFile.Variable.uploadEndTimeToOSS,
 				ossKey: ossKey,
 				saveType: saveType,
 				isFresh: isFresh
@@ -87,35 +88,35 @@ $(document).ready(function(e){
 		var blob = new Blob([content], {type: "text/plain;charset=utf-8"});
 		saveAs(blob, "savor_file.txt");//saveAs(blob,filename)
 		*/
-		Page.LaunchFile.Logger.statusForUploadOSS({
+		H5Page.LaunchFile.Logger.statusForUploadOSS({
 			url: "https://mobile.littlehotspot.com/h5/fileforscreen/addlog"
 		});
 		while(uploader.files.length > 0){
 			uploader.files.shift();
 		}
-		$("html").hideLoading();
+		jQuery("html").hideLoading();
 	});
-	$("#postfiles").click(function(e){
-		$(this).attr("disabled", "disabled");
-		$("html").showLoading();
-		$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] $("#postfiles").click();  文件上传OSS');
-		Page.LaunchFile.Variable.uploadStartTimeToOSS = new Date().getTime();
+	jQuery("#postfiles").click(function(e){
+		jQuery(this).attr("disabled", "disabled");
+		jQuery("html").showLoading();
+		jQuery("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] jQuery("#postfiles").click();  文件上传OSS');
+		H5Page.LaunchFile.Variable.uploadStartTimeToOSS = new Date().getTime();
 	});
-	$(".page-main>.used-recently>.list>.item>.relaunch").click(function(e){
-		var forscreenId = $(this).prev('.file').attr("forscreen-id");
+	jQuery(".page-main>.used-recently>.list>.item>.relaunch").click(function(e){
+		var forscreenId = jQuery(this).prev('.file').attr("forscreen-id");
 		var isFresh = 2;
-		$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] $(".page-main>.used-recently>.list>.item>.relaunch").click();  forscreenId：' + forscreenId);
-		$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] $(".page-main>.used-recently>.list>.item>.relaunch").click();  isFresh：' + isFresh);
-		Page.LaunchFile.gotoPageForShowFile({
+		jQuery("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] jQuery(".page-main>.used-recently>.list>.item>.relaunch").click();  forscreenId：' + forscreenId);
+		jQuery("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] jQuery(".page-main>.used-recently>.list>.item>.relaunch").click();  isFresh：' + isFresh);
+		H5Page.LaunchFile.gotoPageForShowFile({
 			forscreenId: forscreenId,
 			isFresh: isFresh
 		});
 	});
-	$('.page.upload-file').hide();
+	jQuery('.page.upload-file').hide();
 });
 
-(function(win, $){
-	var page = win.Page;
+(function(win, jQuery){
+	var page = win.H5Page;
 	if(typeof(page) != 'object'){
 		page = {};
 	}
@@ -129,63 +130,63 @@ $(document).ready(function(e){
 			uploadEndTimeToOSS: 0
 		},
 		gotoPageForShowFile: function(fileObj){
-			console.log("gotoPageForShowFile", fileObj, Page.URL.parameters);
-			$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile  OpenId：' + Page.URL.parameters.openid);
-			$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile  机顶盒MAC：' + Page.URL.parameters.box_mac);
-			$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile  是否打开极简版：' + Page.URL.parameters.is_open_simple);
+			console.log("gotoPageForShowFile", fileObj, H5Page.URL.parameters);
+			jQuery("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile  OpenId：' + H5Page.URL.parameters.openid);
+			jQuery("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile  机顶盒MAC：' + H5Page.URL.parameters.box_mac);
+			jQuery("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile  是否打开极简版：' + H5Page.URL.parameters.is_open_simple);
 			wx.miniProgram.getEnv(function(res) {
 				if(res.miniprogram) {
 					var miniProgrameURL = '';
 					switch(fileObj.isFresh){
 						case 1: 
-							$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile  保存类型：' + fileObj.saveType);
+							jQuery("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile  保存类型：' + fileObj.saveType);
 							wx.miniProgram.postMessage({
 								data: {
-									openid: Page.URL.parameters.openid,
-									box_mac: Page.URL.parameters.box_mac,
+									openid: H5Page.URL.parameters.openid,
+									box_mac: H5Page.URL.parameters.box_mac,
 									oss_addr: fileObj.ossKey,
 									file_name: fileObj.name,
 									file_size: fileObj.size,
 									res_sup_time: fileObj.upStartTime,
 									res_eup_time: fileObj.upEndTime,
-									is_open_simple: Page.URL.parameters.is_open_simple,
+									is_open_simple: H5Page.URL.parameters.is_open_simple,
 									save_type: fileObj.saveType,
 									is_fresh: fileObj.isFresh,
-									pushStatusForOSS: Page.LaunchFile.Variable.uploadStusToOSS
+									pushStatusForOSS: H5Page.LaunchFile.Variable.uploadStusToOSS
 								}
 							});
-							$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile  postMessage ' + fileObj.isFresh);
-							var miniProgrameURL = '/pages/forscreen/forfile/h5files_result?openid=' + Page.URL.parameters.openid
-									+ '&box_mac=' + Page.URL.parameters.box_mac
+							jQuery("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile  postMessage ' + fileObj.isFresh);
+							var miniProgrameURL = '/pages/forscreen/forfile/h5files_result?openid=' + H5Page.URL.parameters.openid
+									+ '&box_mac=' + H5Page.URL.parameters.box_mac
 									+ '&oss_addr=' + fileObj.ossKey
 									+ '&file_name=' + fileObj.name
 									+ '&file_size=' + fileObj.size
 									+ '&res_sup_time=' + fileObj.upStartTime
 									+ '&res_eup_time=' + fileObj.upEndTime
-									+ '&is_open_simple=' + Page.URL.parameters.is_open_simple
+									+ '&is_open_simple=' + H5Page.URL.parameters.is_open_simple
 									+ '&save_type=' + fileObj.saveType
 									+ '&is_fresh=' + fileObj.isFresh;
-							$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile  isFresh：' + fileObj.isFresh);
+							jQuery("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile  isFresh：' + fileObj.isFresh);
 							break;
 						case 2: 
-							$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile  forscreen_id：' + fileObj.forscreenId);
+							jQuery("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile  forscreen_id：' + fileObj.forscreenId);
 							wx.miniProgram.postMessage({
 								data: {
-									openid: Page.URL.parameters.openid,
-									box_mac: Page.URL.parameters.box_mac,
-									is_open_simple: Page.URL.parameters.is_open_simple,
+									openid: H5Page.URL.parameters.openid,
+									box_mac: H5Page.URL.parameters.box_mac,
+									is_open_simple: H5Page.URL.parameters.is_open_simple,
 									forscreen_id: fileObj.forscreenId,
 									is_fresh: fileObj.isFresh,
-									pushStatusForOSS: Page.LaunchFile.Variable.uploadStusToOSS
+									pushStatusForOSS: H5Page.LaunchFile.Variable.uploadStusToOSS
 								}
 							});
-							$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile  postMessage ' + fileObj.isFresh);
-							var miniProgrameURL = '/pages/forscreen/forfile/h5files_result?openid=' + Page.URL.parameters.openid
-									+ '&box_mac=' + Page.URL.parameters.box_mac
-									+ '&is_open_simple=' + Page.URL.parameters.is_open_simple
+							jQuery("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile  postMessage ' + fileObj.isFresh);
+							var miniProgrameURL = '/pages/forscreen/forfile/h5files_result?openid=' + H5Page.URL.parameters.openid
+									+ '&box_mac=' + H5Page.URL.parameters.box_mac
+									+ '&is_open_simple=' + H5Page.URL.parameters.is_open_simple
 									+ '&forscreen_id=' + fileObj.forscreenId
 									+ '&is_fresh=' + fileObj.isFresh;
-							$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile  isFresh：' + fileObj.isFresh);
+							jQuery("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile  isFresh：' + fileObj.isFresh);
 							break;
 						default: 
 							art.dialog({
@@ -194,26 +195,26 @@ $(document).ready(function(e){
 							}).lock();
 							return;
 					}
-					$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile  小程序地址：' + miniProgrameURL);
+					jQuery("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile  小程序地址：' + miniProgrameURL);
 					wx.miniProgram.navigateTo({
 						url: miniProgrameURL,
 						success: function(res){
-							$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile navigateTo("/pages/forscreen/relief")  Success：' + JSON.stringify(res));
+							jQuery("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile navigateTo("/pages/forscreen/relief")  Success：' + JSON.stringify(res));
 						},
 						fail: function(res){
-							$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile navigateTo("/pages/forscreen/relief")  Fail：' + JSON.stringify(res));
+							jQuery("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile navigateTo("/pages/forscreen/relief")  Fail：' + JSON.stringify(res));
 						}
 					});
 				}
 			});
 		},
 		getFileIcon: function(filename){
-			var fileSuffix = $.FileUtils.getSuffix(filename);
-			if(/^docx?$/i.test(fileSuffix)){
+			var fileSuffix = jQuery.FileUtils.getSuffix(filename);
+			if(/^docx?jQuery/i.test(fileSuffix)){
 				return 'https://oss.littlehotspot.com/Html5/images/mini-push/pages/forscreen/forfile/doc.png';
-			}else if(/^xlsx?$/i.test(fileSuffix)){
+			}else if(/^xlsx?jQuery/i.test(fileSuffix)){
 				return 'https://oss.littlehotspot.com/Html5/images/mini-push/pages/forscreen/forfile/excel.png';
-			}else if(/^pptx?$/i.test(fileSuffix)){
+			}else if(/^pptx?jQuery/i.test(fileSuffix)){
 				return 'https://oss.littlehotspot.com/Html5/images/mini-push/pages/forscreen/forfile/ppt.png';
 			}else if(/^rtf$/i.test(fileSuffix)){
 				return 'https://oss.littlehotspot.com/Html5/images/mini-push/pages/forscreen/forfile/rtf.png';
@@ -228,9 +229,9 @@ $(document).ready(function(e){
 			retryMillisecond: 10000,
 			statusForUploadOSSTimer: null,
 			statusForUploadOSS: function(options){
-				$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] statusForUploadOSS  发送埋点日志：' + JSON.stringify(options));
-				clearTimeout(Page.LaunchFile.Logger.statusForUploadOSSTimer);
-				$.ajax({
+				jQuery("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] statusForUploadOSS  发送埋点日志：' + JSON.stringify(options));
+				clearTimeout(H5Page.LaunchFile.Logger.statusForUploadOSSTimer);
+				jQuery.ajax({
 					url: options.url,
 					type: options.method ? options.method : "POST",
 					cache: false,
@@ -239,32 +240,32 @@ $(document).ready(function(e){
 					dataType: "JSONP",
 					jsonpCallback: "h5turbine",
 					complete: function (XMLHttpRequest, textStatus) {
-						//$("html").hideLoading();
+						//jQuery("html").hideLoading();
 					},
 					success: function (data, textStatus) {
 						console.log(new Date().getTime(), data, textStatus);
-						$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] statusForUploadOSS  发送埋点日志[成功]：' + JSON.stringify(options) + '\t' + JSON.stringify(data));
+						jQuery("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] statusForUploadOSS  发送埋点日志[成功]：' + JSON.stringify(options) + '\t' + JSON.stringify(data));
 						if(typeof(data) != 'object'){
-							Page.LaunchFile.Logger.statusForUploadOSSTimer = setTimeout(function(){
-								Page.LaunchFile.Logger.statusForUploadOSS(options)
-							}, Page.LaunchFile.Logger.retryMillisecond);
+							H5Page.LaunchFile.Logger.statusForUploadOSSTimer = setTimeout(function(){
+								H5Page.LaunchFile.Logger.statusForUploadOSS(options)
+							}, H5Page.LaunchFile.Logger.retryMillisecond);
 						}
 						if(data.code != 10000){
-							Page.LaunchFile.Logger.statusForUploadOSSTimer = setTimeout(function(){
-								Page.LaunchFile.Logger.statusForUploadOSS(options)
-							}, Page.LaunchFile.Logger.retryMillisecond);
+							H5Page.LaunchFile.Logger.statusForUploadOSSTimer = setTimeout(function(){
+								H5Page.LaunchFile.Logger.statusForUploadOSS(options)
+							}, H5Page.LaunchFile.Logger.retryMillisecond);
 						}
 					},
 					error: function (XMLHttpRequest, textStatus, errorThrown) {
 						console.log(new Date().getTime(), XMLHttpRequest, textStatus, errorThrown);
-						$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] statusForUploadOSS  发送埋点日志[失败]：' + JSON.stringify(options));
-						Page.LaunchFile.Logger.statusForUploadOSSTimer = setTimeout(function(){
-							Page.LaunchFile.Logger.statusForUploadOSS(options)
-						}, Page.LaunchFile.Logger.retryMillisecond);
+						jQuery("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] statusForUploadOSS  发送埋点日志[失败]：' + JSON.stringify(options));
+						H5Page.LaunchFile.Logger.statusForUploadOSSTimer = setTimeout(function(){
+							H5Page.LaunchFile.Logger.statusForUploadOSS(options)
+						}, H5Page.LaunchFile.Logger.retryMillisecond);
 					}
 				});
 			}
 		}
 	};
-	win.Page = page;
+	win.H5Page = page;
 })(window, jQuery);

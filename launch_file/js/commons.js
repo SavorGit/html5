@@ -10,6 +10,7 @@
  * Author of last commit:$Author$<br>
  * Date of last commit:$Date$<br>
  */
+"use strict";
 (function(win, $){
 	$.FileUtils = {
 		getSmpleFileName: function (fullFileName){
