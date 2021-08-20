@@ -28,13 +28,13 @@ $(document).ready(function(e){
 	$(".page-top > a").click(function(e){
 		wx.miniProgram.getEnv(function(res) {
 			if(res.miniprogram) {
-				wx.miniProgram.navigateTo({
+				wx.miniProgram.redirectTo({
 					url: '/pages/forscreen/relief',
 					success: function(res){
-						$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] $(".page-top > a").click(); navigateTo("/pages/forscreen/relief")  Success：' + JSON.stringify(res));
+						$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] $(".page-top > a").click(); redirectTo("/pages/forscreen/relief")  Success：' + JSON.stringify(res));
 					},
 					fail: function(res){
-						$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] $(".page-top > a").click(); navigateTo("/pages/forscreen/relief")  Fail：' + JSON.stringify(res));
+						$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] $(".page-top > a").click(); redirectTo("/pages/forscreen/relief")  Fail：' + JSON.stringify(res));
 					}
 				});
 			}
@@ -334,13 +334,13 @@ $(document).ready(function(e){
 							return;
 					}
 					$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile  小程序地址：' + miniProgrameURL);
-					wx.miniProgram.navigateTo({
+					wx.miniProgram.redirectTo({
 						url: miniProgrameURL,
 						success: function(res){
-							$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile navigateTo("/pages/forscreen/relief")  Success：' + JSON.stringify(res));
+							$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile redirectTo("/pages/forscreen/relief")  Success：' + JSON.stringify(res));
 						},
 						fail: function(res){
-							$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile navigateTo("/pages/forscreen/relief")  Fail：' + JSON.stringify(res));
+							$("#console").append('\n[' + new Date().format("yyyy-MM-dd hh:mm:ss.S") + '] gotoPageForShowFile redirectTo("/pages/forscreen/relief")  Fail：' + JSON.stringify(res));
 						}
 					});
 					//Page.LaunchFile.Variable.uploadStusToOSS = [];

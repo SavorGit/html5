@@ -1,5 +1,4 @@
 /**
- *
  * <h1>文件投屏[共用] - JS</h1>
  *
  * @author <a href="http://www.lizhaoweb.cn">李召(John.Lee)</a>
@@ -10,7 +9,7 @@
  * Author of last commit:$Author$<br>
  * Date of last commit:$Date$<br>
  */
-"use strict";
+;"use strict";
 (function(win, jQuery){
 	jQuery.FileUtils = {
 		getSmpleFileName: function (fullFileName){
@@ -69,7 +68,7 @@
 	};
 	win.SavorClient = {
 		setting: {
-			nettyPushURL: 'https://mobile.littlehotspot.com/Netty/Index/index'
+			nettyPushURL: WXMiniProgramApp.miniPush.http.apiRootUrl + '/Netty/Index/index' //'https://mobile.littlehotspot.com/Netty/Index/index'
 		},
 		launchToBox: function(data){
 			//var boxMac = "00226D583D92";

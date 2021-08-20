@@ -1,0 +1,10 @@
+接口地址：https://mobile.littlehotspot.com/smallapp46/datalog/recordlog
+请求参数：
+openid 用户openid
+type  类型 固定参数值为 7
+action_type 操作动作 1文件选择 2文件选择成功 3文件点击投屏 4文件上传成功
+
+
+
+select * from savor_smallapp_datalog where type=7 order by id desc
+
