@@ -1,0 +1,12 @@
+/**数钱主体样式**/
+.shuqian-mainbox{width:100%;height:100%;margin:0 auto;padding:0;overflow:hidden;}
+.shu-rank-list {position:absolute;bottom:70px;left:40px;width:calc(100% - 80px);text-align:center;}
+.shu-rank-item {width:9%;position:relative;display:inline-block;}
+.shu-rank-item-head {background-image:url("../../images/screen/shuqian/hmoney.png");background-size:100% 100%;background-repeat:no-repeat;height:14px;}
+.shu-rank-item-body {background-image:url("../../images/screen/shuqian/bmoney.png");background-size:100% 100%;background-repeat:no-repeat;}
+.shu-rank-item-footer {background-image:url("../../images/screen/shuqian/fmoney.png");background-size:100% 100%;background-repeat:no-repeat;height:12px;width:100%;}
+.shu-rank-list>div:last-child {margin-right:0;}
+.shu-rank-item-info {text-align:center;font-size:20px;overflow:hidden;position:absolute;top:-170px;width:100%;left:0px;}
+.shu-rank-item-info img {width:70px;height:70px;border-radius:50%;border:3px solid #FDBE23;}
+.shu-rank-item-info .shu-rank-item-name {display:block;color:#FFFFFF;white-space:nowrap;line-height:200%;}
+.shu-rank-item-info .shu-rank-item-score {display:block;color:#FFD24C;margin-bottom:20px;white-space:nowrap;}

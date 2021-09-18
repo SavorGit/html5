@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <meta charset="UTF-8">
+    <title>疯狂数钱</title>
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+		<meta content="yes" name="apple-mobile-web-app-capable"/>
+		<meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+		<meta content="telephone=no" name="format-detection"/>
+		<link rel="shortcut icon" href="template/resource/images/favicon.ico" />
+		<link rel="stylesheet" href="template/resource/js/ydui/css/ydui.css"/>
+		<link rel="stylesheet" href="template/resource/css/zam-icon.css" media="all" />
+		<link rel="stylesheet" href="template/resource/css/mxc-icon.css" media="all" />
+		<link rel="stylesheet" href="template/resource/css/wechat/style.css" />
+		<link rel="stylesheet" href="template/resource/css/animate.css"/>
+		<script src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+		<script type="text/javascript">
+			window.sysinfo = window.sysinfo || {"uniacid":2,"acid":"2","siteroot":"https:\/\/www.shulehudong.com\/","siteurl":"https:\/\/www.shulehudong.com\/app\/index.php?i=2&c=entry&m=meepo_xianchangv2&do=mobile&r=wechat.shuqian&hdid=wna2j8al71k5s2mn&hdhash=0852406886","attachurl":"https:\/\/shulehudong.oss-cn-hangzhou.aliyuncs.com\/","cookie":{"pre":"0a52_"},"openid":"o3IQEuDpFYv3RNem2P0JJ_9u0Tjc","MODULE_URL":"https:\/\/www.shulehudong.com\/addons\/meepo_xianchangv2\/"} || {};
+			
+			// jssdk config 对象
+			jssdkconfig = {"appId":"wx55f00d01c231b956","nonceStr":"S9TfO9qhZv0pzQA7","timestamp":"1631674242","signature":"f0eab2b36fceedb1910e08447714165906e2ac4d"} || {};
+			
+			// 是否启用调试
+			jssdkconfig.debug = false;
+			
+			jssdkconfig.jsApiList = [
+				'checkJsApi',
+				'onMenuShareTimeline',
+				'onMenuShareAppMessage',
+				'onMenuShareQQ',
+				'onMenuShareWeibo',
+				'hideMenuItems',
+				'showMenuItems',
+				'hideAllNonBaseMenuItem',
+				'showAllNonBaseMenuItem',
+				'translateVoice',
+				'startRecord',
+				'stopRecord',
+				'onRecordEnd',
+				'playVoice',
+				'pauseVoice',
+				'stopVoice',
+				'uploadVoice',
+				'downloadVoice',
+				'chooseImage',
+				'previewImage',
+				'uploadImage',
+				'downloadImage',
+				'getNetworkType',
+				'openLocation',
+				'getLocation',
+				'hideOptionMenu',
+				'showOptionMenu',
+				'closeWindow',
+				'scanQRCode',
+				'chooseWXPay',
+				'openProductSpecificView',
+				'addCard',
+				'chooseCard',
+				'openCard'
+			];
+			
+			wx.config(jssdkconfig);
+		</script>
+		<script src="template/resource/js/ydui/js/ydui.flexible.js"></script>
+		<script src="https://www.shulehudong.com/addons/meepo_xianchangv2/template/resource/js/jquery.2.1.4.js"></script>
+		<script type="text/javascript"  src="template/resource/js/require.js"></script>
+		<script type="text/javascript">
+			require.config({
+				baseUrl: "https://www.shulehudong.com/addons/meepo_xianchangv2/template/resource/js",
+				urlArgs:'v=20210603',//+(new Date()).getTime(),
+				waitSeconds:0,
+				paths: {
+					 css: "css.min",
+					 jquery:"jquery.2.1.4",
+					 fastclick:'wechatjs/fastclick',
+					 mobileselect:"mobileselect/mobileselect",
+					 ionrangeslider:'ionrangeslider/ionrangeslider',
+					 ydui: "ydui/js/ydui",
+					 template:"template/template",
+					 layer:"layer/mobile/layer",
+					 laytpl:"laytpl/laytpl",
+					 howler:"howler/howler.min",
+					 cropper:"cropper/cropper",
+					 "jquery.shake":'wechatjs/jquery.shake',
+					 jform:'jquery.form',
+					 touch:'wechatjs/touch',
+					 slideBox:'wechatjs/slideBox',
+					 wechatcore:"wechatjs/wechatcore",
+					 marqueen:"wechatjs/marqueen",
+					 bscroll:'wechatjs/bscroll/bscroll',
+					 swiper:'swiper/swiper.min',
+					 emojicore:"wechatjs/emojicore",
+					 appsocket:"wechatjs/appsocket",
+					 appgame:"wechatjs/appgame",
+					 appdgshake:"wechatjs/appdgshake",
+					 appshuqian:"wechatjs/appshuqian",
+					 appmonkey:"wechatjs/appmonkey",
+					 appcar:"wechatjs/appcar",
+					 apphorse:"wechatjs/apphorse",
+					 appmls:"wechatjs/appmls",
+					 appbike:"wechatjs/appbike",
+					 appswim:"wechatjs/appswim",
+					 apptug:"wechatjs/apptug",
+					 appanswerbs:"wechatjs/appanswerbs",
+					 appjjb:"wechatjs/appjjb",
+					 appcutfruit:"wechatjs/appcutfruit",
+					 appdzqy:"wechatjs/appdzqy",
+					 videojs:'videojs/video',
+					 plupload:'plupload/plupload',
+					 uploader:'plupload/uploader',
+					 phaser:'wechatjs/phaser.min',
+					 appshakestart:"wechatjs/appshakestart",
+					 appdzlottery:"wechatjs/appdzlottery",
+				},
+				shim:{
+					"ydui": {
+						exports:"YDUI"
+					},
+					'template':{
+						exports: 'template',
+					},
+					'layer':{
+						exports: 'layer',
+						deps: ['css!../js/layer/mobile/need/layer.css']
+					},
+					'mobileselect':{
+						exports:'MobileSelect',
+						deps: ['css!../js/mobileselect/mobileselect.css']
+					},
+					'ionrangeslider':{
+						deps:['css!../js/ionrangeslider/ionrangeslider.css'],
+					},
+					'wechatcore':{
+						exports:'wechatcore',
+					},
+					'marqueen':{
+						exports:'marqueen',
+					},
+					'laytpl':{
+						exports: 'laytpl',
+					},
+					'jquery.shake':{
+						exports: 'Shake',
+						deps: ['jquery']
+					},
+					'jform':{
+						deps: ['jquery']
+					},
+					'touch':{
+						exports:'touch',
+					},
+					'bscroll':{
+						exports:'BScroll',
+					},
+					'swiper':{
+						exports:'Swiper',
+						deps: ['css!../js/swiper/swiper.min.css']
+					},
+					'cropper':{
+						exports:'cropper',
+						deps: ['css!../js/cropper/cropper.css']
+					},
+					'appsocket':{
+						exports:'appsocket',
+					},
+					'appgame':{
+						exports:'appgame',
+					},
+					'appdgshake':{
+						exports:'appdgshake',
+					},
+					'appshuqian':{
+						exports:'appshuqian',
+					},
+					'appmonkey':{
+						exports:'appmonkey',
+					},
+					'appcar':{
+						exports:'appcar',
+					},
+					'apphorse':{
+						exports:'apphorse',
+					},
+					'appmls':{
+						exports:'appmls',
+					},
+					'appbike':{
+						exports:'appbike',
+					},
+					'appswim':{
+						exports:'appswim',
+					},
+					'apptug':{
+						exports:'apptug',
+					},
+					'appanswerbs':{
+						exports:'appanswerbs',
+					},
+					'appdzqy':{
+						exports:'appdzqy',
+					},
+					'appjjb':{
+						exports:'appjjb',
+					},
+					'appcutfruit':{
+						exports:'appcutfruit',
+					},
+					'videojs':{
+						exports:'videojs',
+						deps:['css!../js/videojs/video.css'],
+					},
+					'plupload':{
+						exports:'plupload',
+					},
+					'uploader':{
+						exports:'uploader',
+						deps: ['jquery','plupload'],
+					},
+				},
+			});
+			define("jquery", [], function () {
+				return jQuery;
+			});
+			;(function($) {
+				$.fn.extend({
+					animateCss: function (a,callback) {
+						this.addClass('animated ' + a).one('webkitAnimationEnd animationend', function() {
+							$(this).removeClass('animated ' + a);
+							if (typeof callback === 'function') {
+								callback($(this));
+							}
+						})
+					}
+				});
+			})(jQuery);
+			var XCV2Config = {
+			  attchurl:"https://shulehudong.oss-cn-hangzhou.aliyuncs.com/",
+			  hdid:"wna2j8al71k5s2mn",
+			  hdhash:"0852406886",
+			  rhdid:"544",
+			  wsAddress:"wss://hkj.shulehudong.com:9011",
+			  ismanager:"2",
+			  userid:"437694",
+			  openid:"o3IQEuDpFYv3RNem2P0JJ_9u0Tjc",
+			  nickname:"饕餮",
+			  avatar:"https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83ep8La6jO2QibzjA6QiaibC0BVicDQJzEXtIVMWNJndpfzHRFrWiaKkmZhkKxwUAETRibdl0Xb9eiapFqy6CQ/132",
+			  sex:"1",
+			  buttonLocked:false,
+			  sendJgtime:parseInt("0"),
+			  gametype:"shuqian",
+			  rotateid:parseInt("0"),
+			  isluckertxt:"您已经中过奖了，请把机会留给其他人！",
+			  isiframe:window.top!=window.self,
+			  appluckerdialog:"1",
+			  myrecordurl:"./index.php?i=2&c=entry&m=meepo_xianchangv2&do=mobile&r=wechat.home.myrecord&hdid=wna2j8al71k5s2mn&hdhash=0852406886",
+			};
+		</script>
+	</head>
+	<body>
+		<style>
+			.moneyBox{width:100%;height:100%;overflow:hidden;text-align:center;}
+			.money-tips{width:100%;height:100%;position:fixed;top:0;left:0;z-index:3;background-color:rgba(0,0,0,0.5);color:#fff;font-size:0.4rem;}
+			.money-tips .gametip i.money-tips-arrowtop{display:inline-block;margin-top:0.6rem;font-size:0.7rem;animation:gear 3s ease infinite;-webkit-animation:gear 3s ease infinite;}
+			@keyframes gear {0% {transform:translate3d(0,0,0);-webkit-transform:translate3d(0,0,0);-moz-transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);-o-transform:translate3d(0,0,0);opacity:1;}50% {transform:translate3d(0px,40px,0);-webkit-transform:translate3d(0px,40px,0);-moz-transform:translate3d(0px,40px,0);-ms-transform:translate3d(0px,40px,0);-o-transform:translate3d(0px,40px,0);opacity:1;}100% {transform:translate3d(0,0,0);-webkit-transform:translate3d(0,0,0);-moz-transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);-o-transform:translate3d(0,0,0);opacity:0;}}
+			.gamestatus{padding:0.3rem 0.4rem;font-size:0.4rem;color:#fff;background-color:rgba(0,0,0,0.3);border-radius:5px;margin-bottom:0.4rem;}
+			.phb-btn{width:3.6rem;height:1.25rem;background-image:url("template/resource/images/wechat/shuqian/pm.png");background-size:cover;background-repeat:no-repeat;}
+			.money_count{width:100%;height:100%;position:fixed;overflow:hidden;}
+			.money_count .reg_bag{width:60%;height:100%;position:absolute;bottom:-4rem;left:20%;background:url("template/resource/images/wechat/shuqian/money.png") no-repeat center bottom;background-size:100% auto;}
+			.money_count .gold{width:100%;height:1.2rem;position:absolute;bottom:0;background:url("template/resource/images/wechat/shuqian/gold.png") no-repeat center 0;background-size:100% auto;}
+			.money_count .money_box{width:60%;height:100%;position:relative;margin:0 auto;overflow:hidden;z-index:1;}
+			.money_count .money{background-color:#73dcff;width:100%;height:100%;position:absolute;bottom:-4.1rem;background:url("template/resource/images/wechat/shuqian/money2.png") no-repeat center bottom;background-size:100% auto;display:none;}
+			.ri{display:none;overflow:hidden;pointer-events:none;}
+			.p{ position:absolute;width:50px;}
+			.p img{animation:hovertreespin 30s linear 0s infinite;width:100%;animation-duration:.3s;}
+			.p1{left:1rem;top:-2rem;animation:hovertreespinp 1.2s linear .5s infinite;}
+			.p2{left:2rem;top:-2.1rem;animation:hovertreespinp 1.2s linear 1s infinite;}
+			.p3{left:3rem;top:-3rem;animation:hovertreespinp 1.2s linear 0s infinite;}
+			.p4{left:5rem;top:-2.3rem;animation:hovertreespinp 1.2s linear 2s infinite;}
+			.p5{left:6rem;top:-4rem;animation:hovertreespinp 1.2s linear 3s infinite;}
+			.p6{right:1rem;top:-4rem;animation:hovertreespinp 1.2s linear 3s infinite;}
+			@keyframes hovertreespin {0%{transform:rotate(0deg)}100%{transform:rotate(360deg);}}
+			@keyframes hovertreespinp {0%{margin-top:0;}100%{margin-top:1000px;}}
+			.money-score{position:absolute;top:0;width:100%;z-index:2;color:#fff;font-size:.5rem;}
+			.money-score i{font-size:0.6rem;margin-right:0.1rem;}
+			.money_add{margin:0.6rem auto;background-color:rgba(0,0,0,0.2);width:3rem;height:0.8rem;border-radius:0.1rem;color:gold;}
+			.gametimeremain{margin:0.6rem auto;background-color:rgba(0,0,0,0.2);width:3rem;height:0.8rem;border-radius:0.1rem;color:#fff;}
+		</style>
+		<div class="moneyBox">
+			<div class="money-tips zam-app-flex-ajCenter hidden">
+				<div class="gametip hidden">
+					<p>游戏开始后，手指快速向上滑动</p>
+					<i class="mxc-15 money-tips-arrowtop"></i>
+				</div>
+				<div class="gamestatus hidden"></div>
+				<div class="phb-btn zam-app-flex-ajCenter hidden"></div>
+			</div>
+			<div class="money_count">
+				<div class="money-score">
+					<div class="money_add zam-app-flex-ajCenter2 "><i class="mxc-unie6ed"></i><span>0</span></div>
+					<div class="gametimeremain zam-app-flex-ajCenter2"><i class="mxc-unie6b2"></i><span>0</span></div>
+				</div>
+				<div class="gold"></div>
+				<div class="reg_bag"></div>
+				<div class="money_box"><div class="money"></div></div>
+				<div class="ri">
+					<div class="p1 p"><img src="template/resource/images/wechat/shuqian/dmoney.png"></div>
+					<div class="p2 p"><img src="template/resource/images/wechat/shuqian/dmoney.png"></div>
+					<div class="p3 p"><img src="template/resource/images/wechat/shuqian/dmoney.png"></div>
+					<div class="p4 p"><img src="template/resource/images/wechat/shuqian/dmoney.png"></div>
+					<div class="p5 p"><img src="template/resource/images/wechat/shuqian/dmoney.png"></div>
+					<div class="p6 p"><img src="template/resource/images/wechat/shuqian/dmoney.png"></div>
+				</div>
+			</div>
+		</div>
+		<audio src="template/resource/images/wechat/shuqian/piu.mp3" id="shakeaudio" ></audio>
+		<audio src="template/resource/images/wechat/shake/count.mp3"  id="djsaudio"></audio>
+		<div class="appstartdjs zam-app-flex-ajCenter2 hidden">
+			<div class="appstartdjsBox zam-app-flex-ajCenter2">
+				<span class="startdjsani">0</span>
+			</div>
+		</div>
+		<style>
+			.mrankbox{border-radius:10px 10px 0 0;height:396px;position:relative;overflow-x:hidden;overflow-y:scroll;-webkit-overflow-scrolling:touch;overflow-scrolling:touch;}
+			.mrankbox .mrank-sanjia {background-image:-webkit-linear-gradient(#ff5490,#ff4931);background-image:-moz-linear-gradient(#ff5490,#ff4931);background-image:linear-gradient(#ff5490,#ff4931);}
+			.mrankbox .mrank-sanjia .mrank-sanjia-wrap {max-width:375px;max-height:274px;padding:1px 0 40px;margin:0 auto;background-image:url(template/resource/images/wechat/shuqian/mrankbg.png);background-size:100% 100%;background-repeat:no-repeat;background-position:bottom;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-align-mrank-sanjia-items:flex-start;align-mrank-sanjia-items:flex-start;-webkit-justify-content:center;justify-content:center;}
+			.mrankbox .mrank-sanjia .mrank-sanjia-wrap .mrank-sanjia-item.t2 {padding-top:40px;}
+			.mrankbox .mrank-sanjia .mrank-sanjia-wrap .mrank-sanjia-item.t3 {padding-top:50px;}
+			.mrankbox .mrank-sanjia .mrank-sanjia-wrap .mrank-sanjia-item {width:110px;padding-top:20px;font-size:14px;text-align:center;color:#fff;}
+			.mrankbox .mrank-sanjia .mrank-sanjia-wrap .mrank-sanjia-item .avatar {width:60px;height:60px;border:3px solid hsla(0,0%,100%,.6);margin:0 auto;border-radius:50%;position:relative;}
+			.mrankbox .mrank-sanjia .mrank-sanjia-wrap .mrank-sanjia-item .avatar .rank-cap{position:absolute;top:-15px;right:-10px;display:inline-block;width:30px;height:30px;background-image:url("template/resource/images/wechat/shuqian/t1.png");background-size:cover;background-repeat:no-repeat;}
+			.mrankbox .mrank-sanjia .mrank-sanjia-wrap .mrank-sanjia-item.t1 .avatar {border:3px solid #fd5;}
+			.mrankbox .mrank-sanjia .mrank-sanjia-wrap .mrank-sanjia-item.t2 .avatar .rank-cap{background-image:url("template/resource/images/wechat/shuqian/t2.png");}
+			.mrankbox .mrank-sanjia .mrank-sanjia-wrap .mrank-sanjia-item.t3 .avatar .rank-cap{background-image:url("template/resource/images/wechat/shuqian/t3.png");}
+			.mrankbox .mrank-sanjia .mrank-sanjia-wrap .mrank-sanjia-item .avatar img {width:60px;height:60px;border-radius:50%;display:none;}
+			.mrankbox .mrank-sanjia .mrank-sanjia-wrap .mrank-sanjia-item .nickname {padding:6px 0 3px;white-space:nomrank-sanjia-wrap;overflow:hidden;text-overflow:ellipsis;}
+			.mrankbox .mrank-sanjia .mrank-sanjia-wrap .mrank-sanjia-item .score {line-height:1;color:#ffd957;font-size:13px;}
+			.mrankbox .mrank-other {border-radius:10px 10px 0 0;position:relative;top:-10px;background-color:#fff;}
+			.mrankbox .mrank-other li {height:55px;display:-webkit-box;display:-webkit-flex;display:flex;}
+			.mrankbox .mrank-other li section.number {width:38px;border:0;font-style:italic;font-size:14px;color:#999;text-align:center;}
+			.mrankbox .mrank-other li section {border-bottom:1px solid #f5f5f5;line-height:55px;}
+			.mrankbox .mrank-other li section.avatar img {width:36px;height:36px;margin-top:9.5px;border-radius:50%;vertical-align:middle;}
+			.mrankbox .mrank-other li section.nickname {padding:0 10px;-webkit-box-flex:1;-webkit-flex:1;flex:1;font-size:14px;color:#333;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+			.mrankbox .mrank-other li section.score {width:40px;padding:0 10px 0 0;color:#999;font-size:13px;text-align:right;}
+			.mrank-close{position:absolute;top:10px;right:10px;font-size:20px;color:#fff;}
+		</style>
+		<script id="phb-tpl" type="text/html">
+			<div class="mrankbox">
+			   <div class="mrank-sanjia">
+				<div class="mrank-sanjia-wrap">
+				 <section class="mrank-sanjia-item t2">
+					  <p class="avatar">
+						<i class="rank-cap"></i>
+						<img <%# if("undefined" != typeof d.list[1] && d.list[1].avatar){ %>class="zam-app-displayblock"<%# } %> src="<%# if("undefined" != typeof d.list[1] && d.list[1].avatar){ %><% d.list[1].avatar %><%# }else{ %><%# } %>" />
+					  </p>
+					  <p class="nickname">
+						<%# if("undefined" != typeof d.list[1] && d.list[1].nickname){ %><% d.list[1].nickname %><%# }else{ %><%# } %>
+					  </p>
+					  <p class="score">
+						<%# if("undefined" != typeof d.list[1] && d.list[1].score){ %><% d.list[1].score*100 %><%# }else{ %><%# } %>
+					  </p>
+				 </section>
+				 <section class="mrank-sanjia-item t1">
+					 <p class="avatar">
+						<i class="rank-cap"></i>
+						<img <%# if("undefined" != typeof d.list[0] && d.list[0].avatar){ %>class="zam-app-displayblock"<%# } %> src="<%# if("undefined" != typeof d.list[0] && d.list[0].avatar){ %><% d.list[0].avatar %><%# }else{ %><%# } %>" />
+					 </p>
+					 <p class="nickname">
+						<%# if("undefined" != typeof d.list[0] && d.list[0].nickname){ %><% d.list[0].nickname %><%# }else{ %><%# } %>
+					 </p>
+					 <p class="score">
+						<%# if("undefined" != typeof d.list[0] && d.list[0].score){ %><% d.list[0].score*100 %><%# }else{ %><%# } %>
+					 </p>
+				 </section>
+				 <section class="mrank-sanjia-item t3">
+					 <p class="avatar">
+						<i class="rank-cap"></i>
+						<img <%# if("undefined" != typeof d.list[2] && d.list[2].avatar){ %>class="zam-app-displayblock"<%# } %> src="<%# if("undefined" != typeof d.list[2] && d.list[2].avatar){ %><% d.list[2].avatar %><%# }else{ %><%# } %>" />
+					  </p>
+					  <p class="nickname">
+						<%# if("undefined" != typeof d.list[2] && d.list[2].nickname){ %><% d.list[2].nickname %><%# }else{ %><%# } %>
+					  </p>
+					  <p class="score">
+						<%# if("undefined" != typeof d.list[2] && d.list[2].score){ %><% d.list[2].score*100 %><%# }else{ %><%# } %>
+					  </p>
+				 </section>
+				</div>
+			   </div>
+			   <ul class="mrank-other">
+				<%#  $.each(d.list, function(index, item){ %>
+					<%# if(index>2){ %>  
+					<li>
+						 <section class="number"><% index+1 %></section>
+						 <section class="avatar"><img src="<% item.avatar %>" />
+						 </section>
+						 <section class="nickname">
+							<% item.nickname %>
+						 </section>
+						 <section class="score">
+							<% item.score*100 %>
+						 </section>
+					 </li>
+					<%# } %>  
+				<%# }) %>
+			   </ul>
+			   <div class="mrank-close close-banglist"><i class="mxc-unie631"></i></div>
+			</div>
+		</script>
+		<script>
+			require(['wechatcore','appshuqian'],function (wechatcore,appshuqian) {	
+				appshuqian.init();
+			})
+		</script>
+		<style>
+.zam-app-menubox {
+	position:fixed;
+	right:0.2rem;
+	top:1rem;
+	background-color:#4886ff;
+	border-radius:50%;
+	width:0.8rem;
+	height:0.8rem;
+	cursor:pointer;
+	z-index:3;
+}
+.zam-app-menubox img{
+	width:0.4rem;
+	height:0.4rem;
+}
+.zam-app-common-menuBox{height:auto;margin:0;}
+.zam-app-common-menuBox .moduleInfoBox-main{padding:0;}
+.zam-app-common-menuBox .moduleInfoBox-title .closemenu{
+	position:absolute;
+	right:0.2rem;
+	font-size:20px;
+	color:gray;
+}
+.moduleInfoBox ul li a span{
+	height:0.6rem;line-height:0.6rem;
+}
+</style>
+<div class="zam-app-menubox zam-app-flex-ajCenter2 ">
+	<img src="https://www.shulehudong.com/addons/meepo_xianchangv2/template/resource/images/wechat/menu.png">
+</div>
+<script id="menu-tpl" type="text/html">
+<div class="moduleInfoBox zam-app-common-menuBox">
+<div class="moduleInfoBox-main">
+	<div class="moduleInfoBox-title"><span>点击下方图标即可参与互动</span> <i class="mxc-unie631 closemenu"></i></div>
+		<ul class="zam-app-footermenu">
+			<div class="swiper-container modules-swiper">
+					<div class="swiper-wrapper">
+																								    																			<ul class="swiper-slide" style="margin:0">
+										<li>
+										  <a href="javascript:;" class="zam-app-flex-ajCenter" data-module="msg" data-href="./index.php?i=2&c=entry&m=meepo_xianchangv2&do=mobile&r=wechat.msg&hdid=wna2j8al71k5s2mn&hdhash=0852406886" >
+											<div class="iconbox zam-app-flex-ajCenter2" style="background-color:#4886ff"><img src="https://shulehudong.oss-cn-hangzhou.aliyuncs.com/images/2/2019/10/S4OF6enNmE3horFVRe5zNG6HGGeNgO.png"></i></div>
+											<span>上墙</span>
+										  </a>
+										</li>
+																																																					    																			<li>
+										  <a href="javascript:;" class="zam-app-flex-ajCenter" data-module="vote" data-href="./index.php?i=2&c=entry&m=meepo_xianchangv2&do=mobile&r=wechat.vote&hdid=wna2j8al71k5s2mn&hdhash=0852406886" >
+											<div class="iconbox zam-app-flex-ajCenter2" style="background-color:#4886ff"><img src="https://shulehudong.oss-cn-hangzhou.aliyuncs.com/images/2/2019/10/h2v0viVSRtLDiu4Jzv0jh2yCYJtC2t.png"></i></div>
+											<span>投票</span>
+										  </a>
+										</li>
+																																																					    																			<li>
+										  <a href="javascript:;" class="zam-app-flex-ajCenter" data-module="ppqd" data-href="./index.php?i=2&c=entry&m=meepo_xianchangv2&do=mobile&r=wechat.ppqd&hdid=wna2j8al71k5s2mn&hdhash=0852406886" >
+											<div class="iconbox zam-app-flex-ajCenter2" style="background-color:#4886ff"><img src="https://shulehudong.oss-cn-hangzhou.aliyuncs.com/images/2/2021/01/gee2AMce94ckx2eKC20C7Z660IXE0C.png"></i></div>
+											<span>泡泡手写签到</span>
+										  </a>
+										</li>
+																																																					    																			<li>
+										  <a href="javascript:;" class="zam-app-flex-ajCenter" data-module="shake" data-href="./index.php?i=2&c=entry&m=meepo_xianchangv2&do=mobile&r=wechat.shake&hdid=wna2j8al71k5s2mn&hdhash=0852406886" >
+											<div class="iconbox zam-app-flex-ajCenter2" style="background-color:#4886ff"><img src="https://shulehudong.oss-cn-hangzhou.aliyuncs.com/images/2/2019/10/F5WY2BSrgB3i8q78bu5ZxUq35UG37q.png"></i></div>
+											<span>卡通赛马</span>
+										  </a>
+										</li>
+																																																					    																			<li>
+										  <a href="javascript:;" class="zam-app-flex-ajCenter" data-module="redpack" data-href="./index.php?i=2&c=entry&m=meepo_xianchangv2&do=mobile&r=wechat.redpack&hdid=wna2j8al71k5s2mn&hdhash=0852406886" >
+											<div class="iconbox zam-app-flex-ajCenter2" style="background-color:#4886ff"><img src="https://shulehudong.oss-cn-hangzhou.aliyuncs.com/images/2/2019/10/D225Pz4483krej344GEOr2nk8AX8xO.png"></i></div>
+											<span>红包雨</span>
+										  </a>
+										</li>
+																																																					    																			<li>
+										  <a href="javascript:;" class="zam-app-flex-ajCenter" data-module="shuqian" data-href="./index.php?i=2&c=entry&m=meepo_xianchangv2&do=mobile&r=wechat.shuqian&hdid=wna2j8al71k5s2mn&hdhash=0852406886" >
+											<div class="iconbox zam-app-flex-ajCenter2" style="background-color:#4886ff"><img src="https://shulehudong.oss-cn-hangzhou.aliyuncs.com/images/2/2019/10/K4SZA6Myo7oo2aQM17OBYUQ78QOo77.png"></i></div>
+											<span>疯狂数钱</span>
+										  </a>
+										</li>
+																																																					    																			<li>
+										  <a href="javascript:;" class="zam-app-flex-ajCenter" data-module="monkey" data-href="./index.php?i=2&c=entry&m=meepo_xianchangv2&do=mobile&r=wechat.monkey&hdid=wna2j8al71k5s2mn&hdhash=0852406886" >
+											<div class="iconbox zam-app-flex-ajCenter2" style="background-color:#4886ff"><img src="https://shulehudong.oss-cn-hangzhou.aliyuncs.com/images/2/2019/10/rtN0tH57TY0rnz0TUynp0y8YF5wIwT.png"></i></div>
+											<span>猴子爬树</span>
+										  </a>
+										</li>
+																																																					    																			<li>
+										  <a href="javascript:;" class="zam-app-flex-ajCenter" data-module="car" data-href="./index.php?i=2&c=entry&m=meepo_xianchangv2&do=mobile&r=wechat.car&hdid=wna2j8al71k5s2mn&hdhash=0852406886" >
+											<div class="iconbox zam-app-flex-ajCenter2" style="background-color:#4886ff"><img src="https://shulehudong.oss-cn-hangzhou.aliyuncs.com/images/2/2019/10/P6VZHd1G1IG1XnDniDeORIGH11OoHN.png"></i></div>
+											<span>圣诞送礼物</span>
+										  </a>
+										</li>
+										</ul>																																											    																			<ul class="swiper-slide" style="margin:0">
+										<li>
+										  <a href="javascript:;" class="zam-app-flex-ajCenter" data-module="horse" data-href="./index.php?i=2&c=entry&m=meepo_xianchangv2&do=mobile&r=wechat.horse&hdid=wna2j8al71k5s2mn&hdhash=0852406886" >
+											<div class="iconbox zam-app-flex-ajCenter2" style="background-color:#4886ff"><img src="https://shulehudong.oss-cn-hangzhou.aliyuncs.com/images/2/2019/10/pz5lAF5IlaX7ELOR7W5ieONkFj77ez.png"></i></div>
+											<span>草原赛马</span>
+										  </a>
+										</li>
+																																																					    																			<li>
+										  <a href="javascript:;" class="zam-app-flex-ajCenter" data-module="mls" data-href="./index.php?i=2&c=entry&m=meepo_xianchangv2&do=mobile&r=wechat.mls&hdid=wna2j8al71k5s2mn&hdhash=0852406886" >
+											<div class="iconbox zam-app-flex-ajCenter2" style="background-color:#4886ff"><img src="https://shulehudong.oss-cn-hangzhou.aliyuncs.com/images/2/2019/10/SBQZH5n3fcCXXQZqBnXQ6kQAz933V9.png"></i></div>
+											<span>都市马拉松</span>
+										  </a>
+										</li>
+																																																					    																			<li>
+										  <a href="javascript:;" class="zam-app-flex-ajCenter" data-module="bike" data-href="./index.php?i=2&c=entry&m=meepo_xianchangv2&do=mobile&r=wechat.bike&hdid=wna2j8al71k5s2mn&hdhash=0852406886" >
+											<div class="iconbox zam-app-flex-ajCenter2" style="background-color:#4886ff"><img src="https://shulehudong.oss-cn-hangzhou.aliyuncs.com/images/2/2019/10/I9PpK28AAYRk8jgA8ap2iYaFSanEGZ.png"></i></div>
+											<span>牛年纳福</span>
+										  </a>
+										</li>
+																																																					    																			<li>
+										  <a href="javascript:;" class="zam-app-flex-ajCenter" data-module="swim" data-href="./index.php?i=2&c=entry&m=meepo_xianchangv2&do=mobile&r=wechat.swim&hdid=wna2j8al71k5s2mn&hdhash=0852406886" >
+											<div class="iconbox zam-app-flex-ajCenter2" style="background-color:#4886ff"><img src="https://shulehudong.oss-cn-hangzhou.aliyuncs.com/images/2/2019/10/Z60J01GCyzSFy7gcA1dc0y8s1sJYyk.png"></i></div>
+											<span>加油锦鲤</span>
+										  </a>
+										</li>
+																																																					    																			<li>
+										  <a href="javascript:;" class="zam-app-flex-ajCenter" data-module="tug" data-href="./index.php?i=2&c=entry&m=meepo_xianchangv2&do=mobile&r=wechat.tug&hdid=wna2j8al71k5s2mn&hdhash=0852406886" >
+											<div class="iconbox zam-app-flex-ajCenter2" style="background-color:#4886ff"><img src="https://shulehudong.oss-cn-hangzhou.aliyuncs.com/images/2/2020/10/bahe3.png"></i></div>
+											<span>拔河赛</span>
+										  </a>
+										</li>
+																																																					    																			<li>
+										  <a href="javascript:;" class="zam-app-flex-ajCenter" data-module="ydj" data-href="./index.php?i=2&c=entry&m=meepo_xianchangv2&do=mobile&r=wechat.ydj&hdid=wna2j8al71k5s2mn&hdhash=0852406886" >
+											<div class="iconbox zam-app-flex-ajCenter2" style="background-color:#4886ff"><img src="https://shulehudong.oss-cn-hangzhou.aliyuncs.com/images/2/2020/10/yaodaj3.png"></i></div>
+											<span>摇大奖</span>
+										  </a>
+										</li>
+																																																					    																			<li>
+										  <a href="javascript:;" class="zam-app-flex-ajCenter" data-module="baping" data-href="./index.php?i=2&c=entry&m=meepo_xianchangv2&do=mobile&r=wechat.baping&hdid=wna2j8al71k5s2mn&hdhash=0852406886" >
+											<div class="iconbox zam-app-flex-ajCenter2" style="background-color:#4886ff"><img src="https://shulehudong.oss-cn-hangzhou.aliyuncs.com/images/2/2020/10/baping3.png"></i></div>
+											<span>霸屏</span>
+										  </a>
+										</li>
+																																																					    																			<li>
+										  <a href="javascript:;" class="zam-app-flex-ajCenter" data-module="answerbs" data-href="./index.php?i=2&c=entry&m=meepo_xianchangv2&do=mobile&r=wechat.answerbs&hdid=wna2j8al71k5s2mn&hdhash=0852406886" >
+											<div class="iconbox zam-app-flex-ajCenter2" style="background-color:#4886ff"><img src="https://shulehudong.oss-cn-hangzhou.aliyuncs.com/images/2/2020/10/dati3.png"></i></div>
+											<span>答题</span>
+										  </a>
+										</li>
+										</ul>																																											    																			<ul class="swiper-slide" style="margin:0">
+										<li>
+										  <a href="javascript:;" class="zam-app-flex-ajCenter" data-module="dgshake" data-href="./index.php?i=2&c=entry&m=meepo_xianchangv2&do=mobile&r=wechat.dgshake&hdid=wna2j8al71k5s2mn&hdhash=0852406886" >
+											<div class="iconbox zam-app-flex-ajCenter2" style="background-color:#4886ff"><img src="https://shulehudong.oss-cn-hangzhou.aliyuncs.com/images/2/2020/10/dgshake3.png"></i></div>
+											<span>动感摇一摇</span>
+										  </a>
+										</li>
+																																																					    																			<li>
+										  <a href="javascript:;" class="zam-app-flex-ajCenter" data-module="jjb" data-href="./index.php?i=2&c=entry&m=meepo_xianchangv2&do=mobile&r=wechat.jjb&hdid=wna2j8al71k5s2mn&hdhash=0852406886" >
+											<div class="iconbox zam-app-flex-ajCenter2" style="background-color:#4886ff"><img src="https://shulehudong.oss-cn-hangzhou.aliyuncs.com/images/2/2020/12/sQbTuzvtxu6nXq9bTN6QqBbT2B2FVc.png"></i></div>
+											<span>接金币</span>
+										  </a>
+										</li>
+																																																					    																			<li>
+										  <a href="javascript:;" class="zam-app-flex-ajCenter" data-module="cutfruit" data-href="./index.php?i=2&c=entry&m=meepo_xianchangv2&do=mobile&r=wechat.cutfruit&hdid=wna2j8al71k5s2mn&hdhash=0852406886" >
+											<div class="iconbox zam-app-flex-ajCenter2" style="background-color:#4886ff"><img src="https://shulehudong.oss-cn-hangzhou.aliyuncs.com/images/2/2020/12/K89b7B9RbB788pEBzeZ36r3833brr7.png"></i></div>
+											<span>切水果</span>
+										  </a>
+										</li>
+																																																					    																			<li>
+										  <a href="javascript:;" class="zam-app-flex-ajCenter" data-module="shakestart" data-href="./index.php?i=2&c=entry&m=meepo_xianchangv2&do=mobile&r=wechat.shakestart&hdid=wna2j8al71k5s2mn&hdhash=0852406886" >
+											<div class="iconbox zam-app-flex-ajCenter2" style="background-color:#4886ff"><img src="https://shulehudong.oss-cn-hangzhou.aliyuncs.com/images/2/2021/08/BgVf8qK84CGUxhBq5vU4XDgx4CFBFT.png"></i></div>
+											<span>摇一摇启动</span>
+										  </a>
+										</li>
+																																																					    																			<li>
+										  <a href="javascript:;" class="zam-app-flex-ajCenter" data-module="dzqy" data-href="./index.php?i=2&c=entry&m=meepo_xianchangv2&do=mobile&r=wechat.dzqy&hdid=wna2j8al71k5s2mn&hdhash=0852406886" >
+											<div class="iconbox zam-app-flex-ajCenter2" style="background-color:#4886ff"><img src="https://shulehudong.oss-cn-hangzhou.aliyuncs.com/images/2/2020/10/qianyue3.png"></i></div>
+											<span>电子签约</span>
+										  </a>
+										</li>
+																																																					    																			<li>
+										  <a href="javascript:;" class="zam-app-flex-ajCenter" data-module="livemark" data-href="./index.php?i=2&c=entry&m=meepo_xianchangv2&do=mobile&r=wechat.livemark&hdid=wna2j8al71k5s2mn&hdhash=0852406886" >
+											<div class="iconbox zam-app-flex-ajCenter2" style="background-color:#4886ff"><img src="https://shulehudong.oss-cn-hangzhou.aliyuncs.com/images/2/2020/10/pingfen3.png"></i></div>
+											<span>现场评分</span>
+										  </a>
+										</li>
+																																																					    																			<li>
+										  <a href="javascript:;" class="zam-app-flex-ajCenter" data-module="home" data-href="./index.php?i=2&c=entry&m=meepo_xianchangv2&do=mobile&r=wechat.home&hdid=wna2j8al71k5s2mn&hdhash=0852406886" >
+											<div class="iconbox zam-app-flex-ajCenter2" style="background-color:#4886ff"><img src="https://www.shulehudong.com/addons/meepo_xianchangv2/template/resource/images/sys/module/home.png"></i></div>
+											<span>个人中心</span>
+										  </a>
+										</li>
+										</ul>																																								</div>
+					<div class="swiper-pagination"></div>
+			</div>
+		</ul>
+	</div>
+</div>
+</div>
+</script>
+<script>
+require(['wechatcore','swiper'],function (wechatcore,Swiper) {	
+	$(".zam-app-menubox").on('click',function(){
+	 var menuhtml = wechatcore.tpl($("#menu-tpl"),{});
+	 var blayindex = wechatcore.bpopupbyhtml(menuhtml,'position:fixed; bottom:0; left:0; width: 100%;border:none;border-radius:10px 10px 0 0;');
+	 var mymoduleSwiper = new Swiper('.modules-swiper',{
+		watchOverflow: true,
+		pagination: {
+			el: '.swiper-pagination',
+		}
+	 }); 
+	 $("body .zam-app-common-menuBox .closemenu").click(function(){
+		wechatcore.close(blayindex);
+	 });
+	});
+});
+</script>
+		<div class="zam-app-bodyBg"></div>
+		<style>
+			.zam-app-bodyBg{position: fixed;left: 0;bottom: 0;width: 100%;height: 100%;z-index:-1;background-repeat: no-repeat;background-size: cover;background-image: url("template/resource/images/wechat/shuqian/appbg.jpg");background-position: 50% 50%;pointer-events:none;}
+		</style>
+<script>
+require(['wechatcore','appsocket'],function (wechatcore,appsocket) {
+	$(".phb-btn").on('click',function(){
+		var rotateid = $(this).attr('data-rotateid'),gamephb = $(this).attr('data-gamephb');
+		wechatcore.ajaxSubmit('wechat.common.getgamerotatephb',{gametype:XCV2Config.gametype,rotateid:rotateid,gamephb:gamephb},'正在获取排行榜数据').then(function(data){
+			 if(data.errno==0){
+				 if(data.message.length>0){
+					 var phbhtml = wechatcore.tpl($("#phb-tpl"),{list:data.message});
+					 var blayindex = wechatcore.bpopupbyhtml(phbhtml);
+					 $("body .close-banglist").click(function(){
+						wechatcore.close(blayindex);
+					 });
+				 }else{
+					wechatcore.msg('暂无数据');
+				 }
+			 }else{
+				wechatcore.msg(data.message);
+			 }
+		}, function(){
+			  wechatcore.msg('网络太差，请稍后重试');
+		});
+	});
+});
+</script>
+<script id="payrotate-tpl" type="text/html">
+<div class="app-paytitle">获取游戏参与资格</div>
+<div class="app-paymoney"><i>￥</i> <span><% d.fee %></span></div>
+<div class="app-payconfirm"><a href="javascript:;" class="btn btn-primary">确认支付</button></a>
+</script>
+<style></style><script>var imgs = document.getElementsByTagName('img');for(var i=0, len=imgs.length; i < len; i++){imgs[i].onerror = function() {if (!this.getAttribute('check-src') && (this.src.indexOf('http://') > -1 || this.src.indexOf('https://') > -1)) {this.src = this.src.indexOf('https://www.shulehudong.com/attachment/') == -1 ? this.src.replace('https://shulehudong.oss-cn-hangzhou.aliyuncs.com/', 'https://www.shulehudong.com/attachment/') : this.src.replace('https://www.shulehudong.com/attachment/', 'https://shulehudong.oss-cn-hangzhou.aliyuncs.com/');this.setAttribute('check-src', true);}}};</script><script type="text/javascript" src="https://www.shulehudong.com/app/index.php?i=2&c=utility&a=visit&do=showjs&m=meepo_xianchangv2"></script></body>
+<script>
+var shareData = {title:"",desc:"",link:"https://www.shulehudong.com/app/index.php?i=2&c=entry&m=meepo_xianchangv2&do=mobile&r=wechat.shuqian&hdid=wna2j8al71k5s2mn&hdhash=0852406886",imgUrl:""};
+wx.ready(function () {
+  	wx.hideOptionMenu();
+  });
+require(['wechatcore','fastclick'],function (wechatcore,FastClick) {
+	$("body").on('click','a',function(){
+		var href = $(this).attr('data-href');
+		var amodule = $(this).attr('data-module');
+		if(href!=null){
+			if(!XCV2Config.isiframe) {
+				wechatcore.reloadpage(href);
+			}else{
+				if(typeof(amodule) != "undefined"){
+					wechatcore.sendMsg2frame(amodule,href);
+					$("body .zam-app-common-menuBox .closemenu").trigger('click');
+				}else{
+					wechatcore.sendMsg2frame('virtrulmodule',href);
+					//wechatcore.reloadpage(href);
+				}	
+			}
+		}
+	});
+	if (wechatcore.device(1)) FastClick.attach(document.body);
+});  
+</script>
+</html>
